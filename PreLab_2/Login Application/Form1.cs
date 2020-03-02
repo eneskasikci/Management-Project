@@ -7,11 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace Login_Application
 {
     public partial class Form1 : Form
     {
+        private static string GetStringFromHash(byte[] hash)
+        {
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                result.Append(hash[i].ToString("X2"));
+            }
+            return result.ToString();
+        }
+
+        public static string GenerateSHA256String(string inputString)
+        {
+            SHA256 sha256 = SHA256Managed.Create();
+            byte[] bytes = Encoding.UTF8.GetBytes(inputString);
+            byte[] hash = sha256.ComputeHash(bytes);
+            return GetStringFromHash(hash);
+        }
+
+
         class User
         {
             string username;
@@ -46,9 +66,9 @@ namespace Login_Application
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            User log = new User("Test", "password");
+            User log = new User("admin", "1234");
 
-            if (usernameTextBox.Text == log.getUsername() && passwordTextBox.Text == log.getPassword())
+            if (usernameTextBox.Text == log.getUsername() && GenerateSHA256String(passwordTextBox.Text) == GenerateSHA256String(log.getPassword()))
             {
                 messageLabel.ForeColor = Color.Green;
                 messageLabel.Text = "Success";
