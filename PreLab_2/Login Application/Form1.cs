@@ -66,9 +66,9 @@ namespace Login_Application
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            User log = new User("admin", "1234");
+            User log = new User("admin", "03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4");
 
-            if (usernameTextBox.Text == log.getUsername() && GenerateSHA256String(passwordTextBox.Text) == GenerateSHA256String(log.getPassword()))
+            if (usernameTextBox.Text == log.getUsername() && GenerateSHA256String(passwordTextBox.Text) == log.getPassword())
             {
                 messageLabel.ForeColor = Color.Green;
                 messageLabel.Text = "Success";
