@@ -35,9 +35,9 @@
             this.exitButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.messageLabel = new System.Windows.Forms.Label();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.passwordLabel = new System.Windows.Forms.Label();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.messageLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,23 +95,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sign In";
             // 
-            // messageLabel
-            // 
-            this.messageLabel.Location = new System.Drawing.Point(27, 92);
-            this.messageLabel.Name = "messageLabel";
-            this.messageLabel.Size = new System.Drawing.Size(163, 23);
-            this.messageLabel.TabIndex = 2;
-            this.messageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // passwordTextBox
-            // 
-            this.passwordTextBox.AccessibleName = "";
-            this.passwordTextBox.Location = new System.Drawing.Point(90, 65);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.PasswordChar = '*';
-            this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
-            this.passwordTextBox.TabIndex = 1;
-            // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
@@ -120,6 +103,23 @@
             this.passwordLabel.Size = new System.Drawing.Size(53, 13);
             this.passwordLabel.TabIndex = 1;
             this.passwordLabel.Text = "Password";
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.AccessibleName = "";
+            this.passwordTextBox.Location = new System.Drawing.Point(90, 65);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
+            this.passwordTextBox.TabIndex = 1;
+            this.passwordTextBox.UseSystemPasswordChar = true;
+            // 
+            // messageLabel
+            // 
+            this.messageLabel.Location = new System.Drawing.Point(27, 92);
+            this.messageLabel.Name = "messageLabel";
+            this.messageLabel.Size = new System.Drawing.Size(163, 23);
+            this.messageLabel.TabIndex = 2;
+            this.messageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
