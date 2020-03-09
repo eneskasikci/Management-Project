@@ -52,20 +52,17 @@ namespace Login_with_DataBase
 
             StreamWriter sw = File.AppendText(@path1);
             string[] lines = File.ReadAllLines(Form1.path + "/mydb.csv");
-
-            for (int i = 0; i < lines.Length; i++)
-            {
-                string[] words = lines[i].Split(',');
-                        
-
-                sw.WriteLine(words[0] + "\tab" + Form1.GenerateSHA256String(words[1]));
-
-            }
-
+			if (saveFileDialog1.ShowDialog()==DialogResult.Cancel)
+			{
+				for (int i = 0; i < lines.Length; i++)
+				{
+					string[] words = lines[i].Split(',');   
+					sw.WriteLine(words[0] + "\tab" + Form1.GenerateSHA256String(words[1]));
+				}
+			}   
                     MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             sw.Close();
-
         }
     }
 }
