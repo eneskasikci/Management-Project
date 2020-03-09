@@ -52,7 +52,7 @@ namespace Login_with_DataBase
 
             StreamWriter sw = File.AppendText(@path1);
             string[] lines = File.ReadAllLines(Form1.path + "/mydb.csv");
-			if (saveFileDialog1.ShowDialog()==DialogResult.Cancel)
+			if (save.ShowDialog()==DialogResult.Cancel)
 			{
 				for (int i = 0; i < lines.Length; i++)
 				{
