@@ -24,7 +24,7 @@ namespace Login_with_DataBase
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void logOutButton_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.UserName = "Username";
             Properties.Settings.Default.Password = "Password";
@@ -32,35 +32,34 @@ namespace Login_with_DataBase
             Properties.Settings.Default.Save();
             label1.Visible = false;
             label2.Visible = true;
+
             timer1.Start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
+
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e)
         {
             SaveFileDialog save = new SaveFileDialog();
             save.FileName = "mydb.tsv";
+            string[] lines = File.ReadAllLines("mydb.csv");
+            StreamWriter sw = File.AppendText(save.FileName); 
 
-            save.ShowDialog();
-
-            string path1 = save.FileName;
-
-            StreamWriter sw = File.AppendText(@path1);
-            string[] lines = File.ReadAllLines(Form1.path + "/mydb.csv");
 			if (save.ShowDialog()==DialogResult.OK)
 			{
 				for (int i = 0; i < lines.Length; i++)
 				{
 					string[] words = lines[i].Split(',');   
-					sw.WriteLine(words[0] + "\tab" + Form1.GenerateSHA256String(words[1]));
+					sw.WriteLine(words[0] + "\tab" + words[1]);
 				}
-			}   
-                    MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
             sw.Close();
         }

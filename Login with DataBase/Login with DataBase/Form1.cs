@@ -19,8 +19,6 @@ namespace Login_with_DataBase
             InitializeComponent();
         }
 
-        public static string path = "C:/Users/Student/Desktop";
-
         private static string GetStringFromHash(byte[] hash)
         {
             StringBuilder result = new StringBuilder();
@@ -70,7 +68,7 @@ namespace Login_with_DataBase
 
         private bool searchLogData(string username, string password)
         {
-            string[] lines = File.ReadAllLines(path + "/mydb.csv");
+            string[] lines = File.ReadAllLines("mydb.csv");
 
             for (int i = 0; i < lines.Length; i++)
             {
@@ -140,8 +138,7 @@ namespace Login_with_DataBase
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            createFolder(path);
-            StreamWriter sw = File.AppendText(@path + "/mydb.csv");
+            StreamWriter sw = File.AppendText("mydb.csv");
             sw.Close();
             if (Properties.Settings.Default.UserName != string.Empty)
             {
@@ -150,16 +147,7 @@ namespace Login_with_DataBase
                     usernameTextBox.Text = Properties.Settings.Default.UserName;
                     passwordTextBox.Text = Properties.Settings.Default.Password;
                     rememberCheckBox.Checked = true;
-                }
-                
-            }
-        }
-
-        private void createFolder(string path)
-        {
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
+                } 
             }
         }
     }
