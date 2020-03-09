@@ -19,7 +19,7 @@ namespace Login_with_DataBase
             InitializeComponent();
         }
 
-        public static string path = "C:/Users/Asus/Desktop/Data";
+        public static string path = "C:/Users/Student/Desktop";
 
         private static string GetStringFromHash(byte[] hash)
         {
