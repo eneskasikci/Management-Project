@@ -32,6 +32,7 @@ namespace Login_with_DataBase
             Properties.Settings.Default.Save();
             label1.Visible = false;
             label2.Visible = true;
+
             timer1.Start();
         }
 
