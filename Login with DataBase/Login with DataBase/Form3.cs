@@ -39,6 +39,7 @@ namespace Login_with_DataBase
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
+
             this.Close();
         }
 
