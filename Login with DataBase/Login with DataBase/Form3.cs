@@ -24,7 +24,7 @@ namespace Login_with_DataBase
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void logOutButton_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.UserName = "Username";
             Properties.Settings.Default.Password = "Password";
@@ -41,7 +41,7 @@ namespace Login_with_DataBase
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e)
         {
             SaveFileDialog save = new SaveFileDialog();
             save.FileName = "mydb.tsv";
