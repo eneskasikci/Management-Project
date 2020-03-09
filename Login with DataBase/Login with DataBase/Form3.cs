@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Login_with_DataBase
 {
@@ -38,6 +39,33 @@ namespace Login_with_DataBase
         {
             timer1.Stop();
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog save = new SaveFileDialog();
+            save.FileName = "mydb.tsv";
+
+            save.ShowDialog();
+
+            string path1 = save.FileName;
+
+            StreamWriter sw = File.AppendText(@path1);
+            string[] lines = File.ReadAllLines(Form1.path + "/mydb.csv");
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] words = lines[i].Split(',');
+                        
+
+                sw.WriteLine(words[0] + "\tab" + Form1.GenerateSHA256String(words[1]));
+
+            }
+
+                    MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            sw.Close();
+
         }
     }
 }
