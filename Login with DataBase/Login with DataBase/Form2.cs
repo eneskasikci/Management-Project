@@ -34,7 +34,7 @@ namespace Login_with_DataBase
             {
                 try
                 {
-                    StreamWriter sw = File.AppendText(@Form1.path + "/mydb.csv");
+                    StreamWriter sw = File.AppendText("mydb.csv");
                     sw.WriteLine(textBox1.Text + "," + Form1.GenerateSHA256String(textBox2.Text));
                     sw.Close();
 

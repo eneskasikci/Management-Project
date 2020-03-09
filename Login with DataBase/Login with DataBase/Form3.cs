@@ -45,22 +45,19 @@ namespace Login_with_DataBase
         {
             SaveFileDialog save = new SaveFileDialog();
             save.FileName = "mydb.tsv";
+            string[] lines = File.ReadAllLines("mydb.csv");
+            StreamWriter sw = File.AppendText(save.FileName); 
 
-            save.ShowDialog();
-
-            string path1 = save.FileName;
-
-            StreamWriter sw = File.AppendText(@path1);
-            string[] lines = File.ReadAllLines(Form1.path + "/mydb.csv");
 			if (save.ShowDialog()==DialogResult.OK)
 			{
 				for (int i = 0; i < lines.Length; i++)
 				{
 					string[] words = lines[i].Split(',');   
-					sw.WriteLine(words[0] + "\tab" + Form1.GenerateSHA256String(words[1]));
+					sw.WriteLine(words[0] + "\tab" + words[1]);
 				}
-			}   
-                    MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
             sw.Close();
         }
