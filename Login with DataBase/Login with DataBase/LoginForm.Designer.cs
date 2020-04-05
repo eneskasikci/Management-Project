@@ -1,6 +1,6 @@
 ﻿namespace Login_with_DataBase
 {
-    partial class Form1
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,16 +33,17 @@
             this.signupButton = new System.Windows.Forms.Button();
             this.rememberCheckBox = new System.Windows.Forms.CheckBox();
             this.messageLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.loginPictureBox = new System.Windows.Forms.PictureBox();
             this.loginButton = new System.Windows.Forms.Button();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.exitButton = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.loginDelay = new System.Windows.Forms.Timer(this.components);
+            this.userMngDelay = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginPictureBox)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             this.panel1.Controls.Add(this.signupButton);
             this.panel1.Controls.Add(this.rememberCheckBox);
             this.panel1.Controls.Add(this.messageLabel);
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.loginPictureBox);
             this.panel1.Controls.Add(this.loginButton);
             this.panel1.Controls.Add(this.passwordTextBox);
             this.panel1.Controls.Add(this.usernameTextBox);
@@ -70,7 +71,7 @@
             this.signupButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.signupButton.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.signupButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.signupButton.Location = new System.Drawing.Point(95, 203);
+            this.signupButton.Location = new System.Drawing.Point(86, 203);
             this.signupButton.Name = "signupButton";
             this.signupButton.Size = new System.Drawing.Size(77, 32);
             this.signupButton.TabIndex = 5;
@@ -98,15 +99,15 @@
             this.messageLabel.TabIndex = 3;
             this.messageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // loginPictureBox
             // 
-            this.pictureBox1.Image = global::Login_with_DataBase.Properties.Resources._295128;
-            this.pictureBox1.Location = new System.Drawing.Point(95, 14);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(178, 77);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.loginPictureBox.Image = global::Login_with_DataBase.Properties.Resources._295128;
+            this.loginPictureBox.Location = new System.Drawing.Point(95, 14);
+            this.loginPictureBox.Name = "loginPictureBox";
+            this.loginPictureBox.Size = new System.Drawing.Size(178, 77);
+            this.loginPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.loginPictureBox.TabIndex = 2;
+            this.loginPictureBox.TabStop = false;
             // 
             // loginButton
             // 
@@ -116,7 +117,7 @@
             this.loginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loginButton.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.loginButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.loginButton.Location = new System.Drawing.Point(196, 203);
+            this.loginButton.Location = new System.Drawing.Point(208, 203);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(77, 32);
             this.loginButton.TabIndex = 0;
@@ -187,12 +188,17 @@
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // timer1
+            // loginDelay
             // 
-            this.timer1.Interval = 2000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.loginDelay.Interval = 2000;
+            this.loginDelay.Tick += new System.EventHandler(this.loginDelay_Tick);
             // 
-            // Form1
+            // userMngDelay
+            // 
+            this.userMngDelay.Interval = 2000;
+            this.userMngDelay.Tick += new System.EventHandler(this.userMngDelay_Tick);
+            // 
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -200,13 +206,13 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Text = "Login";
+            this.Load += new System.EventHandler(this.loginForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginPictureBox)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -220,13 +226,14 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox loginPictureBox;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Label messageLabel;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer loginDelay;
         private System.Windows.Forms.CheckBox rememberCheckBox;
         private System.Windows.Forms.Button signupButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer userMngDelay;
     }
 }
 

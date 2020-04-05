@@ -1,6 +1,6 @@
 ﻿namespace Login_with_DataBase
 {
-    partial class Form2
+    partial class RegisterForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,10 +31,10 @@
             this.exitButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.passwordTextBox = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.createButton = new System.Windows.Forms.Button();
             this.icon2Button = new System.Windows.Forms.Button();
             this.icon1Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -76,23 +76,23 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Username";
             // 
-            // textBox1
+            // nameTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox1.Location = new System.Drawing.Point(175, 115);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(142, 26);
-            this.textBox1.TabIndex = 0;
+            this.nameTextBox.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.nameTextBox.Location = new System.Drawing.Point(175, 115);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(142, 26);
+            this.nameTextBox.TabIndex = 0;
             // 
-            // label3
+            // passwordTextBox
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(75, 162);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Password";
+            this.passwordTextBox.AutoSize = true;
+            this.passwordTextBox.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.passwordTextBox.Location = new System.Drawing.Point(75, 162);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(79, 20);
+            this.passwordTextBox.TabIndex = 3;
+            this.passwordTextBox.Text = "Password";
             // 
             // textBox2
             // 
@@ -103,17 +103,17 @@
             this.textBox2.TabIndex = 1;
             this.textBox2.UseSystemPasswordChar = true;
             // 
-            // button1
+            // createButton
             // 
-            this.button1.AutoSize = true;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.Location = new System.Drawing.Point(242, 217);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 30);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Create";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.createButton.AutoSize = true;
+            this.createButton.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.createButton.Location = new System.Drawing.Point(242, 217);
+            this.createButton.Name = "createButton";
+            this.createButton.Size = new System.Drawing.Size(75, 30);
+            this.createButton.TabIndex = 2;
+            this.createButton.Text = "Create";
+            this.createButton.UseVisualStyleBackColor = true;
+            this.createButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // icon2Button
             // 
@@ -143,7 +143,7 @@
             this.icon1Button.UseVisualStyleBackColor = true;
             this.icon1Button.Click += new System.EventHandler(this.icon1Button_Click);
             // 
-            // Form2
+            // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -151,17 +151,17 @@
             this.ClientSize = new System.Drawing.Size(720, 460);
             this.Controls.Add(this.icon2Button);
             this.Controls.Add(this.icon1Button);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.createButton);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.passwordTextBox);
+            this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.exitButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form2";
+            this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form2";
+            this.Text = "Register";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,10 +172,10 @@
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.Label passwordTextBox;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.Button icon1Button;
         private System.Windows.Forms.Button icon2Button;
     }
