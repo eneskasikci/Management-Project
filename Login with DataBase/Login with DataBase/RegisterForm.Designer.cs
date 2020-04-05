@@ -30,10 +30,10 @@
         {
             this.exitButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.passwordTextBox = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.createButton = new System.Windows.Forms.Button();
             this.icon2Button = new System.Windows.Forms.Button();
             this.icon1Button = new System.Windows.Forms.Button();
@@ -66,15 +66,15 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Create Account";
             // 
-            // label2
+            // nameLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(75, 115);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Username";
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.nameLabel.Location = new System.Drawing.Point(75, 115);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(83, 20);
+            this.nameLabel.TabIndex = 3;
+            this.nameLabel.Text = "Username";
             // 
             // nameTextBox
             // 
@@ -84,24 +84,24 @@
             this.nameTextBox.Size = new System.Drawing.Size(142, 26);
             this.nameTextBox.TabIndex = 0;
             // 
+            // passwordLabel
+            // 
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.passwordLabel.Location = new System.Drawing.Point(75, 162);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(79, 20);
+            this.passwordLabel.TabIndex = 3;
+            this.passwordLabel.Text = "Password";
+            // 
             // passwordTextBox
             // 
-            this.passwordTextBox.AutoSize = true;
             this.passwordTextBox.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.passwordTextBox.Location = new System.Drawing.Point(75, 162);
+            this.passwordTextBox.Location = new System.Drawing.Point(175, 162);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(79, 20);
-            this.passwordTextBox.TabIndex = 3;
-            this.passwordTextBox.Text = "Password";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox2.Location = new System.Drawing.Point(175, 162);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(142, 26);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.passwordTextBox.Size = new System.Drawing.Size(142, 26);
+            this.passwordTextBox.TabIndex = 1;
+            this.passwordTextBox.UseSystemPasswordChar = true;
             // 
             // createButton
             // 
@@ -152,10 +152,10 @@
             this.Controls.Add(this.icon2Button);
             this.Controls.Add(this.icon1Button);
             this.Controls.Add(this.createButton);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.passwordTextBox);
+            this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.nameTextBox);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.exitButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -171,10 +171,10 @@
 
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.TextBox nameTextBox;
-        private System.Windows.Forms.Label passwordTextBox;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.Button icon1Button;
         private System.Windows.Forms.Button icon2Button;

@@ -26,24 +26,22 @@ namespace Login_with_DataBase
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (nameTextBox.Text != "" || textBox2.Text != "")
+            if (nameTextBox.Text != "" || passwordTextBox.Text != "")
             {
                 try
                 {
-                    if(LoginForm.userList.Count==0)
+                    if (!Util.IsDoubleUsername(nameTextBox.Text))
                     {
-                        User user = new User(nameTextBox.Text, Util.ComputeSha256Hash(textBox2.Text), "admin");
+                        User user = new User(nameTextBox.Text, Util.ComputeSha256Hash(passwordTextBox.Text));
                         LoginForm.userList.Add(user);
+
+                        MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        nameTextBox.Text = "";
+                        passwordTextBox.Text = "";
                     }
+
                     else
-                    {
-                        User user = new User(nameTextBox.Text, Util.ComputeSha256Hash(textBox2.Text), "user");
-                        LoginForm.userList.Add(user);
-                    }
-                                  
-                    MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    nameTextBox.Text = "";
-                    textBox2.Text = "";
+                        MessageBox.Show("Such username exists", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
                 catch (Exception ex)
@@ -52,32 +50,30 @@ namespace Login_with_DataBase
                 }
             }
             else
-            {
                 MessageBox.Show("Fields can not be empty", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }//end-method
 
         private void icon1Button_Click(object sender, EventArgs e)
         {
-            if (textBox2.UseSystemPasswordChar)
+            if (passwordTextBox.UseSystemPasswordChar)
             {
-                textBox2.UseSystemPasswordChar = false;
+                passwordTextBox.UseSystemPasswordChar = false;
                 icon2Button.BringToFront();
             }
             else
-                textBox2.UseSystemPasswordChar = true;
+                passwordTextBox.UseSystemPasswordChar = true;
                 icon2Button.BringToFront();
         }
 
         private void icon2Button_Click(object sender, EventArgs e)
         {
-            if (textBox2.UseSystemPasswordChar)
+            if (passwordTextBox.UseSystemPasswordChar)
             {
-                textBox2.UseSystemPasswordChar = false;
+                passwordTextBox.UseSystemPasswordChar = false;
                 icon1Button.BringToFront();
             }
             else
-                textBox2.UseSystemPasswordChar = true;
+                passwordTextBox.UseSystemPasswordChar = true;
                 icon1Button.BringToFront();
         }
     }

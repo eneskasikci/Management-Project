@@ -35,7 +35,7 @@ namespace Login_with_DataBase
                 if (line !="")
                 {
                     var values = line.Split(',');
-                    userlist.Add(new User(values[0], values[1], values[2])); 
+                    userlist.Add(new User(values[0], values[1])); 
                 }
             }
             reader.Close();
@@ -47,9 +47,19 @@ namespace Login_with_DataBase
             for (int i=0; i<userlist.Count; i++)
             {
                 User user = userlist[i];
-                write.WriteLine(user.Username + "," + user.Password + "," + user.Usertype);
+                write.WriteLine(user.Username + "," + user.Password);
             }
             write.Close();
+        }
+
+        public static bool IsDoubleUsername(string username)
+        {
+            foreach (User user in LoginForm.userList)
+            {
+                if (user.Username == username)
+                    return true;
+            }
+            return false;
         }
     }
 }
