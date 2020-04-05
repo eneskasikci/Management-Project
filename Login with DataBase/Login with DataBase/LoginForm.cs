@@ -89,7 +89,14 @@ namespace Login_with_DataBase
             for (int i = 0; i < userList.Count; i++)
             {
                 User user = userList[i];
-                if (user.IsValid(usernameTextBox.Text, Util.ComputeSha256Hash(passwordTextBox.Text)))
+                if (user.IsAdmin(usernameTextBox.Text, Util.ComputeSha256Hash(passwordTextBox.Text)))
+                {
+                    messageLabel.ForeColor = Color.Green;
+                    messageLabel.Text = "Success";
+                    userMngDelay.Start();
+                    return;
+                }
+                else if (user.IsValid(usernameTextBox.Text, Util.ComputeSha256Hash(passwordTextBox.Text)))
                 {
                     messageLabel.ForeColor = Color.Green;
                     messageLabel.Text = "Success";
@@ -99,6 +106,20 @@ namespace Login_with_DataBase
             }
             messageLabel.ForeColor = Color.Red;
             messageLabel.Text = "Incorrect Username or Password";
+        }
+
+        private void userMngDelay_Tick(object sender, EventArgs e)
+        {
+            userMngDelay.Stop();
+            userManagementForm window = new userManagementForm();
+            window.ShowDialog();
+            messageLabel.Text = "";
+
+            if (rememberCheckBox.Checked == false)
+            {
+                usernameTextBox.Text = "Username";
+                passwordTextBox.Text = "Password";
+            }
         }
 
         private void loginDelay_Tick(object sender, EventArgs e)
