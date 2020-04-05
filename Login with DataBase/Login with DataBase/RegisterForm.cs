@@ -11,9 +11,9 @@ using System.IO;
 
 namespace Login_with_DataBase
 {
-    public partial class Form2 : Form
+    public partial class RegisterForm : Form
     {
-        public Form2()
+        public RegisterForm()
         {
             InitializeComponent();
         }
@@ -26,20 +26,23 @@ namespace Login_with_DataBase
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (textBox1.Text == "" || textBox2.Text == "")
-            {
-                MessageBox.Show("Fields can not be empty", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
+            if (nameTextBox.Text != "" || textBox2.Text != "")
             {
                 try
                 {
-                    StreamWriter sw = File.AppendText("mydb.csv");
-                    sw.WriteLine(textBox1.Text + "," + Form1.GenerateSHA256String(textBox2.Text));
-                    sw.Close();
-
+                    if(LoginForm.userList.Count==0)
+                    {
+                        User user = new User(nameTextBox.Text, Util.ComputeSha256Hash(textBox2.Text), "admin");
+                        LoginForm.userList.Add(user);
+                    }
+                    else
+                    {
+                        User user = new User(nameTextBox.Text, Util.ComputeSha256Hash(textBox2.Text), "user");
+                        LoginForm.userList.Add(user);
+                    }
+                                  
                     MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    textBox1.Text = "";
+                    nameTextBox.Text = "";
                     textBox2.Text = "";
                 }
 
@@ -47,8 +50,11 @@ namespace Login_with_DataBase
                 {
                     MessageBox.Show(ex.Message);
                 }
-            }//end-else
-
+            }
+            else
+            {
+                MessageBox.Show("Fields can not be empty", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }//end-method
 
         private void icon1Button_Click(object sender, EventArgs e)
