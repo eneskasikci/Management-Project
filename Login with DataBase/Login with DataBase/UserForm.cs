@@ -19,10 +19,6 @@ namespace Login_with_DataBase
 
         private void logOutButton_Click(object sender, EventArgs e)
         {
-            //Properties.Settings.Default.UserName = "Username";
-            //Properties.Settings.Default.Password = "Password";
-            //Properties.Settings.Default.Remme = "no";
-            //Properties.Settings.Default.Save();
             label1.Visible = false;
             label2.Visible = true;
             timer1.Start();
