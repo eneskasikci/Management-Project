@@ -32,8 +32,16 @@ namespace Login_with_DataBase
                 {
                     if (!Util.IsDoubleUsername(nameTextBox.Text))
                     {
-                        User user = new User(nameTextBox.Text, Util.ComputeSha256Hash(passwordTextBox.Text));
-                        LoginForm.userList.Add(user);
+                        if (LoginForm.userList.Count == 0)
+                        {
+                            User user = new User(nameTextBox.Text, Util.ComputeSha256Hash(passwordTextBox.Text), "admin");
+                            LoginForm.userList.Add(user);
+                        }
+                        else
+                        {
+                            User user = new User(nameTextBox.Text, Util.ComputeSha256Hash(passwordTextBox.Text), "user");
+                            LoginForm.userList.Add(user);
+                        }
 
                         MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         nameTextBox.Text = "";
