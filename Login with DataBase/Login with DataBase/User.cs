@@ -26,10 +26,5 @@ namespace Login_with_DataBase
         {
             return this.username.Equals(username) && this.password.Equals(password);
         }
-
-        public bool IsAdmin(string username, string password)
-        {
-            return this.username.Equals(username) && this.password.Equals(password) && this.usertype.Equals("admin");
-        }
     }
 }

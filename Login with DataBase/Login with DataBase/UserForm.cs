@@ -6,10 +6,12 @@ namespace Login_with_DataBase
 {
     public partial class UserForm : Form
     {
-        public UserForm(string log)
+        public User thisuser;
+        public UserForm(User user)
         {
             InitializeComponent();
-            label1.Text = "Welcome " + log;
+            thisuser = user;
+            label1.Text = "Welcome " + user.Username;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -20,7 +22,6 @@ namespace Login_with_DataBase
         private void logOutButton_Click(object sender, EventArgs e)
         {
             label1.Visible = false;
-            label2.Visible = true;
             timer1.Start();
         }
 
@@ -28,6 +29,18 @@ namespace Login_with_DataBase
         {
             timer1.Stop();
             this.Close();
+        }
+
+        private void userMangementButton_Click(object sender, EventArgs e)
+        {
+            if (thisuser.Usertype =="admin")
+            {
+                userManagementForm window = new userManagementForm();
+                window.ShowDialog();
+            }
+            else
+                MessageBox.Show("Only admins have access to this page", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
         }
     }
 }

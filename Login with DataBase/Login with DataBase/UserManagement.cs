@@ -16,9 +16,8 @@ namespace Login_with_DataBase
         {
             InitializeComponent();
 
-            for(int i=0; i<LoginForm.userList.Count; i++)
+            foreach (User user in LoginForm.userList)
             {
-                User user = LoginForm.userList[i];
                 ListViewItem item = new ListViewItem(user.Username, 0);
                 item.SubItems.Add(user.Password);
                 item.SubItems.Add(user.Usertype);

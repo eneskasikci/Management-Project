@@ -23,9 +23,8 @@ namespace Login_with_DataBase
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void createButton_Click(object sender, EventArgs e)
         {
-
             if (nameTextBox.Text != "" || passwordTextBox.Text != "")
             {
                 try
