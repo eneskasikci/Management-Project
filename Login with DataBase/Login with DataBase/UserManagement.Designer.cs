@@ -47,6 +47,7 @@
             // 
             // exitButton
             // 
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.exitButton.AutoSize = true;
             this.exitButton.FlatAppearance.BorderSize = 0;
             this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
@@ -64,23 +65,25 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.Location = new System.Drawing.Point(12, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(180, 23);
+            this.label2.Size = new System.Drawing.Size(200, 25);
             this.label2.TabIndex = 9;
             this.label2.Text = "User Management";
             // 
             // listView1
             // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.nameColumn,
             this.passwordColumn,
             this.usertypeColumn});
             this.listView1.FullRowSelect = true;
-            this.listView1.Location = new System.Drawing.Point(65, 107);
+            this.listView1.Location = new System.Drawing.Point(58, 96);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(348, 339);
+            this.listView1.Size = new System.Drawing.Size(367, 525);
             this.listView1.TabIndex = 10;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -89,12 +92,12 @@
             // nameColumn
             // 
             this.nameColumn.Text = "Username";
-            this.nameColumn.Width = 80;
+            this.nameColumn.Width = 100;
             // 
             // passwordColumn
             // 
             this.passwordColumn.Text = "Password";
-            this.passwordColumn.Width = 80;
+            this.passwordColumn.Width = 100;
             // 
             // usertypeColumn
             // 
@@ -103,14 +106,14 @@
             // 
             // usernameTextBox
             // 
-            this.usernameTextBox.Location = new System.Drawing.Point(520, 107);
+            this.usernameTextBox.Location = new System.Drawing.Point(521, 96);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(192, 20);
             this.usernameTextBox.TabIndex = 11;
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(520, 140);
+            this.passwordTextBox.Location = new System.Drawing.Point(521, 129);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(192, 20);
             this.passwordTextBox.TabIndex = 12;
@@ -122,7 +125,7 @@
             "admin",
             "user",
             "part-time-user"});
-            this.usertypeComboBox.Location = new System.Drawing.Point(520, 175);
+            this.usertypeComboBox.Location = new System.Drawing.Point(521, 164);
             this.usertypeComboBox.Name = "usertypeComboBox";
             this.usertypeComboBox.Size = new System.Drawing.Size(192, 21);
             this.usertypeComboBox.TabIndex = 13;
@@ -130,7 +133,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(455, 110);
+            this.label1.Location = new System.Drawing.Point(456, 99);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 14;
@@ -139,7 +142,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(455, 143);
+            this.label3.Location = new System.Drawing.Point(456, 132);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 15;
@@ -148,7 +151,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(455, 178);
+            this.label4.Location = new System.Drawing.Point(456, 167);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 16;
@@ -157,7 +160,7 @@
             // removeButton
             // 
             this.removeButton.AutoSize = true;
-            this.removeButton.Location = new System.Drawing.Point(630, 222);
+            this.removeButton.Location = new System.Drawing.Point(631, 211);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(82, 23);
             this.removeButton.TabIndex = 17;
@@ -167,7 +170,7 @@
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(522, 222);
+            this.updateButton.Location = new System.Drawing.Point(523, 211);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
             this.updateButton.TabIndex = 18;
@@ -177,6 +180,7 @@
             // 
             // saveListButton
             // 
+            this.saveListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveListButton.AutoSize = true;
             this.saveListButton.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.saveListButton.Location = new System.Drawing.Point(989, 647);
@@ -210,6 +214,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Management";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 

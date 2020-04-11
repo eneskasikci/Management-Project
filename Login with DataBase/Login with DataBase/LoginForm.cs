@@ -9,7 +9,7 @@ namespace Login_with_DataBase
     public partial class LoginForm : Form
     {
         public static List<User> userList = new List<User>();
-
+        public User loginuser;
         public LoginForm()
         {
             InitializeComponent();
@@ -86,20 +86,13 @@ namespace Login_with_DataBase
                 Properties.Settings.Default.Save();
             }
 
-            for (int i = 0; i < userList.Count; i++)
+            foreach(User user in userList)
             {
-                User user = userList[i];
-                if (user.IsAdmin(usernameTextBox.Text, Util.ComputeSha256Hash(passwordTextBox.Text)))
+                if (user.IsValid(usernameTextBox.Text, Util.ComputeSha256Hash(passwordTextBox.Text)))
                 {
                     messageLabel.ForeColor = Color.Green;
                     messageLabel.Text = "Success";
-                    userMngDelay.Start();
-                    return;
-                }
-                else if (user.IsValid(usernameTextBox.Text, Util.ComputeSha256Hash(passwordTextBox.Text)))
-                {
-                    messageLabel.ForeColor = Color.Green;
-                    messageLabel.Text = "Success";
+                    loginuser = user;
                     loginDelay.Start();
                     return;
                 }
@@ -108,24 +101,10 @@ namespace Login_with_DataBase
             messageLabel.Text = "Incorrect Username or Password";
         }
 
-        private void userMngDelay_Tick(object sender, EventArgs e)
-        {
-            userMngDelay.Stop();
-            userManagementForm window = new userManagementForm();
-            window.ShowDialog();
-            messageLabel.Text = "";
-
-            if (rememberCheckBox.Checked == false)
-            {
-                usernameTextBox.Text = "Username";
-                passwordTextBox.Text = "Password";
-            }
-        }
-
         private void loginDelay_Tick(object sender, EventArgs e)
         {
             loginDelay.Stop();
-            UserForm login = new UserForm(usernameTextBox.Text);
+            UserForm login = new UserForm(loginuser);
             login.ShowDialog();
             messageLabel.Text = "";
 

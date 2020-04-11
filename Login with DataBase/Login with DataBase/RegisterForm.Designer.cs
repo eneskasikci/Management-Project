@@ -113,7 +113,7 @@
             this.createButton.TabIndex = 2;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = true;
-            this.createButton.Click += new System.EventHandler(this.button1_Click);
+            this.createButton.Click += new System.EventHandler(this.createButton_Click);
             // 
             // icon2Button
             // 

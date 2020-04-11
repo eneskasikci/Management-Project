@@ -41,7 +41,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.exitButton = new System.Windows.Forms.Button();
             this.loginDelay = new System.Windows.Forms.Timer(this.components);
-            this.userMngDelay = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loginPictureBox)).BeginInit();
             this.panel2.SuspendLayout();
@@ -193,11 +192,6 @@
             this.loginDelay.Interval = 2000;
             this.loginDelay.Tick += new System.EventHandler(this.loginDelay_Tick);
             // 
-            // userMngDelay
-            // 
-            this.userMngDelay.Interval = 2000;
-            this.userMngDelay.Tick += new System.EventHandler(this.userMngDelay_Tick);
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,7 +227,6 @@
         private System.Windows.Forms.CheckBox rememberCheckBox;
         private System.Windows.Forms.Button signupButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Timer userMngDelay;
     }
 }
 
