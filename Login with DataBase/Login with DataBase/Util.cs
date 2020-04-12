@@ -41,12 +41,57 @@ namespace Login_with_DataBase
             reader.Close();
         }
 
+        public static void Loadphonebook(List<User> userlist, string csvname)
+        {
+            StreamReader reader = new StreamReader(csvname);
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                if (line != "")
+                {
+                    var values = line.Split(',');
+                    int size = userlist[int.Parse(values[0])].Size;
+                    userlist[int.Parse(values[0])].Size++;
+
+                    userlist[int.Parse(values[0])].Phonebook[size] = new Phonebook();
+                    userlist[int.Parse(values[0])].Phonebook[size].Name = values[1];
+                    userlist[int.Parse(values[0])].Phonebook[size].Surname = values[2];
+                    userlist[int.Parse(values[0])].Phonebook[size].Phonenumber = values[3];
+                    userlist[int.Parse(values[0])].Phonebook[size].Email = values[4];
+                    userlist[int.Parse(values[0])].Phonebook[size].Description = values[5];
+                    userlist[int.Parse(values[0])].Phonebook[size].Address = values[6];
+                }
+            }
+            reader.Close();
+        }
+
         public static void SaveUserCsv(List<User> userlist, string usercsv)
         {
             StreamWriter userwrite = File.CreateText(usercsv);
             foreach (User user in userlist)
                 userwrite.WriteLine(user.Username + "," + user.Password + "," + user.Usertype);
             userwrite.Close();  
+        }
+
+        public static void SavePhonebookCsv(List<User> userlist, string phonebookcsv)
+        {
+            StreamWriter phonebookwrite = File.CreateText(phonebookcsv);
+            for (int i = 0; i < userlist.Count; i++)
+            {
+                User user = userlist[i];
+
+                if (user.Size!=0)
+                {
+                    for (int j = 0; j < user.Size; j++)
+                    {
+                        phonebookwrite.WriteLine(i + "," + user.Phonebook[j].Name + "," +
+                                                 user.Phonebook[j].Surname + "," + user.Phonebook[j].Phonenumber + "," +
+                                                 user.Phonebook[j].Email + "," + user.Phonebook[j].Description + "," +
+                                                 user.Phonebook[j].Address);
+                    }
+                } 
+            }
+            phonebookwrite.Close();
         }
 
         public static bool IsDoubleUsername(string username)

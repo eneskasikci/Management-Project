@@ -11,6 +11,8 @@ namespace Login_with_DataBase
         private string username;
         private string password;
         private string usertype;
+        private int phonebooksize;
+        private Phonebook[] phonebook = new Phonebook[200];
 
         public User(string username, string password, string usertype)
         {
@@ -22,7 +24,9 @@ namespace Login_with_DataBase
         public string Username { get { return username; } set { username = value; } }
         public string Password { get { return password; } set { password = value; } }
         public string Usertype { get { return usertype; } set { usertype = value; } }
-       
+        public Phonebook[] Phonebook {get { return phonebook; } set{phonebook = value;}}
+        public int Size { get { return phonebooksize; } set { phonebooksize = value; } }
+
         public bool IsValid(string username, string password)
         {
             return this.username.Equals(username) && this.password.Equals(password);
