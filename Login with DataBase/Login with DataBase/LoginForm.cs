@@ -10,8 +10,6 @@ namespace Login_with_DataBase
     {
         public static List<User> userList = new List<User>();
         public User loginuser;
-        public int loginuserindex;
-
         public LoginForm()
         {
             InitializeComponent();
@@ -24,14 +22,8 @@ namespace Login_with_DataBase
                 StreamWriter write = File.CreateText(@"user.csv");
                 write.Close();
             }
-            if(!File.Exists(@"phonebook.csv"))
-            {
-                StreamWriter write = File.CreateText(@"phonebook.csv");
-                write.Close();
-            }
             Util.LoadCsv(userList, @"user.csv");
-            Util.Loadphonebook(userList, @"phonebook.csv");
-
+            
             if (Properties.Settings.Default.UserName != string.Empty)
             {
                 if (Properties.Settings.Default.Remme == "yes")
@@ -66,8 +58,7 @@ namespace Login_with_DataBase
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            Util.SaveUserCsv(userList, @"user.csv");
-            Util.SavePhonebookCsv(userList, @"phonebook.csv");
+            Util.SaveToCsv(userList, @"user.csv");
             this.Close();
         }
 
@@ -95,15 +86,13 @@ namespace Login_with_DataBase
                 Properties.Settings.Default.Save();
             }
 
-            for(int i=0; i<userList.Count; i++)
+            foreach(User user in userList)
             {
-                User user = userList[i];
                 if (user.IsValid(usernameTextBox.Text, Util.ComputeSha256Hash(passwordTextBox.Text)))
                 {
                     messageLabel.ForeColor = Color.Green;
                     messageLabel.Text = "Success";
                     loginuser = user;
-                    loginuserindex = i;
                     loginDelay.Start();
                     return;
                 }
@@ -115,7 +104,7 @@ namespace Login_with_DataBase
         private void loginDelay_Tick(object sender, EventArgs e)
         {
             loginDelay.Stop();
-            UserForm login = new UserForm(loginuserindex);
+            UserForm login = new UserForm(loginuser);
             login.ShowDialog();
             messageLabel.Text = "";
 
