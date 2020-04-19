@@ -64,7 +64,6 @@ namespace Login_with_DataBase
             }
             reader.Close();
         }
-
         public static void SaveUserCsv(List<User> userlist, string usercsv)
         {
             StreamWriter userwrite = File.CreateText(usercsv);
@@ -72,7 +71,6 @@ namespace Login_with_DataBase
                 userwrite.WriteLine(user.Username + "," + user.Password + "," + user.Usertype);
             userwrite.Close();  
         }
-
         public static void SavePhonebookCsv(List<User> userlist, string phonebookcsv)
         {
             StreamWriter phonebookwrite = File.CreateText(phonebookcsv);
@@ -93,7 +91,6 @@ namespace Login_with_DataBase
             }
             phonebookwrite.Close();
         }
-
         public static bool IsDoubleUsername(string username)
         {
             foreach (User user in LoginForm.userList)

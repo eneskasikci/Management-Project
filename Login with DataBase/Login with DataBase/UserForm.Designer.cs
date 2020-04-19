@@ -59,7 +59,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.notesButton = new System.Windows.Forms.Button();
+            this.notesPanel = new System.Windows.Forms.Panel();
+            this.yourNotePanel = new System.Windows.Forms.Panel();
+            this.saveFileButton = new System.Windows.Forms.Button();
+            this.deleteNoteButton = new System.Windows.Forms.Button();
+            this.yourNoteTxtBox = new System.Windows.Forms.TextBox();
+            this.yourNoteLbl = new System.Windows.Forms.Label();
+            this.updateNoteButton = new System.Windows.Forms.Button();
+            this.createNoteButton = new System.Windows.Forms.Button();
+            this.listNotesButton = new System.Windows.Forms.Button();
+            this.noteBox = new System.Windows.Forms.ListBox();
             this.phonebookPanel.SuspendLayout();
+            this.notesPanel.SuspendLayout();
+            this.yourNotePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // exitButton
@@ -69,11 +82,11 @@
             this.exitButton.FlatAppearance.BorderSize = 0;
             this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.exitButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.exitButton.Location = new System.Drawing.Point(1064, 12);
+            this.exitButton.Location = new System.Drawing.Point(1063, 12);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(24, 25);
+            this.exitButton.Size = new System.Drawing.Size(25, 25);
             this.exitButton.TabIndex = 1;
             this.exitButton.Text = "X";
             this.exitButton.UseVisualStyleBackColor = true;
@@ -83,7 +96,7 @@
             // 
             this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.logOutButton.AutoSize = true;
-            this.logOutButton.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.logOutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.logOutButton.Location = new System.Drawing.Point(988, 650);
             this.logOutButton.Name = "logOutButton";
             this.logOutButton.Size = new System.Drawing.Size(90, 30);
@@ -100,10 +113,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label1.Location = new System.Drawing.Point(30, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 32);
+            this.label1.Size = new System.Drawing.Size(133, 31);
             this.label1.TabIndex = 10;
             this.label1.Text = "Welcome";
             // 
@@ -111,7 +124,7 @@
             // 
             this.userMangementButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.userMangementButton.AutoSize = true;
-            this.userMangementButton.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.userMangementButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.userMangementButton.Location = new System.Drawing.Point(22, 650);
             this.userMangementButton.Name = "userMangementButton";
             this.userMangementButton.Size = new System.Drawing.Size(156, 30);
@@ -122,7 +135,7 @@
             // 
             // phonebookButton
             // 
-            this.phonebookButton.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.phonebookButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.phonebookButton.Location = new System.Drawing.Point(36, 103);
             this.phonebookButton.Name = "phonebookButton";
             this.phonebookButton.Size = new System.Drawing.Size(132, 40);
@@ -133,9 +146,6 @@
             // 
             // phonebookPanel
             // 
-            this.phonebookPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.phonebookPanel.BackColor = System.Drawing.SystemColors.Control;
             this.phonebookPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.phonebookPanel.Controls.Add(this.saveButton);
@@ -155,9 +165,9 @@
             this.phonebookPanel.Controls.Add(this.label4);
             this.phonebookPanel.Controls.Add(this.label3);
             this.phonebookPanel.Controls.Add(this.label2);
-            this.phonebookPanel.Location = new System.Drawing.Point(222, 103);
+            this.phonebookPanel.Location = new System.Drawing.Point(227, 103);
             this.phonebookPanel.Name = "phonebookPanel";
-            this.phonebookPanel.Size = new System.Drawing.Size(828, 485);
+            this.phonebookPanel.Size = new System.Drawing.Size(823, 485);
             this.phonebookPanel.TabIndex = 13;
             this.phonebookPanel.Visible = false;
             // 
@@ -184,9 +194,10 @@
             this.columnHeader5,
             this.columnHeader6});
             this.listView1.FullRowSelect = true;
+            this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(385, 53);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(409, 382);
+            this.listView1.Size = new System.Drawing.Size(404, 382);
             this.listView1.TabIndex = 15;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -357,13 +368,126 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "First Name:";
             // 
+            // notesButton
+            // 
+            this.notesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.notesButton.Location = new System.Drawing.Point(36, 157);
+            this.notesButton.Name = "notesButton";
+            this.notesButton.Size = new System.Drawing.Size(132, 40);
+            this.notesButton.TabIndex = 14;
+            this.notesButton.Text = "Notes";
+            this.notesButton.UseVisualStyleBackColor = true;
+            this.notesButton.Click += new System.EventHandler(this.notesButton_Click);
+            // 
+            // notesPanel
+            // 
+            this.notesPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.notesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.notesPanel.Controls.Add(this.saveFileButton);
+            this.notesPanel.Controls.Add(this.yourNotePanel);
+            this.notesPanel.Controls.Add(this.listNotesButton);
+            this.notesPanel.Controls.Add(this.noteBox);
+            this.notesPanel.Location = new System.Drawing.Point(227, 103);
+            this.notesPanel.Name = "notesPanel";
+            this.notesPanel.Size = new System.Drawing.Size(823, 485);
+            this.notesPanel.TabIndex = 17;
+            this.notesPanel.Visible = false;
+            // 
+            // yourNotePanel
+            // 
+            this.yourNotePanel.Controls.Add(this.deleteNoteButton);
+            this.yourNotePanel.Controls.Add(this.yourNoteTxtBox);
+            this.yourNotePanel.Controls.Add(this.yourNoteLbl);
+            this.yourNotePanel.Controls.Add(this.updateNoteButton);
+            this.yourNotePanel.Controls.Add(this.createNoteButton);
+            this.yourNotePanel.Location = new System.Drawing.Point(488, 38);
+            this.yourNotePanel.Name = "yourNotePanel";
+            this.yourNotePanel.Size = new System.Drawing.Size(301, 337);
+            this.yourNotePanel.TabIndex = 9;
+            // 
+            // saveFileButton
+            // 
+            this.saveFileButton.Location = new System.Drawing.Point(676, 435);
+            this.saveFileButton.Name = "saveFileButton";
+            this.saveFileButton.Size = new System.Drawing.Size(113, 23);
+            this.saveFileButton.TabIndex = 10;
+            this.saveFileButton.Text = "Save File";
+            this.saveFileButton.UseVisualStyleBackColor = true;
+            this.saveFileButton.Click += new System.EventHandler(this.saveFileButton_Click);
+            // 
+            // deleteNoteButton
+            // 
+            this.deleteNoteButton.Location = new System.Drawing.Point(100, 97);
+            this.deleteNoteButton.Name = "deleteNoteButton";
+            this.deleteNoteButton.Size = new System.Drawing.Size(113, 23);
+            this.deleteNoteButton.TabIndex = 6;
+            this.deleteNoteButton.Text = "Delete a Note";
+            this.deleteNoteButton.UseVisualStyleBackColor = true;
+            this.deleteNoteButton.Click += new System.EventHandler(this.deleteNoteButton_Click);
+            // 
+            // yourNoteTxtBox
+            // 
+            this.yourNoteTxtBox.Location = new System.Drawing.Point(45, 34);
+            this.yourNoteTxtBox.Name = "yourNoteTxtBox";
+            this.yourNoteTxtBox.Size = new System.Drawing.Size(224, 20);
+            this.yourNoteTxtBox.TabIndex = 7;
+            // 
+            // yourNoteLbl
+            // 
+            this.yourNoteLbl.AutoSize = true;
+            this.yourNoteLbl.Location = new System.Drawing.Point(122, 18);
+            this.yourNoteLbl.Name = "yourNoteLbl";
+            this.yourNoteLbl.Size = new System.Drawing.Size(55, 13);
+            this.yourNoteLbl.TabIndex = 8;
+            this.yourNoteLbl.Text = "Your Note";
+            // 
+            // updateNoteButton
+            // 
+            this.updateNoteButton.Location = new System.Drawing.Point(164, 68);
+            this.updateNoteButton.Name = "updateNoteButton";
+            this.updateNoteButton.Size = new System.Drawing.Size(113, 23);
+            this.updateNoteButton.TabIndex = 3;
+            this.updateNoteButton.Text = "Update a Note";
+            this.updateNoteButton.UseVisualStyleBackColor = true;
+            this.updateNoteButton.Click += new System.EventHandler(this.updateNoteButton_Click);
+            // 
+            // createNoteButton
+            // 
+            this.createNoteButton.Location = new System.Drawing.Point(45, 68);
+            this.createNoteButton.Name = "createNoteButton";
+            this.createNoteButton.Size = new System.Drawing.Size(113, 23);
+            this.createNoteButton.TabIndex = 0;
+            this.createNoteButton.Text = "Create a Note";
+            this.createNoteButton.UseVisualStyleBackColor = true;
+            this.createNoteButton.Click += new System.EventHandler(this.createNoteButton_Click);
+            // 
+            // listNotesButton
+            // 
+            this.listNotesButton.Location = new System.Drawing.Point(12, 9);
+            this.listNotesButton.Name = "listNotesButton";
+            this.listNotesButton.Size = new System.Drawing.Size(470, 23);
+            this.listNotesButton.TabIndex = 5;
+            this.listNotesButton.Text = "List Notes";
+            this.listNotesButton.UseVisualStyleBackColor = true;
+            this.listNotesButton.Click += new System.EventHandler(this.listNotesButton_Click);
+            // 
+            // noteBox
+            // 
+            this.noteBox.FormattingEnabled = true;
+            this.noteBox.Location = new System.Drawing.Point(12, 38);
+            this.noteBox.Name = "noteBox";
+            this.noteBox.Size = new System.Drawing.Size(470, 420);
+            this.noteBox.TabIndex = 4;
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1100, 700);
+            this.Controls.Add(this.notesPanel);
             this.Controls.Add(this.phonebookPanel);
+            this.Controls.Add(this.notesButton);
             this.Controls.Add(this.phonebookButton);
             this.Controls.Add(this.userMangementButton);
             this.Controls.Add(this.label1);
@@ -376,6 +500,9 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.phonebookPanel.ResumeLayout(false);
             this.phonebookPanel.PerformLayout();
+            this.notesPanel.ResumeLayout(false);
+            this.yourNotePanel.ResumeLayout(false);
+            this.yourNotePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,5 +539,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button notesButton;
+        private System.Windows.Forms.Panel notesPanel;
+        private System.Windows.Forms.Button updateNoteButton;
+        private System.Windows.Forms.Button createNoteButton;
+        private System.Windows.Forms.Button listNotesButton;
+        private System.Windows.Forms.ListBox noteBox;
+        private System.Windows.Forms.Panel yourNotePanel;
+        private System.Windows.Forms.Button saveFileButton;
+        private System.Windows.Forms.TextBox yourNoteTxtBox;
+        private System.Windows.Forms.Label yourNoteLbl;
+        private System.Windows.Forms.Button deleteNoteButton;
     }
 }

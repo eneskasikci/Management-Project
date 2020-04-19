@@ -42,7 +42,7 @@ namespace Login_with_DataBase
                             LoginForm.userList.Add(user);
                         }
 
-                        MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Sign Up successful", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         nameTextBox.Text = "";
                         passwordTextBox.Text = "";
                     }
