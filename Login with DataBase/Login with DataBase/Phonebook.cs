@@ -11,9 +11,19 @@ namespace Login_with_DataBase
         private string name;
         private string surname;
         private string phonenumber;
-        private string address;
-        private string description;
         private string email;
+        private string description;
+        private string address;
+
+        public Phonebook(string name, string surname, string phonenumber, string email, string description, string address)
+        {
+            this.name = name;
+            this.surname = surname;
+            this.phonenumber = phonenumber;
+            this.email = email;
+            this.description = description;
+            this.address = address;         
+        }
 
         public string Name { get { return name; } set { name = value; } }
         public string Surname { get { return surname; } set { surname = value; } }
