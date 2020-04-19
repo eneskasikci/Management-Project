@@ -103,5 +103,42 @@ namespace Login_with_DataBase
             }
             return false;
         }
+
+        public static void LoadNotes(List<User> userlist, string csvname)
+        {
+            if (!File.Exists(@csvname))
+            {
+                StreamWriter create = File.CreateText(@csvname);
+                create.Close();
+            }
+            foreach(User user in userlist)
+                user.Notes.Clear();
+
+            StreamReader reader = new StreamReader(csvname);
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                if (line != "")
+                {
+                    var values = line.Split(',');
+                    userlist[int.Parse(values[0])].Notes.Add(values[1]);
+                }
+            }
+            reader.Close();
+        }
+        public static void SaveNotesCsv(List<User> userlist, string csvname)
+        {
+            StreamWriter noteswrite = File.CreateText(csvname);
+            for (int i = 0; i < userlist.Count; i++)
+            {
+                User user = userlist[i];
+                if (user.Notes.Count != 0)
+                {
+                    for (int j = 0; j < user.Notes.Count; j++)
+                        noteswrite.WriteLine(i + "," + user.Notes[j]);
+                }
+            }
+            noteswrite.Close();
+        }
     }
 }

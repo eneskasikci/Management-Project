@@ -12,6 +12,7 @@ namespace Login_with_DataBase
         private string password;
         private string usertype;
         private List<Phonebook> phonebook = new List<Phonebook>();
+        private List<string> notes = new List<string>();
 
         public User(string username, string password, string usertype)
         {
@@ -23,6 +24,7 @@ namespace Login_with_DataBase
         public string Username { get { return username; } set { username = value; } }
         public string Password { get { return password; } set { password = value; } }
         public string Usertype { get { return usertype; } set { usertype = value; } }
+        public List<string> Notes { get { return notes; } set { notes = value; } }
         public List<Phonebook> Phonebook { get { return phonebook; } set { phonebook = value; } }
 
         public bool IsValid(string username, string password)
