@@ -28,6 +28,11 @@ namespace Login_with_DataBase
 
         public static void LoadCsv(List<User> userlist, string csvpath)
         {
+            if (!File.Exists(@csvpath))
+            {
+                StreamWriter create = File.CreateText(@csvpath);
+                create.Close();
+            }
             StreamReader reader = new StreamReader(csvpath);
             while (!reader.EndOfStream)
             {
@@ -43,6 +48,14 @@ namespace Login_with_DataBase
 
         public static void Loadphonebook(List<User> userlist, string csvname)
         {
+            if (!File.Exists(@csvname))
+            {
+                StreamWriter create = File.CreateText(@csvname);
+                create.Close();
+            }
+            foreach (User user in userlist)
+                user.Phonebook.Clear();
+
             StreamReader reader = new StreamReader(csvname);
             while (!reader.EndOfStream)
             {
@@ -50,16 +63,7 @@ namespace Login_with_DataBase
                 if (line != "")
                 {
                     var values = line.Split(',');
-                    int size = userlist[int.Parse(values[0])].Size;
-                    userlist[int.Parse(values[0])].Size++;
-
-                    userlist[int.Parse(values[0])].Phonebook[size] = new Phonebook();
-                    userlist[int.Parse(values[0])].Phonebook[size].Name = values[1];
-                    userlist[int.Parse(values[0])].Phonebook[size].Surname = values[2];
-                    userlist[int.Parse(values[0])].Phonebook[size].Phonenumber = values[3];
-                    userlist[int.Parse(values[0])].Phonebook[size].Email = values[4];
-                    userlist[int.Parse(values[0])].Phonebook[size].Description = values[5];
-                    userlist[int.Parse(values[0])].Phonebook[size].Address = values[6];
+                    userlist[int.Parse(values[0])].Phonebook.Add(new Phonebook(values[1], values[2], values[3], values[4], values[5], values[6]));
                 }
             }
             reader.Close();
@@ -71,16 +75,15 @@ namespace Login_with_DataBase
                 userwrite.WriteLine(user.Username + "," + user.Password + "," + user.Usertype);
             userwrite.Close();  
         }
-        public static void SavePhonebookCsv(List<User> userlist, string phonebookcsv)
+        public static void SavePhonebookCsv(List<User> userlist, string csvname)
         {
-            StreamWriter phonebookwrite = File.CreateText(phonebookcsv);
+            StreamWriter phonebookwrite = File.CreateText(@csvname);
             for (int i = 0; i < userlist.Count; i++)
             {
                 User user = userlist[i];
-
-                if (user.Size!=0)
+                if (user.Phonebook.Count!=0)
                 {
-                    for (int j = 0; j < user.Size; j++)
+                    for (int j = 0; j < user.Phonebook.Count; j++)
                     {
                         phonebookwrite.WriteLine(i + "," + user.Phonebook[j].Name + "," +
                                                  user.Phonebook[j].Surname + "," + user.Phonebook[j].Phonenumber + "," +

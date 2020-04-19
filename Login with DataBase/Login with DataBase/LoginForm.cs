@@ -18,18 +18,7 @@ namespace Login_with_DataBase
 
         private void loginForm_Load(object sender, EventArgs e)
         {
-            if (!File.Exists(@"user.csv"))
-            {
-                StreamWriter write = File.CreateText(@"user.csv");
-                write.Close();
-            }
-            if(!File.Exists(@"phonebook.csv"))
-            {
-                StreamWriter write = File.CreateText(@"phonebook.csv");
-                write.Close();
-            }
             Util.LoadCsv(userList, @"user.csv");
-            Util.Loadphonebook(userList, @"phonebook.csv");
 
             if (Properties.Settings.Default.UserName != string.Empty)
             {
@@ -66,7 +55,6 @@ namespace Login_with_DataBase
         private void exitButton_Click(object sender, EventArgs e)
         {
             Util.SaveUserCsv(userList, @"user.csv");
-            Util.SavePhonebookCsv(userList, @"phonebook.csv");
             this.Close();
         }
 

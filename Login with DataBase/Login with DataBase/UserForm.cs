@@ -34,8 +34,6 @@ namespace Login_with_DataBase
             phonebookPanel.Visible = false;
             phonebookButton.Visible = false;
             userMangementButton.Visible = false;
-            notesPanel.Visible = false;
-            notesButton.Visible = false;
             timer1.Start();
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -55,19 +53,6 @@ namespace Login_with_DataBase
         }
         private void phonebookButton_Click(object sender, EventArgs e)
         {
-            listView1.Items.Clear();
-
-            for (int i = 0; i < LoginForm.userList[userindex].Size; i++)
-            {
-                ListViewItem item = new ListViewItem(LoginForm.userList[userindex].Phonebook[i].Name, 0);
-                item.SubItems.Add(LoginForm.userList[userindex].Phonebook[i].Surname);
-                item.SubItems.Add(LoginForm.userList[userindex].Phonebook[i].Phonenumber);
-                item.SubItems.Add(LoginForm.userList[userindex].Phonebook[i].Email);
-                item.SubItems.Add(LoginForm.userList[userindex].Phonebook[i].Description);
-                item.SubItems.Add(LoginForm.userList[userindex].Phonebook[i].Address);
-                listView1.Items.Add(item);
-            }
-
             phonebookPanel.Visible = true;
         }
         private void createButton_Click(object sender, EventArgs e)
@@ -113,39 +98,7 @@ namespace Login_with_DataBase
             else
                 MessageBox.Show("Fields can not be empty", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-        public static string formatPhoneNumber(string phoneNum)
-        {
-            string phoneFormat = "(###) ### ## ##";
-
-            // First, remove everything except of numbers
-            Regex regexObj = new Regex(@"[^\d]");
-            phoneNum = regexObj.Replace(phoneNum, "");
-
-            // Second, format numbers to phone string
-            if (phoneNum.Length > 0)
-            {
-                phoneNum = Convert.ToInt64(phoneNum).ToString(phoneFormat);
-            }
-            return phoneNum;
-        }
-        bool IsAllDigits(string s)
-        {
-            foreach (char c in s)
-            {
-                if (!char.IsDigit(c))
-                    return false;
-            }
-            return true;
-        }
-        bool IsValidMail(string email)
-        {
-            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            Match match = regex.Match(email);
-            if (match.Success)
-                return true;
-            else
-                return false;
-        }        
+              
         private void deleteButton_Click(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count > 0)
@@ -175,96 +128,74 @@ namespace Login_with_DataBase
                 listView1.SelectedItems[0].SubItems[3].Text = emailTextBox.Text;
                 listView1.SelectedItems[0].SubItems[4].Text = descriptionTextBox.Text;
                 listView1.SelectedItems[0].SubItems[5].Text = addressTextBox.Text;
-                listView1.Sorting = SortOrder.Ascending;
             }
             else
                 MessageBox.Show("Select an item from list", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
-            LoginForm.userList[userindex].Size = listView1.Items.Count;
-            LoginForm.userList[userindex].Phonebook = new Phonebook[listView1.Items.Count];
+            listView1.Sorting = SortOrder.Ascending;
+            LoginForm.userList[userindex].Phonebook.Clear();
+            
             for (int i = 0; i < listView1.Items.Count; i++)
             {
-                LoginForm.userList[userindex].Phonebook[i] = new Phonebook();
-                LoginForm.userList[userindex].Phonebook[i].Name = listView1.Items[i].SubItems[0].Text;
-                LoginForm.userList[userindex].Phonebook[i].Surname = listView1.Items[i].SubItems[1].Text;
-                LoginForm.userList[userindex].Phonebook[i].Phonenumber = listView1.Items[i].SubItems[2].Text;
-                LoginForm.userList[userindex].Phonebook[i].Email = listView1.Items[i].SubItems[3].Text;
-                LoginForm.userList[userindex].Phonebook[i].Description = listView1.Items[i].SubItems[4].Text;
-                LoginForm.userList[userindex].Phonebook[i].Address = listView1.Items[i].SubItems[5].Text;
+                LoginForm.userList[userindex].Phonebook.Add(new Phonebook(listView1.Items[i].SubItems[0].Text
+                    , listView1.Items[i].SubItems[1].Text
+                    , listView1.Items[i].SubItems[2].Text
+                    , listView1.Items[i].SubItems[3].Text
+                    , listView1.Items[i].SubItems[4].Text
+                    , listView1.Items[i].SubItems[5].Text));
             }
             MessageBox.Show("Saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            Util.SavePhonebookCsv(LoginForm.userList, @"phonebook.csv");
         }
-        private void notesButton_Click(object sender, EventArgs e)
+
+        private void listPhonebookButton_Click(object sender, EventArgs e)
         {
-            phonebookPanel.Visible = false;
-            yourNotePanel.Visible = true;
-            notesPanel.Visible = true;       
-        }
-        private void createNoteButton_Click(object sender, EventArgs e)
-        {
-            if (yourNoteTxtBox.Text != "")
+            listView1.Items.Clear();
+            Util.Loadphonebook(LoginForm.userList, @"phonebook.csv");
+            for (int i = 0; i < LoginForm.userList[userindex].Phonebook.Count; i++)
             {
-                noteBox.Items.Add(yourNoteTxtBox.Text);
-                yourNoteTxtBox.Text = "";
+                ListViewItem item = new ListViewItem(LoginForm.userList[userindex].Phonebook[i].Name, 0);
+                item.SubItems.Add(LoginForm.userList[userindex].Phonebook[i].Surname);
+                item.SubItems.Add(LoginForm.userList[userindex].Phonebook[i].Phonenumber);
+                item.SubItems.Add(LoginForm.userList[userindex].Phonebook[i].Email);
+                item.SubItems.Add(LoginForm.userList[userindex].Phonebook[i].Description);
+                item.SubItems.Add(LoginForm.userList[userindex].Phonebook[i].Address);
+                listView1.Items.Add(item);
             }
         }
-        private void listNotesButton_Click(object sender, EventArgs e)
+
+        public static string formatPhoneNumber(string phoneNum)
         {
-            string[] list = System.IO.File.ReadAllLines("notes.csv");
-            noteBox.Items.AddRange(list);
+            string phoneFormat = "(###) ### ## ##";
+
+            // First, remove everything except of numbers
+            Regex regexObj = new Regex(@"[^\d]");
+            phoneNum = regexObj.Replace(phoneNum, "");
+
+            // Second, format numbers to phone string
+            if (phoneNum.Length > 0)
+                phoneNum = Convert.ToInt64(phoneNum).ToString(phoneFormat);
+            return phoneNum;
         }
-        private void saveFileButton_Click(object sender, EventArgs e)
+        bool IsAllDigits(string s)
         {
-            File.WriteAllLines("notes.csv", noteBox.Items.Cast<string>());
+            foreach (char c in s)
+            {
+                if (!char.IsDigit(c))
+                    return false;
+            }
+            return true;
         }
-        private void deleteNoteButton_Click(object sender, EventArgs e)
+        bool IsValidMail(string email)
         {
-            try
-            {
-                if (noteBox.SelectedIndex < 0)
-                {
-                    MessageBox.Show("Please select a note to delete");
-                }
-                else
-                {
-                    int selectedNote = noteBox.SelectedIndex;
-                    noteBox.Items.RemoveAt(selectedNote);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        private void updateNoteButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (noteBox.SelectedIndex < 0)
-                {
-                    MessageBox.Show("Please select a note to update");
-                }
-                else
-                {
-                    if (yourNoteTxtBox.Text == "")
-                    {
-                        MessageBox.Show("Updated notes cannot be blank");
-                    }
-                    else
-                    {
-                        int selectedNote = noteBox.SelectedIndex;
-                        noteBox.Items.RemoveAt(selectedNote);
-                        noteBox.Items.Insert(selectedNote, yourNoteTxtBox.Text);
-                        yourNoteTxtBox.Text = "";
-                    }                   
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(email);
+            if (match.Success)
+                return true;
+            else
+                return false;
         }
     }
 }
