@@ -34,6 +34,8 @@ namespace Login_with_DataBase
             phonebookPanel.Visible = false;
             phonebookButton.Visible = false;
             userMangementButton.Visible = false;
+            notesPanel.Visible = false;
+            notesButton.Visible = false;
             timer1.Start();
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -53,6 +55,7 @@ namespace Login_with_DataBase
         }
         private void phonebookButton_Click(object sender, EventArgs e)
         {
+            notesPanel.Visible = false;
             phonebookPanel.Visible = true;
         }
         private void createButton_Click(object sender, EventArgs e)
@@ -148,6 +151,71 @@ namespace Login_with_DataBase
             }
             MessageBox.Show("Saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             Util.SavePhonebookCsv(LoginForm.userList, @"phonebook.csv");
+        }
+        private void notesButton_Click(object sender, EventArgs e)
+        {
+            phonebookPanel.Visible = false;
+            notesPanel.Visible = true;       
+        }
+        private void createNoteButton_Click(object sender, EventArgs e)
+        {
+            if (yourNoteTxtBox.Text != "")
+            {
+                noteBox.Items.Add(yourNoteTxtBox.Text);
+                yourNoteTxtBox.Text = "";
+            }
+        }
+        private void listNotesButton_Click(object sender, EventArgs e)
+        {
+            noteBox.Items.Clear();
+            Util.LoadNotes(LoginForm.userList, "notes.csv");
+            for (int i = 0; i < LoginForm.userList[userindex].Notes.Count; i++)
+                noteBox.Items.Add(LoginForm.userList[userindex].Notes[i]);
+        }
+        private void saveFileButton_Click(object sender, EventArgs e)
+        {
+            LoginForm.userList[userindex].Notes.Clear();
+            for (int i = 0; i < noteBox.Items.Count; i++)
+                LoginForm.userList[userindex].Notes.Add(noteBox.Items[i].ToString());
+            MessageBox.Show("Saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            Util.SaveNotesCsv(LoginForm.userList, "notes.csv");
+        }
+        private void deleteNoteButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (noteBox.SelectedIndex < 0)
+                    MessageBox.Show("Please select a note to delete");
+                else
+                {
+                    noteBox.Items.RemoveAt(noteBox.SelectedIndex);
+                    yourNoteTxtBox.Text = "";
+                }    
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void updateNoteButton_Click(object sender, EventArgs e)
+        {
+            if (noteBox.SelectedIndex >= 0)
+            {
+                int index = noteBox.SelectedIndex;
+                noteBox.Items.RemoveAt(index);
+                noteBox.Items.Insert(index, yourNoteTxtBox.Text);
+            }
+            else if (yourNoteTxtBox.Text == "")
+                MessageBox.Show("Updated notes cannot be blank");
+            else
+                MessageBox.Show("Please select a note to update");
+        }
+
+        private void noteBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = noteBox.SelectedIndex;
+            if (index!=-1)
+                yourNoteTxtBox.Text = noteBox.SelectedItem.ToString();     
         }
 
         private void listPhonebookButton_Click(object sender, EventArgs e)
