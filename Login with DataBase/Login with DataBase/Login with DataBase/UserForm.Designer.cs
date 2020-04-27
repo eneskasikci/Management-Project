@@ -52,7 +52,7 @@
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.phoneTextBox = new System.Windows.Forms.TextBox();
-            this.surnameTextBox = new System.Windows.Forms.TextBox();
+            this.surnameTxtBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.addressLabel = new System.Windows.Forms.Label();
             this.descriptionLabel = new System.Windows.Forms.Label();
@@ -72,24 +72,24 @@
             this.listNotesButton = new System.Windows.Forms.Button();
             this.noteBox = new System.Windows.Forms.ListBox();
             this.PInfPanel = new System.Windows.Forms.Panel();
-            this.makePassUnvisibleButton = new System.Windows.Forms.Button();
-            this.makePassVisibleButton = new System.Windows.Forms.Button();
+            this.makePassVisible = new System.Windows.Forms.Button();
             this.selectImageButton = new System.Windows.Forms.Button();
+            this.addressTxtbox = new System.Windows.Forms.TextBox();
             this.addresLbl = new System.Windows.Forms.Label();
             this.ProfilePictureBox = new System.Windows.Forms.PictureBox();
+            this.phoneTxtbox = new System.Windows.Forms.TextBox();
             this.phoneLbl = new System.Windows.Forms.Label();
             this.emailLbl = new System.Windows.Forms.Label();
             this.surnameLbl = new System.Windows.Forms.Label();
             this.LabelName = new System.Windows.Forms.Label();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.savedetailsButton = new System.Windows.Forms.Button();
-            this.perInfPasswordTextbox = new System.Windows.Forms.TextBox();
+            this.nameTxtbox = new System.Windows.Forms.TextBox();
+            this.emailTxtbox = new System.Windows.Forms.TextBox();
+            this.passwordTxtbox = new System.Windows.Forms.TextBox();
             this.PInfButton = new System.Windows.Forms.Button();
-            this.perInfNameRichTextbox = new System.Windows.Forms.RichTextBox();
-            this.perInfSurnameRichTextbox = new System.Windows.Forms.RichTextBox();
-            this.perInfEmailRichTextbox = new System.Windows.Forms.RichTextBox();
-            this.perInfPhoneRichTextbox = new System.Windows.Forms.RichTextBox();
-            this.perInfAddressRichTextbox = new System.Windows.Forms.RichTextBox();
+            this.piSurnameTxt = new System.Windows.Forms.TextBox();
+            this.piNamerichTxt = new System.Windows.Forms.RichTextBox();
             this.phonebookPanel.SuspendLayout();
             this.notesPanel.SuspendLayout();
             this.yourNotePanel.SuspendLayout();
@@ -180,7 +180,6 @@
             this.phonebookPanel.Controls.Add(this.descriptionTextBox);
             this.phonebookPanel.Controls.Add(this.emailTextBox);
             this.phonebookPanel.Controls.Add(this.phoneTextBox);
-            this.phonebookPanel.Controls.Add(this.surnameTextBox);
             this.phonebookPanel.Controls.Add(this.nameTextBox);
             this.phonebookPanel.Controls.Add(this.addressLabel);
             this.phonebookPanel.Controls.Add(this.descriptionLabel);
@@ -327,12 +326,12 @@
             this.phoneTextBox.Size = new System.Drawing.Size(185, 20);
             this.phoneTextBox.TabIndex = 2;
             // 
-            // surnameTextBox
+            // surnameTxtBox
             // 
-            this.surnameTextBox.Location = new System.Drawing.Point(601, 72);
-            this.surnameTextBox.Name = "surnameTextBox";
-            this.surnameTextBox.Size = new System.Drawing.Size(185, 20);
-            this.surnameTextBox.TabIndex = 1;
+            this.surnameTxtBox.Location = new System.Drawing.Point(601, 72);
+            this.surnameTxtBox.Name = "surnameTxtBox";
+            this.surnameTxtBox.Size = new System.Drawing.Size(185, 20);
+            this.surnameTxtBox.TabIndex = 1;
             // 
             // nameTextBox
             // 
@@ -517,56 +516,43 @@
             // PInfPanel
             // 
             this.PInfPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.PInfPanel.Controls.Add(this.perInfAddressRichTextbox);
-            this.PInfPanel.Controls.Add(this.perInfPhoneRichTextbox);
-            this.PInfPanel.Controls.Add(this.perInfEmailRichTextbox);
-            this.PInfPanel.Controls.Add(this.perInfSurnameRichTextbox);
-            this.PInfPanel.Controls.Add(this.perInfNameRichTextbox);
-            this.PInfPanel.Controls.Add(this.makePassUnvisibleButton);
-            this.PInfPanel.Controls.Add(this.makePassVisibleButton);
+            this.PInfPanel.Controls.Add(this.piNamerichTxt);
+            this.PInfPanel.Controls.Add(this.piSurnameTxt);
+            this.PInfPanel.Controls.Add(this.makePassVisible);
             this.PInfPanel.Controls.Add(this.selectImageButton);
+            this.PInfPanel.Controls.Add(this.addressTxtbox);
             this.PInfPanel.Controls.Add(this.addresLbl);
             this.PInfPanel.Controls.Add(this.ProfilePictureBox);
+            this.PInfPanel.Controls.Add(this.phoneTxtbox);
             this.PInfPanel.Controls.Add(this.phoneLbl);
             this.PInfPanel.Controls.Add(this.emailLbl);
             this.PInfPanel.Controls.Add(this.surnameLbl);
             this.PInfPanel.Controls.Add(this.LabelName);
             this.PInfPanel.Controls.Add(this.PasswordLabel);
             this.PInfPanel.Controls.Add(this.savedetailsButton);
-            this.PInfPanel.Controls.Add(this.perInfPasswordTextbox);
+            this.PInfPanel.Controls.Add(this.surnameTxtBox);
+            this.PInfPanel.Controls.Add(this.nameTxtbox);
+            this.PInfPanel.Controls.Add(this.emailTxtbox);
+            this.PInfPanel.Controls.Add(this.passwordTxtbox);
             this.PInfPanel.Location = new System.Drawing.Point(227, 103);
             this.PInfPanel.Name = "PInfPanel";
             this.PInfPanel.Size = new System.Drawing.Size(823, 489);
             this.PInfPanel.TabIndex = 18;
             this.PInfPanel.Visible = false;
             // 
-            // makePassUnvisibleButton
+            // makePassVisible
             // 
-            this.makePassUnvisibleButton.AutoSize = true;
-            this.makePassUnvisibleButton.BackgroundImage = global::Login_with_DataBase.Properties.Resources.show2;
-            this.makePassUnvisibleButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.makePassUnvisibleButton.FlatAppearance.BorderSize = 0;
-            this.makePassUnvisibleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.makePassUnvisibleButton.Location = new System.Drawing.Point(202, 103);
-            this.makePassUnvisibleButton.Name = "makePassUnvisibleButton";
-            this.makePassUnvisibleButton.Size = new System.Drawing.Size(29, 24);
-            this.makePassUnvisibleButton.TabIndex = 19;
-            this.makePassUnvisibleButton.UseVisualStyleBackColor = true;
-            this.makePassUnvisibleButton.Click += new System.EventHandler(this.makePassUnvisibleButton_Click);
-            // 
-            // makePassVisibleButton
-            // 
-            this.makePassVisibleButton.AutoSize = true;
-            this.makePassVisibleButton.BackgroundImage = global::Login_with_DataBase.Properties.Resources.show1;
-            this.makePassVisibleButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.makePassVisibleButton.FlatAppearance.BorderSize = 0;
-            this.makePassVisibleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.makePassVisibleButton.Location = new System.Drawing.Point(202, 103);
-            this.makePassVisibleButton.Name = "makePassVisibleButton";
-            this.makePassVisibleButton.Size = new System.Drawing.Size(29, 24);
-            this.makePassVisibleButton.TabIndex = 18;
-            this.makePassVisibleButton.UseVisualStyleBackColor = true;
-            this.makePassVisibleButton.Click += new System.EventHandler(this.makePassVisibleButton_Click);
+            this.makePassVisible.AutoSize = true;
+            this.makePassVisible.BackgroundImage = global::Login_with_DataBase.Properties.Resources.show1;
+            this.makePassVisible.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.makePassVisible.FlatAppearance.BorderSize = 0;
+            this.makePassVisible.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.makePassVisible.Location = new System.Drawing.Point(202, 103);
+            this.makePassVisible.Name = "makePassVisible";
+            this.makePassVisible.Size = new System.Drawing.Size(29, 24);
+            this.makePassVisible.TabIndex = 18;
+            this.makePassVisible.UseVisualStyleBackColor = true;
+            this.makePassVisible.Click += new System.EventHandler(this.makePassVisible_Click);
             // 
             // selectImageButton
             // 
@@ -577,6 +563,14 @@
             this.selectImageButton.Text = "Select Image";
             this.selectImageButton.UseVisualStyleBackColor = true;
             this.selectImageButton.Click += new System.EventHandler(this.selectImageButton_Click);
+            // 
+            // addressTxtbox
+            // 
+            this.addressTxtbox.Location = new System.Drawing.Point(77, 303);
+            this.addressTxtbox.Multiline = true;
+            this.addressTxtbox.Name = "addressTxtbox";
+            this.addressTxtbox.Size = new System.Drawing.Size(181, 73);
+            this.addressTxtbox.TabIndex = 5;
             // 
             // addresLbl
             // 
@@ -593,9 +587,17 @@
             this.ProfilePictureBox.Location = new System.Drawing.Point(369, 92);
             this.ProfilePictureBox.Name = "ProfilePictureBox";
             this.ProfilePictureBox.Size = new System.Drawing.Size(206, 230);
-            this.ProfilePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ProfilePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.ProfilePictureBox.TabIndex = 13;
             this.ProfilePictureBox.TabStop = false;
+            this.ProfilePictureBox.Click += new System.EventHandler(this.ProfilePictureBox_Click);
+            // 
+            // phoneTxtbox
+            // 
+            this.phoneTxtbox.Location = new System.Drawing.Point(77, 264);
+            this.phoneTxtbox.Name = "phoneTxtbox";
+            this.phoneTxtbox.Size = new System.Drawing.Size(119, 20);
+            this.phoneTxtbox.TabIndex = 4;
             // 
             // phoneLbl
             // 
@@ -614,6 +616,7 @@
             this.emailLbl.Size = new System.Drawing.Size(32, 13);
             this.emailLbl.TabIndex = 10;
             this.emailLbl.Text = "Email";
+            this.emailLbl.Click += new System.EventHandler(this.emailLbl_Click);
             // 
             // surnameLbl
             // 
@@ -653,13 +656,27 @@
             this.savedetailsButton.UseVisualStyleBackColor = true;
             this.savedetailsButton.Click += new System.EventHandler(this.savedetailsButton_Click);
             // 
-            // perInfPasswordTextbox
+            // nameTxtbox
             // 
-            this.perInfPasswordTextbox.Location = new System.Drawing.Point(77, 108);
-            this.perInfPasswordTextbox.Name = "perInfPasswordTextbox";
-            this.perInfPasswordTextbox.Size = new System.Drawing.Size(119, 20);
-            this.perInfPasswordTextbox.TabIndex = 0;
-            this.perInfPasswordTextbox.UseSystemPasswordChar = true;
+            this.nameTxtbox.Location = new System.Drawing.Point(77, 147);
+            this.nameTxtbox.Name = "nameTxtbox";
+            this.nameTxtbox.Size = new System.Drawing.Size(119, 20);
+            this.nameTxtbox.TabIndex = 1;
+            // 
+            // emailTxtbox
+            // 
+            this.emailTxtbox.Location = new System.Drawing.Point(77, 225);
+            this.emailTxtbox.Name = "emailTxtbox";
+            this.emailTxtbox.Size = new System.Drawing.Size(119, 20);
+            this.emailTxtbox.TabIndex = 3;
+            // 
+            // passwordTxtbox
+            // 
+            this.passwordTxtbox.Location = new System.Drawing.Point(77, 108);
+            this.passwordTxtbox.Name = "passwordTxtbox";
+            this.passwordTxtbox.Size = new System.Drawing.Size(119, 20);
+            this.passwordTxtbox.TabIndex = 0;
+            this.passwordTxtbox.UseSystemPasswordChar = true;
             // 
             // PInfButton
             // 
@@ -672,45 +689,20 @@
             this.PInfButton.UseVisualStyleBackColor = true;
             this.PInfButton.Click += new System.EventHandler(this.PInfButton_Click);
             // 
-            // perInfNameRichTextbox
+            // piSurnameTxt
             // 
-            this.perInfNameRichTextbox.Location = new System.Drawing.Point(77, 147);
-            this.perInfNameRichTextbox.Name = "perInfNameRichTextbox";
-            this.perInfNameRichTextbox.Size = new System.Drawing.Size(119, 20);
-            this.perInfNameRichTextbox.TabIndex = 20;
-            this.perInfNameRichTextbox.Text = "";
+            this.piSurnameTxt.Location = new System.Drawing.Point(77, 186);
+            this.piSurnameTxt.Name = "piSurnameTxt";
+            this.piSurnameTxt.Size = new System.Drawing.Size(119, 20);
+            this.piSurnameTxt.TabIndex = 19;
             // 
-            // perInfSurnameRichTextbox
+            // piNamerichTxt
             // 
-            this.perInfSurnameRichTextbox.Location = new System.Drawing.Point(77, 185);
-            this.perInfSurnameRichTextbox.Name = "perInfSurnameRichTextbox";
-            this.perInfSurnameRichTextbox.Size = new System.Drawing.Size(119, 20);
-            this.perInfSurnameRichTextbox.TabIndex = 21;
-            this.perInfSurnameRichTextbox.Text = "";
-            // 
-            // perInfEmailRichTextbox
-            // 
-            this.perInfEmailRichTextbox.Location = new System.Drawing.Point(77, 225);
-            this.perInfEmailRichTextbox.Name = "perInfEmailRichTextbox";
-            this.perInfEmailRichTextbox.Size = new System.Drawing.Size(119, 20);
-            this.perInfEmailRichTextbox.TabIndex = 22;
-            this.perInfEmailRichTextbox.Text = "";
-            // 
-            // perInfPhoneRichTextbox
-            // 
-            this.perInfPhoneRichTextbox.Location = new System.Drawing.Point(77, 264);
-            this.perInfPhoneRichTextbox.Name = "perInfPhoneRichTextbox";
-            this.perInfPhoneRichTextbox.Size = new System.Drawing.Size(119, 20);
-            this.perInfPhoneRichTextbox.TabIndex = 23;
-            this.perInfPhoneRichTextbox.Text = "";
-            // 
-            // perInfAddressRichTextbox
-            // 
-            this.perInfAddressRichTextbox.Location = new System.Drawing.Point(77, 303);
-            this.perInfAddressRichTextbox.Name = "perInfAddressRichTextbox";
-            this.perInfAddressRichTextbox.Size = new System.Drawing.Size(181, 74);
-            this.perInfAddressRichTextbox.TabIndex = 24;
-            this.perInfAddressRichTextbox.Text = "";
+            this.piNamerichTxt.Location = new System.Drawing.Point(202, 147);
+            this.piNamerichTxt.Name = "piNamerichTxt";
+            this.piNamerichTxt.Size = new System.Drawing.Size(137, 23);
+            this.piNamerichTxt.TabIndex = 20;
+            this.piNamerichTxt.Text = "";
             // 
             // UserForm
             // 
@@ -768,7 +760,7 @@
         private System.Windows.Forms.TextBox descriptionTextBox;
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.TextBox phoneTextBox;
-        private System.Windows.Forms.TextBox surnameTextBox;
+        private System.Windows.Forms.TextBox surnameTxtBox;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label addressLabel;
         private System.Windows.Forms.Label descriptionLabel;
@@ -791,7 +783,10 @@
         private System.Windows.Forms.Button listPhonebookButton;
         private System.Windows.Forms.Panel PInfPanel;
         private System.Windows.Forms.Button PInfButton;
-        private System.Windows.Forms.TextBox perInfPasswordTextbox;
+        private System.Windows.Forms.TextBox surnameTxtbox;
+        private System.Windows.Forms.TextBox nameTxtbox;
+        private System.Windows.Forms.TextBox emailTxtbox;
+        private System.Windows.Forms.TextBox passwordTxtbox;
         private System.Windows.Forms.Label phoneLbl;
         private System.Windows.Forms.Label emailLbl;
         private System.Windows.Forms.Label surnameLbl;
@@ -799,14 +794,12 @@
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.Button savedetailsButton;
         private System.Windows.Forms.PictureBox ProfilePictureBox;
+        private System.Windows.Forms.TextBox phoneTxtbox;
+        private System.Windows.Forms.TextBox addressTxtbox;
         private System.Windows.Forms.Label addresLbl;
         private System.Windows.Forms.Button selectImageButton;
-        private System.Windows.Forms.Button makePassVisibleButton;
-        private System.Windows.Forms.Button makePassUnvisibleButton;
-        private System.Windows.Forms.RichTextBox perInfNameRichTextbox;
-        private System.Windows.Forms.RichTextBox perInfSurnameRichTextbox;
-        private System.Windows.Forms.RichTextBox perInfEmailRichTextbox;
-        private System.Windows.Forms.RichTextBox perInfPhoneRichTextbox;
-        private System.Windows.Forms.RichTextBox perInfAddressRichTextbox;
+        private System.Windows.Forms.Button makePassVisible;
+        private System.Windows.Forms.TextBox piSurnameTxt;
+        private System.Windows.Forms.RichTextBox piNamerichTxt;
     }
 }

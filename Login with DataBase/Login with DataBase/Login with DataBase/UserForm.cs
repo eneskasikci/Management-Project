@@ -20,17 +20,25 @@ namespace Login_with_DataBase
         public UserForm(int loginuserindex)
         {
             InitializeComponent();
+            KeyPreview = true;
+            piNamerichTxt.KeyDown += piNamerichTxt_KeyDown;
             userindex = loginuserindex;
             label1.Text = "Welcome " + LoginForm.userList[loginuserindex].Username;
             listView1.Sorting = SortOrder.Ascending;
-            KeyPreview = true;
-            perInfNameRichTextbox.KeyDown += perInfNameRichTextbox_KeyDown;
-            perInfSurnameRichTextbox.KeyDown += perInfSurnameRichTextbox_KeyDown;
-            perInfEmailRichTextbox.KeyDown += perInfEmailRichTextbox_KeyDown;
-            perInfAddressRichTextbox.KeyDown += perInfAddressRichTextbox_KeyDown;
-            perInfPhoneRichTextbox.KeyDown += perInfPhoneRichTextbox_KeyDown;
-
         }
+
+        private void piNamerichTxt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Z)
+            {
+                nameTxtbox.Undo();
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Y)
+            {
+                piNamerichTxt.Redo();
+            }
+        }
+
         private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -43,8 +51,6 @@ namespace Login_with_DataBase
             userMangementButton.Visible = false;
             notesPanel.Visible = false;
             notesButton.Visible = false;
-            PInfPanel.Visible = false;
-            PInfButton.Visible = false;
             timer1.Start();
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -70,7 +76,7 @@ namespace Login_with_DataBase
         }
         private void createButton_Click(object sender, EventArgs e)
         {
-            if (nameTextBox.Text != "" && surnameTextBox.Text != ""
+            if (nameTextBox.Text != "" && surnameTxtBox.Text != ""
             && phoneTextBox.Text != "" && emailTextBox.Text != ""
             && descriptionTextBox.Text != "" && addressTextBox.Text != "")
             {
@@ -81,7 +87,7 @@ namespace Login_with_DataBase
                 }
 
                 ListViewItem item = new ListViewItem(nameTextBox.Text, 0);
-                item.SubItems.Add(surnameTextBox.Text);
+                item.SubItems.Add(surnameTxtBox.Text);
 
                 if (!IsAllDigits(phoneTextBox.Text))
                 {
@@ -124,7 +130,7 @@ namespace Login_with_DataBase
             if (listView1.SelectedItems.Count > 0)
             {
                 nameTextBox.Text = listView1.SelectedItems[0].SubItems[0].Text;
-                surnameTextBox.Text = listView1.SelectedItems[0].SubItems[1].Text;
+                surnameTxtBox.Text = listView1.SelectedItems[0].SubItems[1].Text;
                 phoneTextBox.Text = listView1.SelectedItems[0].SubItems[2].Text;
                 emailTextBox.Text = listView1.SelectedItems[0].SubItems[3].Text;
                 descriptionTextBox.Text = listView1.SelectedItems[0].SubItems[4].Text;
@@ -136,7 +142,7 @@ namespace Login_with_DataBase
             if (listView1.SelectedItems.Count > 0)
             {
                 listView1.SelectedItems[0].SubItems[0].Text = nameTextBox.Text;
-                listView1.SelectedItems[0].SubItems[1].Text = surnameTextBox.Text;
+                listView1.SelectedItems[0].SubItems[1].Text = surnameTxtBox.Text;
                 listView1.SelectedItems[0].SubItems[2].Text = phoneTextBox.Text;
                 listView1.SelectedItems[0].SubItems[3].Text = emailTextBox.Text;
                 listView1.SelectedItems[0].SubItems[4].Text = descriptionTextBox.Text;
@@ -281,19 +287,29 @@ namespace Login_with_DataBase
         {
             phonebookPanel.Visible = false;
             notesPanel.Visible = false;
-            Util.LoadPersonalInformation(LoginForm.userList, "PersonalInformation.csv");
-            perInfPasswordTextbox.Text = LoginForm.password;
-            perInfNameRichTextbox.Text = LoginForm.userList[userindex].Personinf.Name;
-            perInfSurnameRichTextbox.Text = LoginForm.userList[userindex].Personinf.Surname;
-            perInfPhoneRichTextbox.Text = LoginForm.userList[userindex].Personinf.Phonenumber;
-            perInfEmailRichTextbox.Text = LoginForm.userList[userindex].Personinf.Email;
-            perInfAddressRichTextbox.Text = LoginForm.userList[userindex].Personinf.Address;
-            if (LoginForm.userList[userindex].Personinf.Image != "")
+            Util.LoadPersonalInformation(LoginForm.userList, "PersonalInformation.csv", userindex);
+            passwordTxtbox.Text = LoginForm.password;
+            nameTxtbox.Text = LoginForm.userList[userindex].Person.Name;
+            piSurnameTxt.Text = LoginForm.userList[userindex].Person.Surname;
+            phoneTxtbox.Text = LoginForm.userList[userindex].Person.Phonenumber;
+            emailTxtbox.Text = LoginForm.userList[userindex].Person.Email;
+            addressTxtbox.Text = LoginForm.userList[userindex].Person.Address;
+            if (LoginForm.userList[userindex].Person.Image != "")
             {
-                var img = Image.FromStream(new MemoryStream(Convert.FromBase64String(LoginForm.userList[userindex].Personinf.Image)));
+                var img = Image.FromStream(new MemoryStream(Convert.FromBase64String(LoginForm.userList[userindex].Person.Image)));
                 ProfilePictureBox.Image = img;
             }
             PInfPanel.Visible = true;
+        }
+
+        private void emailLbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ProfilePictureBox_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void selectImageButton_Click(object sender, EventArgs e)
@@ -306,23 +322,33 @@ namespace Login_with_DataBase
             }
         }
 
+        private void makePassVisible_Click(object sender, EventArgs e)
+        {
+            if (passwordTxtbox.UseSystemPasswordChar)
+            {
+                passwordTxtbox.UseSystemPasswordChar = false;
+            }
+            else
+                passwordTxtbox.UseSystemPasswordChar = true;
+        }
+
         private void savedetailsButton_Click(object sender, EventArgs e)
         {
-            if (perInfNameRichTextbox.Text != "" && perInfSurnameRichTextbox.Text != ""
-            && perInfPhoneRichTextbox.Text != "" && perInfEmailRichTextbox.Text != ""
-            && perInfAddressRichTextbox.Text != "")
+            if (nameTxtbox.Text != "" && surnameTxtbox.Text != ""
+            && phoneTxtbox.Text != "" && emailTxtbox.Text != ""
+            && addressTxtbox.Text != "")
             {
-                if (!IsAllDigits(perInfPhoneRichTextbox.Text))
+                if (!IsAllDigits(phoneTxtbox.Text))
                 {
                     MessageBox.Show("Numbers must contain only digits", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if (perInfPhoneRichTextbox.Text.Length != 10)
+                if (phoneTxtbox.Text.Length != 10)
                 {
                     MessageBox.Show("Wrong number size", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if (!IsValidMail(perInfEmailRichTextbox.Text))
+                if (!IsValidMail(emailTxtbox.Text))
                 {
                     MessageBox.Show("Wrong Email Format", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -332,103 +358,24 @@ namespace Login_with_DataBase
                     MessageBox.Show("Please Select a Picture", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
-                else
+                LoginForm.userList[userindex].Person.Name = nameTxtbox.Text;
+                LoginForm.userList[userindex].Person.Surname = surnameTxtbox.Text;
+                LoginForm.userList[userindex].Person.Email = emailTxtbox.Text;
+                LoginForm.userList[userindex].Person.Phonenumber = phoneTxtbox.Text;
+                LoginForm.userList[userindex].Person.Address = addressTxtbox.Text;
+                LoginForm.userList[userindex].Person.Image = Util.ImageToBase64(ProfilePictureBox);
+                Util.savePersonalInformation(LoginForm.userList, "PersonalInformation.csv", userindex);
+               
+                if(passwordTxtbox.Text != LoginForm.password)
                 {
-                    LoginForm.userList[userindex].Password = Util.ComputeSha256Hash(perInfPasswordTextbox.Text);
-                    LoginForm.password = perInfPasswordTextbox.Text;
-                    LoginForm.userList[userindex].Personinf.Name = perInfNameRichTextbox.Text;
-                    LoginForm.userList[userindex].Personinf.Surname = perInfSurnameRichTextbox.Text;
-                    LoginForm.userList[userindex].Personinf.Email = perInfEmailRichTextbox.Text;
-                    LoginForm.userList[userindex].Personinf.Phonenumber = perInfPhoneRichTextbox.Text;
-                    LoginForm.userList[userindex].Personinf.Address = perInfAddressRichTextbox.Text;
-                    if (LoginForm.userList[userindex].Personinf.Image=="")
-                        LoginForm.userList[userindex].Personinf.Image = Util.ImageToBase64(ProfilePictureBox);
-                    Util.savePersonalInformation(LoginForm.userList, "PersonalInformation.csv");
-                    MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoginForm.userList[userindex].Password = Util.ComputeSha256Hash(passwordTxtbox.Text);
+                    Util.ChangePassword(LoginForm.userList, "user.csv", userindex);
                 }
+
             }
-            else
+                else
                 MessageBox.Show("Fields can not be empty", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
-        private void makePassUnvisibleButton_Click(object sender, EventArgs e)
-        {
-            if (perInfPasswordTextbox.UseSystemPasswordChar)
-            {
-                perInfPasswordTextbox.UseSystemPasswordChar = false;
-                makePassVisibleButton.BringToFront();
-            }
-            else
-                perInfPasswordTextbox.UseSystemPasswordChar = true;
-                makePassVisibleButton.BringToFront();
-        }
-
-        private void makePassVisibleButton_Click(object sender, EventArgs e)
-        {
-            if (perInfPasswordTextbox.UseSystemPasswordChar)
-            {
-                perInfPasswordTextbox.UseSystemPasswordChar = false;
-                makePassUnvisibleButton.BringToFront();
-            }   
-            else
-                perInfPasswordTextbox.UseSystemPasswordChar = true;
-                makePassUnvisibleButton.BringToFront();
-        }
-        private void perInfNameRichTextbox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Z)
-            {
-                perInfNameRichTextbox.Undo();
-            }
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Y)
-            {
-                perInfNameRichTextbox.Redo();
-            }
-        }
-        private void perInfSurnameRichTextbox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Z)
-            {
-                perInfSurnameRichTextbox.Undo();
-            }
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Y)
-            {
-                perInfSurnameRichTextbox.Redo();
-            }
-        }
-        private void perInfEmailRichTextbox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Z)
-            {
-                perInfEmailRichTextbox.Undo();
-            }
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Y)
-            {
-                perInfEmailRichTextbox.Redo();
-            }
-        }
-        private void perInfAddressRichTextbox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Z)
-            {
-                perInfAddressRichTextbox.Undo();
-            }
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Y)
-            {
-                perInfAddressRichTextbox.Redo();
-            }
-        }
-        private void perInfPhoneRichTextbox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Z)
-            {
-                perInfPhoneRichTextbox.Undo();
-            }
-            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Y)
-            {
-                perInfPhoneRichTextbox.Redo();
-            }
-        }
+        
     }
 }
