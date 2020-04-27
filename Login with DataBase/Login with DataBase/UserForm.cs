@@ -36,6 +36,8 @@ namespace Login_with_DataBase
             userMangementButton.Visible = false;
             notesPanel.Visible = false;
             notesButton.Visible = false;
+            PInfPanel.Visible = false;
+            PInfButton.Visible = false;
             timer1.Start();
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -56,6 +58,7 @@ namespace Login_with_DataBase
         private void phonebookButton_Click(object sender, EventArgs e)
         {
             notesPanel.Visible = false;
+            PInfPanel.Visible = false;
             phonebookPanel.Visible = true;
         }
         private void createButton_Click(object sender, EventArgs e)
@@ -155,6 +158,7 @@ namespace Login_with_DataBase
         private void notesButton_Click(object sender, EventArgs e)
         {
             phonebookPanel.Visible = false;
+            PInfPanel.Visible = false;
             notesPanel.Visible = true;       
         }
         private void createNoteButton_Click(object sender, EventArgs e)
@@ -264,6 +268,82 @@ namespace Login_with_DataBase
                 return true;
             else
                 return false;
+        }
+
+        private void PInfButton_Click(object sender, EventArgs e)
+        {
+            phonebookPanel.Visible = false;
+            notesPanel.Visible = false;
+            Util.LoadPersonalInformation(LoginForm.userList, "PersonalInformation.csv");
+            perInfPasswordTextbox.Text = LoginForm.password;
+            perInfNameTextbox.Text = LoginForm.userList[userindex].Personinf.Name;
+            perInfSurnameTextbox.Text = LoginForm.userList[userindex].Personinf.Surname;
+            perInfPhoneTextbox.Text = LoginForm.userList[userindex].Personinf.Phonenumber;
+            perInfEmailTextbox.Text = LoginForm.userList[userindex].Personinf.Email;
+            perInfAddressTextbox.Text = LoginForm.userList[userindex].Personinf.Address;
+            PInfPanel.Visible = true;
+        }
+
+        private void savedetailsButton_Click(object sender, EventArgs e)
+        {
+            if (perInfNameTextbox.Text != "" && perInfSurnameTextbox.Text != ""
+            && perInfPhoneTextbox.Text != "" && perInfEmailTextbox.Text != ""
+            && perInfAddressTextbox.Text != "")
+            {
+                if (!IsAllDigits(perInfPhoneTextbox.Text))
+                {
+                    MessageBox.Show("Numbers must contain only digits", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (perInfPhoneTextbox.Text.Length != 10)
+                {
+                    MessageBox.Show("Wrong number size", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (!IsValidMail(perInfEmailTextbox.Text))
+                {
+                    MessageBox.Show("Wrong Email Format", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    LoginForm.userList[userindex].Password = Util.ComputeSha256Hash(perInfPasswordTextbox.Text);
+                    LoginForm.password = perInfPasswordTextbox.Text;
+                    LoginForm.userList[userindex].Personinf.Name = perInfNameTextbox.Text;
+                    LoginForm.userList[userindex].Personinf.Surname = perInfSurnameTextbox.Text;
+                    LoginForm.userList[userindex].Personinf.Email = perInfEmailTextbox.Text;
+                    LoginForm.userList[userindex].Personinf.Phonenumber = perInfPhoneTextbox.Text;
+                    LoginForm.userList[userindex].Personinf.Address = perInfAddressTextbox.Text;
+                    Util.savePersonalInformation(LoginForm.userList, "PersonalInformation.csv");
+                    MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+                MessageBox.Show("Fields can not be empty", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void makePassUnvisibleButton_Click(object sender, EventArgs e)
+        {
+            if (perInfPasswordTextbox.UseSystemPasswordChar)
+            {
+                perInfPasswordTextbox.UseSystemPasswordChar = false;
+                makePassVisibleButton.BringToFront();
+            }
+            else
+                perInfPasswordTextbox.UseSystemPasswordChar = true;
+                makePassVisibleButton.BringToFront();
+        }
+
+        private void makePassVisibleButton_Click(object sender, EventArgs e)
+        {
+            if (perInfPasswordTextbox.UseSystemPasswordChar)
+            {
+                perInfPasswordTextbox.UseSystemPasswordChar = false;
+                makePassUnvisibleButton.BringToFront();
+            }   
+            else
+                perInfPasswordTextbox.UseSystemPasswordChar = true;
+                makePassUnvisibleButton.BringToFront();
         }
     }
 }

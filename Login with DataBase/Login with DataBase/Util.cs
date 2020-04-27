@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Security.Cryptography;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Login_with_DataBase
 {
@@ -37,10 +38,10 @@ namespace Login_with_DataBase
             while (!reader.EndOfStream)
             {
                 string line = reader.ReadLine();
-                if (line !="")
+                if (line != "")
                 {
                     var values = line.Split(',');
-                    userlist.Add(new User(values[0], values[1], values[2])); 
+                    userlist.Add(new User(values[0], values[1], values[2]));
                 }
             }
             reader.Close();
@@ -73,7 +74,7 @@ namespace Login_with_DataBase
             StreamWriter userwrite = File.CreateText(usercsv);
             foreach (User user in userlist)
                 userwrite.WriteLine(user.Username + "," + user.Password + "," + user.Usertype);
-            userwrite.Close();  
+            userwrite.Close();
         }
         public static void SavePhonebookCsv(List<User> userlist, string csvname)
         {
@@ -81,7 +82,7 @@ namespace Login_with_DataBase
             for (int i = 0; i < userlist.Count; i++)
             {
                 User user = userlist[i];
-                if (user.Phonebook.Count!=0)
+                if (user.Phonebook.Count != 0)
                 {
                     for (int j = 0; j < user.Phonebook.Count; j++)
                     {
@@ -90,7 +91,7 @@ namespace Login_with_DataBase
                                                  user.Phonebook[j].Email + "," + user.Phonebook[j].Description + "," +
                                                  user.Phonebook[j].Address);
                     }
-                } 
+                }
             }
             phonebookwrite.Close();
         }
@@ -111,7 +112,7 @@ namespace Login_with_DataBase
                 StreamWriter create = File.CreateText(@csvname);
                 create.Close();
             }
-            foreach(User user in userlist)
+            foreach (User user in userlist)
                 user.Notes.Clear();
 
             StreamReader reader = new StreamReader(csvname);
@@ -139,6 +140,45 @@ namespace Login_with_DataBase
                 }
             }
             noteswrite.Close();
+        }
+        public static void LoadPersonalInformation(List<User> userlist, string csvname)
+        {
+            if (!File.Exists(@csvname))
+            {
+                StreamWriter create = File.CreateText(@csvname);
+                create.Close();
+            }
+            StreamReader reader = new StreamReader(csvname);
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                if (line != "")
+                {
+                    var values = line.Split(',');
+                    userlist[int.Parse(values[0])].Personinf.Name = values[1];
+                    userlist[int.Parse(values[0])].Personinf.Surname = values[2];
+                    userlist[int.Parse(values[0])].Personinf.Phonenumber = values[3];
+                    userlist[int.Parse(values[0])].Personinf.Email = values[4];
+                    userlist[int.Parse(values[0])].Personinf.Address = values[5];
+                }
+            }
+            reader.Close();
+        }
+        
+        public static void savePersonalInformation(List<User> userlist, string csvname)
+        {
+            StreamWriter personalInformationWrite = File.CreateText(@csvname);
+            for (int i = 0; i < userlist.Count; i++)
+            {
+                User user = userlist[i];
+                if (user.Personinf.Name != "")
+                {
+                    personalInformationWrite.WriteLine(i + "," + user.Personinf.Name + "," +
+                                         user.Personinf.Surname + "," + user.Personinf.Phonenumber + "," +
+                                         user.Personinf.Email + "," + user.Personinf.Address);
+                }
+            }
+            personalInformationWrite.Close();
         }
     }
 }

@@ -36,6 +36,7 @@
             this.userMangementButton = new System.Windows.Forms.Button();
             this.phonebookButton = new System.Windows.Forms.Button();
             this.phonebookPanel = new System.Windows.Forms.Panel();
+            this.listPhonebookButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -70,10 +71,27 @@
             this.createNoteButton = new System.Windows.Forms.Button();
             this.listNotesButton = new System.Windows.Forms.Button();
             this.noteBox = new System.Windows.Forms.ListBox();
-            this.listPhonebookButton = new System.Windows.Forms.Button();
+            this.PInfPanel = new System.Windows.Forms.Panel();
+            this.makePassUnvisibleButton = new System.Windows.Forms.Button();
+            this.makePassVisibleButton = new System.Windows.Forms.Button();
+            this.perInfAddressTextbox = new System.Windows.Forms.TextBox();
+            this.addresLbl = new System.Windows.Forms.Label();
+            this.perInfPhoneTextbox = new System.Windows.Forms.TextBox();
+            this.phoneLbl = new System.Windows.Forms.Label();
+            this.emailLbl = new System.Windows.Forms.Label();
+            this.surnameLbl = new System.Windows.Forms.Label();
+            this.LabelName = new System.Windows.Forms.Label();
+            this.PasswordLabel = new System.Windows.Forms.Label();
+            this.savedetailsButton = new System.Windows.Forms.Button();
+            this.perInfSurnameTextbox = new System.Windows.Forms.TextBox();
+            this.perInfNameTextbox = new System.Windows.Forms.TextBox();
+            this.perInfEmailTextbox = new System.Windows.Forms.TextBox();
+            this.perInfPasswordTextbox = new System.Windows.Forms.TextBox();
+            this.PInfButton = new System.Windows.Forms.Button();
             this.phonebookPanel.SuspendLayout();
             this.notesPanel.SuspendLayout();
             this.yourNotePanel.SuspendLayout();
+            this.PInfPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // exitButton
@@ -172,6 +190,16 @@
             this.phonebookPanel.Size = new System.Drawing.Size(823, 485);
             this.phonebookPanel.TabIndex = 13;
             this.phonebookPanel.Visible = false;
+            // 
+            // listPhonebookButton
+            // 
+            this.listPhonebookButton.Location = new System.Drawing.Point(36, 435);
+            this.listPhonebookButton.Name = "listPhonebookButton";
+            this.listPhonebookButton.Size = new System.Drawing.Size(95, 23);
+            this.listPhonebookButton.TabIndex = 17;
+            this.listPhonebookButton.Text = "List Phonebook";
+            this.listPhonebookButton.UseVisualStyleBackColor = true;
+            this.listPhonebookButton.Click += new System.EventHandler(this.listPhonebookButton_Click);
             // 
             // saveButton
             // 
@@ -483,15 +511,178 @@
             this.noteBox.TabIndex = 4;
             this.noteBox.SelectedIndexChanged += new System.EventHandler(this.noteBox_SelectedIndexChanged);
             // 
-            // listPhonebookButton
+            // PInfPanel
             // 
-            this.listPhonebookButton.Location = new System.Drawing.Point(36, 435);
-            this.listPhonebookButton.Name = "listPhonebookButton";
-            this.listPhonebookButton.Size = new System.Drawing.Size(95, 23);
-            this.listPhonebookButton.TabIndex = 17;
-            this.listPhonebookButton.Text = "List Phonebook";
-            this.listPhonebookButton.UseVisualStyleBackColor = true;
-            this.listPhonebookButton.Click += new System.EventHandler(this.listPhonebookButton_Click);
+            this.PInfPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.PInfPanel.Controls.Add(this.makePassUnvisibleButton);
+            this.PInfPanel.Controls.Add(this.makePassVisibleButton);
+            this.PInfPanel.Controls.Add(this.perInfAddressTextbox);
+            this.PInfPanel.Controls.Add(this.addresLbl);
+            this.PInfPanel.Controls.Add(this.perInfPhoneTextbox);
+            this.PInfPanel.Controls.Add(this.phoneLbl);
+            this.PInfPanel.Controls.Add(this.emailLbl);
+            this.PInfPanel.Controls.Add(this.surnameLbl);
+            this.PInfPanel.Controls.Add(this.LabelName);
+            this.PInfPanel.Controls.Add(this.PasswordLabel);
+            this.PInfPanel.Controls.Add(this.savedetailsButton);
+            this.PInfPanel.Controls.Add(this.perInfSurnameTextbox);
+            this.PInfPanel.Controls.Add(this.perInfNameTextbox);
+            this.PInfPanel.Controls.Add(this.perInfEmailTextbox);
+            this.PInfPanel.Controls.Add(this.perInfPasswordTextbox);
+            this.PInfPanel.Location = new System.Drawing.Point(227, 103);
+            this.PInfPanel.Name = "PInfPanel";
+            this.PInfPanel.Size = new System.Drawing.Size(823, 489);
+            this.PInfPanel.TabIndex = 18;
+            this.PInfPanel.Visible = false;
+            // 
+            // makePassUnvisibleButton
+            // 
+            this.makePassUnvisibleButton.AutoSize = true;
+            this.makePassUnvisibleButton.BackgroundImage = global::Login_with_DataBase.Properties.Resources.show2;
+            this.makePassUnvisibleButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.makePassUnvisibleButton.FlatAppearance.BorderSize = 0;
+            this.makePassUnvisibleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.makePassUnvisibleButton.Location = new System.Drawing.Point(202, 103);
+            this.makePassUnvisibleButton.Name = "makePassUnvisibleButton";
+            this.makePassUnvisibleButton.Size = new System.Drawing.Size(29, 24);
+            this.makePassUnvisibleButton.TabIndex = 19;
+            this.makePassUnvisibleButton.UseVisualStyleBackColor = true;
+            this.makePassUnvisibleButton.Click += new System.EventHandler(this.makePassUnvisibleButton_Click);
+            // 
+            // makePassVisibleButton
+            // 
+            this.makePassVisibleButton.AutoSize = true;
+            this.makePassVisibleButton.BackgroundImage = global::Login_with_DataBase.Properties.Resources.show1;
+            this.makePassVisibleButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.makePassVisibleButton.FlatAppearance.BorderSize = 0;
+            this.makePassVisibleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.makePassVisibleButton.Location = new System.Drawing.Point(202, 103);
+            this.makePassVisibleButton.Name = "makePassVisibleButton";
+            this.makePassVisibleButton.Size = new System.Drawing.Size(29, 24);
+            this.makePassVisibleButton.TabIndex = 18;
+            this.makePassVisibleButton.UseVisualStyleBackColor = true;
+            this.makePassVisibleButton.Click += new System.EventHandler(this.makePassVisibleButton_Click);
+            // 
+            // perInfAddressTextbox
+            // 
+            this.perInfAddressTextbox.Location = new System.Drawing.Point(77, 303);
+            this.perInfAddressTextbox.Multiline = true;
+            this.perInfAddressTextbox.Name = "perInfAddressTextbox";
+            this.perInfAddressTextbox.Size = new System.Drawing.Size(181, 73);
+            this.perInfAddressTextbox.TabIndex = 5;
+            // 
+            // addresLbl
+            // 
+            this.addresLbl.AutoSize = true;
+            this.addresLbl.Location = new System.Drawing.Point(77, 287);
+            this.addresLbl.Name = "addresLbl";
+            this.addresLbl.Size = new System.Drawing.Size(39, 13);
+            this.addresLbl.TabIndex = 14;
+            this.addresLbl.Text = "Adress";
+            // 
+            // perInfPhoneTextbox
+            // 
+            this.perInfPhoneTextbox.Location = new System.Drawing.Point(77, 264);
+            this.perInfPhoneTextbox.MaxLength = 10;
+            this.perInfPhoneTextbox.Name = "perInfPhoneTextbox";
+            this.perInfPhoneTextbox.Size = new System.Drawing.Size(119, 20);
+            this.perInfPhoneTextbox.TabIndex = 4;
+            // 
+            // phoneLbl
+            // 
+            this.phoneLbl.AutoSize = true;
+            this.phoneLbl.Location = new System.Drawing.Point(74, 248);
+            this.phoneLbl.Name = "phoneLbl";
+            this.phoneLbl.Size = new System.Drawing.Size(38, 13);
+            this.phoneLbl.TabIndex = 11;
+            this.phoneLbl.Text = "Phone";
+            // 
+            // emailLbl
+            // 
+            this.emailLbl.AutoSize = true;
+            this.emailLbl.Location = new System.Drawing.Point(74, 209);
+            this.emailLbl.Name = "emailLbl";
+            this.emailLbl.Size = new System.Drawing.Size(32, 13);
+            this.emailLbl.TabIndex = 10;
+            this.emailLbl.Text = "Email";
+            // 
+            // surnameLbl
+            // 
+            this.surnameLbl.AutoSize = true;
+            this.surnameLbl.Location = new System.Drawing.Point(74, 170);
+            this.surnameLbl.Name = "surnameLbl";
+            this.surnameLbl.Size = new System.Drawing.Size(49, 13);
+            this.surnameLbl.TabIndex = 9;
+            this.surnameLbl.Text = "Surname";
+            // 
+            // LabelName
+            // 
+            this.LabelName.AutoSize = true;
+            this.LabelName.Location = new System.Drawing.Point(74, 131);
+            this.LabelName.Name = "LabelName";
+            this.LabelName.Size = new System.Drawing.Size(35, 13);
+            this.LabelName.TabIndex = 8;
+            this.LabelName.Text = "Name";
+            // 
+            // PasswordLabel
+            // 
+            this.PasswordLabel.AutoSize = true;
+            this.PasswordLabel.Location = new System.Drawing.Point(74, 92);
+            this.PasswordLabel.Name = "PasswordLabel";
+            this.PasswordLabel.Size = new System.Drawing.Size(53, 13);
+            this.PasswordLabel.TabIndex = 7;
+            this.PasswordLabel.Text = "Password";
+            // 
+            // savedetailsButton
+            // 
+            this.savedetailsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.savedetailsButton.Location = new System.Drawing.Point(677, 423);
+            this.savedetailsButton.Name = "savedetailsButton";
+            this.savedetailsButton.Size = new System.Drawing.Size(116, 40);
+            this.savedetailsButton.TabIndex = 7;
+            this.savedetailsButton.Text = "Save";
+            this.savedetailsButton.UseVisualStyleBackColor = true;
+            this.savedetailsButton.Click += new System.EventHandler(this.savedetailsButton_Click);
+            // 
+            // perInfSurnameTextbox
+            // 
+            this.perInfSurnameTextbox.Location = new System.Drawing.Point(77, 186);
+            this.perInfSurnameTextbox.Name = "perInfSurnameTextbox";
+            this.perInfSurnameTextbox.Size = new System.Drawing.Size(119, 20);
+            this.perInfSurnameTextbox.TabIndex = 2;
+            // 
+            // perInfNameTextbox
+            // 
+            this.perInfNameTextbox.Location = new System.Drawing.Point(77, 147);
+            this.perInfNameTextbox.Name = "perInfNameTextbox";
+            this.perInfNameTextbox.Size = new System.Drawing.Size(119, 20);
+            this.perInfNameTextbox.TabIndex = 1;
+            // 
+            // perInfEmailTextbox
+            // 
+            this.perInfEmailTextbox.Location = new System.Drawing.Point(77, 225);
+            this.perInfEmailTextbox.Name = "perInfEmailTextbox";
+            this.perInfEmailTextbox.Size = new System.Drawing.Size(119, 20);
+            this.perInfEmailTextbox.TabIndex = 3;
+            // 
+            // perInfPasswordTextbox
+            // 
+            this.perInfPasswordTextbox.Location = new System.Drawing.Point(77, 108);
+            this.perInfPasswordTextbox.Name = "perInfPasswordTextbox";
+            this.perInfPasswordTextbox.Size = new System.Drawing.Size(119, 20);
+            this.perInfPasswordTextbox.TabIndex = 0;
+            this.perInfPasswordTextbox.UseSystemPasswordChar = true;
+            // 
+            // PInfButton
+            // 
+            this.PInfButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PInfButton.Location = new System.Drawing.Point(36, 213);
+            this.PInfButton.Name = "PInfButton";
+            this.PInfButton.Size = new System.Drawing.Size(132, 40);
+            this.PInfButton.TabIndex = 18;
+            this.PInfButton.Text = "Personal Information";
+            this.PInfButton.UseVisualStyleBackColor = true;
+            this.PInfButton.Click += new System.EventHandler(this.PInfButton_Click);
             // 
             // UserForm
             // 
@@ -499,6 +690,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1100, 700);
+            this.Controls.Add(this.PInfPanel);
+            this.Controls.Add(this.PInfButton);
             this.Controls.Add(this.notesButton);
             this.Controls.Add(this.phonebookButton);
             this.Controls.Add(this.userMangementButton);
@@ -517,6 +710,8 @@
             this.notesPanel.ResumeLayout(false);
             this.yourNotePanel.ResumeLayout(false);
             this.yourNotePanel.PerformLayout();
+            this.PInfPanel.ResumeLayout(false);
+            this.PInfPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -565,5 +760,22 @@
         private System.Windows.Forms.Label yourNoteLbl;
         private System.Windows.Forms.Button deleteNoteButton;
         private System.Windows.Forms.Button listPhonebookButton;
+        private System.Windows.Forms.Panel PInfPanel;
+        private System.Windows.Forms.Button PInfButton;
+        private System.Windows.Forms.TextBox perInfSurnameTextbox;
+        private System.Windows.Forms.TextBox perInfNameTextbox;
+        private System.Windows.Forms.TextBox perInfEmailTextbox;
+        private System.Windows.Forms.TextBox perInfPasswordTextbox;
+        private System.Windows.Forms.Label phoneLbl;
+        private System.Windows.Forms.Label emailLbl;
+        private System.Windows.Forms.Label surnameLbl;
+        private System.Windows.Forms.Label LabelName;
+        private System.Windows.Forms.Label PasswordLabel;
+        private System.Windows.Forms.Button savedetailsButton;
+        private System.Windows.Forms.TextBox perInfPhoneTextbox;
+        private System.Windows.Forms.TextBox perInfAddressTextbox;
+        private System.Windows.Forms.Label addresLbl;
+        private System.Windows.Forms.Button makePassVisibleButton;
+        private System.Windows.Forms.Button makePassUnvisibleButton;
     }
 }
