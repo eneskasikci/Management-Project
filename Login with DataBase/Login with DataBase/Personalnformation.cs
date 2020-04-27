@@ -13,20 +13,23 @@ namespace Login_with_DataBase
         private string phonenumber;
         private string email;
         private string address;
+        private string image;
         public Personalnformation() {
             this.name = "";
             this.surname = "";
             this.phonenumber = "";
             this.email = "";
             this.address = "";
+            this.image = "";
         }
-        public Personalnformation(string name, string surname, string phonenumber, string email, string address)
+        public Personalnformation(string name, string surname, string phonenumber, string email, string address, string image)
         {
             this.name = name;
             this.surname = surname;
             this.phonenumber = phonenumber;
             this.email = email;
             this.address = address;
+            this.image = image;
         }
 
         public string Name { get { return name; } set { name = value; } }
@@ -34,5 +37,6 @@ namespace Login_with_DataBase
         public string Phonenumber { get { return phonenumber; } set { phonenumber = value; } }
         public string Address { get { return address; } set { address = value; } }
         public string Email { get { return email; } set { email = value; } }
+        public string Image{ get { return image; } set { image = value; } }
     }
 }

@@ -160,6 +160,7 @@ namespace Login_with_DataBase
                     userlist[int.Parse(values[0])].Personinf.Phonenumber = values[3];
                     userlist[int.Parse(values[0])].Personinf.Email = values[4];
                     userlist[int.Parse(values[0])].Personinf.Address = values[5];
+                    userlist[int.Parse(values[0])].Personinf.Image = values[6];
                 }
             }
             reader.Close();
@@ -175,10 +176,22 @@ namespace Login_with_DataBase
                 {
                     personalInformationWrite.WriteLine(i + "," + user.Personinf.Name + "," +
                                          user.Personinf.Surname + "," + user.Personinf.Phonenumber + "," +
-                                         user.Personinf.Email + "," + user.Personinf.Address);
+                                         user.Personinf.Email + "," + user.Personinf.Address + ',' + user.Personinf.Image);
                 }
             }
             personalInformationWrite.Close();
+        }
+
+        public static bool IsPboxNullOrEmpty(this PictureBox pb)
+        {
+            return pb == null || pb.Image == null;
+        }
+
+        public static string ImageToBase64(PictureBox picture)
+        {
+            byte[] imageArray = System.IO.File.ReadAllBytes(@picture.ImageLocation);
+            string base64ImageRepresentation = Convert.ToBase64String(imageArray);
+            return base64ImageRepresentation;
         }
     }
 }
