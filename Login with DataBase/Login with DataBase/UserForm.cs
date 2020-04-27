@@ -281,7 +281,22 @@ namespace Login_with_DataBase
             perInfPhoneTextbox.Text = LoginForm.userList[userindex].Personinf.Phonenumber;
             perInfEmailTextbox.Text = LoginForm.userList[userindex].Personinf.Email;
             perInfAddressTextbox.Text = LoginForm.userList[userindex].Personinf.Address;
+            if (LoginForm.userList[userindex].Personinf.Image != "")
+            {
+                var img = Image.FromStream(new MemoryStream(Convert.FromBase64String(LoginForm.userList[userindex].Personinf.Image)));
+                ProfilePictureBox.Image = img;
+            }
             PInfPanel.Visible = true;
+        }
+
+        private void selectImageButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Image image = Image.FromFile(ofd.FileName);
+                ProfilePictureBox.ImageLocation = ofd.FileName;
+            }
         }
 
         private void savedetailsButton_Click(object sender, EventArgs e)
@@ -305,6 +320,12 @@ namespace Login_with_DataBase
                     MessageBox.Show("Wrong Email Format", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                if (Util.IsPboxNullOrEmpty(ProfilePictureBox))
+                {
+                    MessageBox.Show("Please Select a Picture", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 else
                 {
                     LoginForm.userList[userindex].Password = Util.ComputeSha256Hash(perInfPasswordTextbox.Text);
@@ -314,6 +335,8 @@ namespace Login_with_DataBase
                     LoginForm.userList[userindex].Personinf.Email = perInfEmailTextbox.Text;
                     LoginForm.userList[userindex].Personinf.Phonenumber = perInfPhoneTextbox.Text;
                     LoginForm.userList[userindex].Personinf.Address = perInfAddressTextbox.Text;
+                    if (LoginForm.userList[userindex].Personinf.Image=="")
+                        LoginForm.userList[userindex].Personinf.Image = Util.ImageToBase64(ProfilePictureBox);
                     Util.savePersonalInformation(LoginForm.userList, "PersonalInformation.csv");
                     MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

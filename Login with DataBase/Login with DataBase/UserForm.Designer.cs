@@ -74,8 +74,10 @@
             this.PInfPanel = new System.Windows.Forms.Panel();
             this.makePassUnvisibleButton = new System.Windows.Forms.Button();
             this.makePassVisibleButton = new System.Windows.Forms.Button();
+            this.selectImageButton = new System.Windows.Forms.Button();
             this.perInfAddressTextbox = new System.Windows.Forms.TextBox();
             this.addresLbl = new System.Windows.Forms.Label();
+            this.ProfilePictureBox = new System.Windows.Forms.PictureBox();
             this.perInfPhoneTextbox = new System.Windows.Forms.TextBox();
             this.phoneLbl = new System.Windows.Forms.Label();
             this.emailLbl = new System.Windows.Forms.Label();
@@ -92,6 +94,7 @@
             this.notesPanel.SuspendLayout();
             this.yourNotePanel.SuspendLayout();
             this.PInfPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // exitButton
@@ -516,8 +519,10 @@
             this.PInfPanel.BackColor = System.Drawing.SystemColors.Control;
             this.PInfPanel.Controls.Add(this.makePassUnvisibleButton);
             this.PInfPanel.Controls.Add(this.makePassVisibleButton);
+            this.PInfPanel.Controls.Add(this.selectImageButton);
             this.PInfPanel.Controls.Add(this.perInfAddressTextbox);
             this.PInfPanel.Controls.Add(this.addresLbl);
+            this.PInfPanel.Controls.Add(this.ProfilePictureBox);
             this.PInfPanel.Controls.Add(this.perInfPhoneTextbox);
             this.PInfPanel.Controls.Add(this.phoneLbl);
             this.PInfPanel.Controls.Add(this.emailLbl);
@@ -563,6 +568,16 @@
             this.makePassVisibleButton.UseVisualStyleBackColor = true;
             this.makePassVisibleButton.Click += new System.EventHandler(this.makePassVisibleButton_Click);
             // 
+            // selectImageButton
+            // 
+            this.selectImageButton.Location = new System.Drawing.Point(462, 347);
+            this.selectImageButton.Name = "selectImageButton";
+            this.selectImageButton.Size = new System.Drawing.Size(115, 29);
+            this.selectImageButton.TabIndex = 6;
+            this.selectImageButton.Text = "Select Image";
+            this.selectImageButton.UseVisualStyleBackColor = true;
+            this.selectImageButton.Click += new System.EventHandler(this.selectImageButton_Click);
+            // 
             // perInfAddressTextbox
             // 
             this.perInfAddressTextbox.Location = new System.Drawing.Point(77, 303);
@@ -579,6 +594,16 @@
             this.addresLbl.Size = new System.Drawing.Size(39, 13);
             this.addresLbl.TabIndex = 14;
             this.addresLbl.Text = "Adress";
+            // 
+            // ProfilePictureBox
+            // 
+            this.ProfilePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ProfilePictureBox.Location = new System.Drawing.Point(369, 92);
+            this.ProfilePictureBox.Name = "ProfilePictureBox";
+            this.ProfilePictureBox.Size = new System.Drawing.Size(206, 230);
+            this.ProfilePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ProfilePictureBox.TabIndex = 13;
+            this.ProfilePictureBox.TabStop = false;
             // 
             // perInfPhoneTextbox
             // 
@@ -712,6 +737,7 @@
             this.yourNotePanel.PerformLayout();
             this.PInfPanel.ResumeLayout(false);
             this.PInfPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -772,9 +798,11 @@
         private System.Windows.Forms.Label LabelName;
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.Button savedetailsButton;
+        private System.Windows.Forms.PictureBox ProfilePictureBox;
         private System.Windows.Forms.TextBox perInfPhoneTextbox;
         private System.Windows.Forms.TextBox perInfAddressTextbox;
         private System.Windows.Forms.Label addresLbl;
+        private System.Windows.Forms.Button selectImageButton;
         private System.Windows.Forms.Button makePassVisibleButton;
         private System.Windows.Forms.Button makePassUnvisibleButton;
     }
