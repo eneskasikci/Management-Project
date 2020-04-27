@@ -23,6 +23,13 @@ namespace Login_with_DataBase
             userindex = loginuserindex;
             label1.Text = "Welcome " + LoginForm.userList[loginuserindex].Username;
             listView1.Sorting = SortOrder.Ascending;
+            KeyPreview = true;
+            perInfNameRichTextbox.KeyDown += perInfNameRichTextbox_KeyDown;
+            perInfSurnameRichTextbox.KeyDown += perInfSurnameRichTextbox_KeyDown;
+            perInfEmailRichTextbox.KeyDown += perInfEmailRichTextbox_KeyDown;
+            perInfAddressRichTextbox.KeyDown += perInfAddressRichTextbox_KeyDown;
+            perInfPhoneRichTextbox.KeyDown += perInfPhoneRichTextbox_KeyDown;
+
         }
         private void exitButton_Click(object sender, EventArgs e)
         {
@@ -276,11 +283,11 @@ namespace Login_with_DataBase
             notesPanel.Visible = false;
             Util.LoadPersonalInformation(LoginForm.userList, "PersonalInformation.csv");
             perInfPasswordTextbox.Text = LoginForm.password;
-            perInfNameTextbox.Text = LoginForm.userList[userindex].Personinf.Name;
-            perInfSurnameTextbox.Text = LoginForm.userList[userindex].Personinf.Surname;
-            perInfPhoneTextbox.Text = LoginForm.userList[userindex].Personinf.Phonenumber;
-            perInfEmailTextbox.Text = LoginForm.userList[userindex].Personinf.Email;
-            perInfAddressTextbox.Text = LoginForm.userList[userindex].Personinf.Address;
+            perInfNameRichTextbox.Text = LoginForm.userList[userindex].Personinf.Name;
+            perInfSurnameRichTextbox.Text = LoginForm.userList[userindex].Personinf.Surname;
+            perInfPhoneRichTextbox.Text = LoginForm.userList[userindex].Personinf.Phonenumber;
+            perInfEmailRichTextbox.Text = LoginForm.userList[userindex].Personinf.Email;
+            perInfAddressRichTextbox.Text = LoginForm.userList[userindex].Personinf.Address;
             if (LoginForm.userList[userindex].Personinf.Image != "")
             {
                 var img = Image.FromStream(new MemoryStream(Convert.FromBase64String(LoginForm.userList[userindex].Personinf.Image)));
@@ -301,21 +308,21 @@ namespace Login_with_DataBase
 
         private void savedetailsButton_Click(object sender, EventArgs e)
         {
-            if (perInfNameTextbox.Text != "" && perInfSurnameTextbox.Text != ""
-            && perInfPhoneTextbox.Text != "" && perInfEmailTextbox.Text != ""
-            && perInfAddressTextbox.Text != "")
+            if (perInfNameRichTextbox.Text != "" && perInfSurnameRichTextbox.Text != ""
+            && perInfPhoneRichTextbox.Text != "" && perInfEmailRichTextbox.Text != ""
+            && perInfAddressRichTextbox.Text != "")
             {
-                if (!IsAllDigits(perInfPhoneTextbox.Text))
+                if (!IsAllDigits(perInfPhoneRichTextbox.Text))
                 {
                     MessageBox.Show("Numbers must contain only digits", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if (perInfPhoneTextbox.Text.Length != 10)
+                if (perInfPhoneRichTextbox.Text.Length != 10)
                 {
                     MessageBox.Show("Wrong number size", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if (!IsValidMail(perInfEmailTextbox.Text))
+                if (!IsValidMail(perInfEmailRichTextbox.Text))
                 {
                     MessageBox.Show("Wrong Email Format", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -330,11 +337,11 @@ namespace Login_with_DataBase
                 {
                     LoginForm.userList[userindex].Password = Util.ComputeSha256Hash(perInfPasswordTextbox.Text);
                     LoginForm.password = perInfPasswordTextbox.Text;
-                    LoginForm.userList[userindex].Personinf.Name = perInfNameTextbox.Text;
-                    LoginForm.userList[userindex].Personinf.Surname = perInfSurnameTextbox.Text;
-                    LoginForm.userList[userindex].Personinf.Email = perInfEmailTextbox.Text;
-                    LoginForm.userList[userindex].Personinf.Phonenumber = perInfPhoneTextbox.Text;
-                    LoginForm.userList[userindex].Personinf.Address = perInfAddressTextbox.Text;
+                    LoginForm.userList[userindex].Personinf.Name = perInfNameRichTextbox.Text;
+                    LoginForm.userList[userindex].Personinf.Surname = perInfSurnameRichTextbox.Text;
+                    LoginForm.userList[userindex].Personinf.Email = perInfEmailRichTextbox.Text;
+                    LoginForm.userList[userindex].Personinf.Phonenumber = perInfPhoneRichTextbox.Text;
+                    LoginForm.userList[userindex].Personinf.Address = perInfAddressRichTextbox.Text;
                     if (LoginForm.userList[userindex].Personinf.Image=="")
                         LoginForm.userList[userindex].Personinf.Image = Util.ImageToBase64(ProfilePictureBox);
                     Util.savePersonalInformation(LoginForm.userList, "PersonalInformation.csv");
@@ -367,6 +374,61 @@ namespace Login_with_DataBase
             else
                 perInfPasswordTextbox.UseSystemPasswordChar = true;
                 makePassUnvisibleButton.BringToFront();
+        }
+        private void perInfNameRichTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Z)
+            {
+                perInfNameRichTextbox.Undo();
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Y)
+            {
+                perInfNameRichTextbox.Redo();
+            }
+        }
+        private void perInfSurnameRichTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Z)
+            {
+                perInfSurnameRichTextbox.Undo();
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Y)
+            {
+                perInfSurnameRichTextbox.Redo();
+            }
+        }
+        private void perInfEmailRichTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Z)
+            {
+                perInfEmailRichTextbox.Undo();
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Y)
+            {
+                perInfEmailRichTextbox.Redo();
+            }
+        }
+        private void perInfAddressRichTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Z)
+            {
+                perInfAddressRichTextbox.Undo();
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Y)
+            {
+                perInfAddressRichTextbox.Redo();
+            }
+        }
+        private void perInfPhoneRichTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Z)
+            {
+                perInfPhoneRichTextbox.Undo();
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Y)
+            {
+                perInfPhoneRichTextbox.Redo();
+            }
         }
     }
 }
