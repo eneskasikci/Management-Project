@@ -122,7 +122,7 @@
             this.icon2Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.icon2Button.FlatAppearance.BorderSize = 0;
             this.icon2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.icon2Button.Location = new System.Drawing.Point(323, 163);
+            this.icon2Button.Location = new System.Drawing.Point(323, 164);
             this.icon2Button.Name = "icon2Button";
             this.icon2Button.Size = new System.Drawing.Size(29, 24);
             this.icon2Button.TabIndex = 6;

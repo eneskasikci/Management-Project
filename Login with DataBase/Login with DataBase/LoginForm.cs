@@ -10,6 +10,7 @@ namespace Login_with_DataBase
     {
         public static List<User> userList = new List<User>();
         public int loginuserindex;
+        public static string password;
 
         public LoginForm()
         {
@@ -19,7 +20,6 @@ namespace Login_with_DataBase
         private void loginForm_Load(object sender, EventArgs e)
         {
             Util.LoadCsv(userList, @"user.csv");
-
             if (Properties.Settings.Default.UserName != string.Empty)
             {
                 if (Properties.Settings.Default.Remme == "yes")
@@ -81,7 +81,7 @@ namespace Login_with_DataBase
                 Properties.Settings.Default.Remme = "yes";
                 Properties.Settings.Default.Save();
             }
-
+            
             for(int i=0; i<userList.Count; i++)
             {
                 User user = userList[i];
@@ -90,6 +90,7 @@ namespace Login_with_DataBase
                     messageLabel.ForeColor = Color.Green;
                     messageLabel.Text = "Success";
                     loginuserindex = i;
+                    password = passwordTextBox.Text;
                     loginDelay.Start();
                     return;
                 }
