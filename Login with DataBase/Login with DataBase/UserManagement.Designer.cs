@@ -43,7 +43,9 @@
             this.removeButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.saveListButton = new System.Windows.Forms.Button();
+            this.salaryLabel = new System.Windows.Forms.Label();
             this.userSalaryInfoButton = new System.Windows.Forms.Button();
+            this.salaryTextBox = new System.Windows.Forms.TextBox();
             this.salaryGroupBox = new System.Windows.Forms.GroupBox();
             this.salaryInfPanel = new System.Windows.Forms.Panel();
             this.aileComboBox = new System.Windows.Forms.ComboBox();
@@ -209,6 +211,16 @@
             this.saveListButton.UseVisualStyleBackColor = true;
             this.saveListButton.Click += new System.EventHandler(this.saveListButton_Click);
             // 
+            // salaryLabel
+            // 
+            this.salaryLabel.AutoSize = true;
+            this.salaryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.salaryLabel.Location = new System.Drawing.Point(9, 35);
+            this.salaryLabel.Name = "salaryLabel";
+            this.salaryLabel.Size = new System.Drawing.Size(131, 18);
+            this.salaryLabel.TabIndex = 21;
+            this.salaryLabel.Text = "Minimum Salary = ";
+            // 
             // userSalaryInfoButton
             // 
             this.userSalaryInfoButton.Location = new System.Drawing.Point(21, 85);
@@ -219,9 +231,18 @@
             this.userSalaryInfoButton.UseVisualStyleBackColor = true;
             this.userSalaryInfoButton.Click += new System.EventHandler(this.userSalaryInfoButton_Click);
             // 
+            // salaryTextBox
+            // 
+            this.salaryTextBox.Location = new System.Drawing.Point(146, 33);
+            this.salaryTextBox.Name = "salaryTextBox";
+            this.salaryTextBox.Size = new System.Drawing.Size(100, 20);
+            this.salaryTextBox.TabIndex = 23;
+            // 
             // salaryGroupBox
             // 
+            this.salaryGroupBox.Controls.Add(this.salaryTextBox);
             this.salaryGroupBox.Controls.Add(this.userSalaryInfoButton);
+            this.salaryGroupBox.Controls.Add(this.salaryLabel);
             this.salaryGroupBox.Location = new System.Drawing.Point(776, 96);
             this.salaryGroupBox.Name = "salaryGroupBox";
             this.salaryGroupBox.Size = new System.Drawing.Size(287, 132);
@@ -439,6 +460,7 @@
             this.Text = "User Management";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.salaryGroupBox.ResumeLayout(false);
+            this.salaryGroupBox.PerformLayout();
             this.salaryInfPanel.ResumeLayout(false);
             this.salaryInfPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -463,7 +485,9 @@
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button saveListButton;
+        private System.Windows.Forms.Label salaryLabel;
         private System.Windows.Forms.Button userSalaryInfoButton;
+        private System.Windows.Forms.TextBox salaryTextBox;
         private System.Windows.Forms.GroupBox salaryGroupBox;
         private System.Windows.Forms.Panel salaryInfPanel;
         private System.Windows.Forms.ComboBox aileComboBox;
