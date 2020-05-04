@@ -48,6 +48,11 @@ namespace Login_with_DataBase
                 usernameTextBox.Text = listView1.SelectedItems[0].SubItems[0].Text;
                 passwordTextBox.Text = listView1.SelectedItems[0].SubItems[1].Text;
 
+                double  salary = LoginForm.userList[listView1.SelectedItems[0].Index].Personinf.MinimumSalary();
+                if (LoginForm.userList[listView1.SelectedItems[0].Index].Usertype == "part-time-user")
+                    salary /= 2;
+                salaryTextBox.Text = salary.ToString();
+
                 string type = listView1.SelectedItems[0].SubItems[2].Text;
 
                 if (type == "admin")
@@ -143,6 +148,10 @@ namespace Login_with_DataBase
             LoginForm.userList[listView1.SelectedItems[0].Index].Personinf.Gorev = gorevComboBox.SelectedIndex;
             LoginForm.userList[listView1.SelectedItems[0].Index].Personinf.Aile = aileComboBox.SelectedIndex;
             MessageBox.Show("Data saved succesfully");
+            double salary = LoginForm.userList[listView1.SelectedItems[0].Index].Personinf.MinimumSalary();
+            if (LoginForm.userList[listView1.SelectedItems[0].Index].Usertype == "part-time-user")
+                salary /= 2;
+            salaryTextBox.Text = salary.ToString();
         }
     }
 }
