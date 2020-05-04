@@ -32,7 +32,5 @@ namespace Login_with_DataBase
         {
             return this.username.Equals(username) && this.password.Equals(password);
         }
-
-
     }
 }
