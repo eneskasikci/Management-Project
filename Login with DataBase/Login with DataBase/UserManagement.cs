@@ -47,6 +47,7 @@ namespace Login_with_DataBase
             {
                 usernameTextBox.Text = listView1.SelectedItems[0].SubItems[0].Text;
                 passwordTextBox.Text = listView1.SelectedItems[0].SubItems[1].Text;
+
                 string type = listView1.SelectedItems[0].SubItems[2].Text;
 
                 if (type == "admin")
@@ -57,7 +58,7 @@ namespace Login_with_DataBase
 
                 else
                     usertypeComboBox.SelectedIndex = 2;
-            }       
+            }
         }
 
         private void updateButton_Click(object sender, EventArgs e)

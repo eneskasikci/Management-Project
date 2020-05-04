@@ -72,6 +72,11 @@
             this.listNotesButton = new System.Windows.Forms.Button();
             this.noteBox = new System.Windows.Forms.ListBox();
             this.PInfPanel = new System.Windows.Forms.Panel();
+            this.perInfAddressRichTextbox = new System.Windows.Forms.RichTextBox();
+            this.perInfPhoneRichTextbox = new System.Windows.Forms.RichTextBox();
+            this.perInfEmailRichTextbox = new System.Windows.Forms.RichTextBox();
+            this.perInfSurnameRichTextbox = new System.Windows.Forms.RichTextBox();
+            this.perInfNameRichTextbox = new System.Windows.Forms.RichTextBox();
             this.makePassUnvisibleButton = new System.Windows.Forms.Button();
             this.makePassVisibleButton = new System.Windows.Forms.Button();
             this.selectImageButton = new System.Windows.Forms.Button();
@@ -85,16 +90,27 @@
             this.savedetailsButton = new System.Windows.Forms.Button();
             this.perInfPasswordTextbox = new System.Windows.Forms.TextBox();
             this.PInfButton = new System.Windows.Forms.Button();
-            this.perInfNameRichTextbox = new System.Windows.Forms.RichTextBox();
-            this.perInfSurnameRichTextbox = new System.Windows.Forms.RichTextBox();
-            this.perInfEmailRichTextbox = new System.Windows.Forms.RichTextBox();
-            this.perInfPhoneRichTextbox = new System.Windows.Forms.RichTextBox();
-            this.perInfAddressRichTextbox = new System.Windows.Forms.RichTextBox();
+            this.salaryInfButton = new System.Windows.Forms.Button();
+            this.deneyimCumboBox = new System.Windows.Forms.ComboBox();
+            this.deneyimLabel = new System.Windows.Forms.Label();
+            this.salaryInfPanel = new System.Windows.Forms.Panel();
+            this.saveSalaryInfButton = new System.Windows.Forms.Button();
+            this.ilLabel = new System.Windows.Forms.Label();
+            this.ilComboBox = new System.Windows.Forms.ComboBox();
+            this.dereceLabel = new System.Windows.Forms.Label();
+            this.dereceCumboBox = new System.Windows.Forms.ComboBox();
+            this.dilLabel = new System.Windows.Forms.Label();
+            this.dilComboBox = new System.Windows.Forms.ComboBox();
+            this.yoneticilikLabel = new System.Windows.Forms.Label();
+            this.gorevComboBox = new System.Windows.Forms.ComboBox();
+            this.aileLabel = new System.Windows.Forms.Label();
+            this.aileComboBox = new System.Windows.Forms.ComboBox();
             this.phonebookPanel.SuspendLayout();
             this.notesPanel.SuspendLayout();
             this.yourNotePanel.SuspendLayout();
             this.PInfPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).BeginInit();
+            this.salaryInfPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // exitButton
@@ -404,7 +420,7 @@
             // notesButton
             // 
             this.notesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.notesButton.Location = new System.Drawing.Point(36, 157);
+            this.notesButton.Location = new System.Drawing.Point(36, 158);
             this.notesButton.Name = "notesButton";
             this.notesButton.Size = new System.Drawing.Size(132, 40);
             this.notesButton.TabIndex = 14;
@@ -540,6 +556,46 @@
             this.PInfPanel.TabIndex = 18;
             this.PInfPanel.Visible = false;
             // 
+            // perInfAddressRichTextbox
+            // 
+            this.perInfAddressRichTextbox.Location = new System.Drawing.Point(77, 303);
+            this.perInfAddressRichTextbox.Name = "perInfAddressRichTextbox";
+            this.perInfAddressRichTextbox.Size = new System.Drawing.Size(181, 74);
+            this.perInfAddressRichTextbox.TabIndex = 24;
+            this.perInfAddressRichTextbox.Text = "";
+            // 
+            // perInfPhoneRichTextbox
+            // 
+            this.perInfPhoneRichTextbox.Location = new System.Drawing.Point(77, 264);
+            this.perInfPhoneRichTextbox.Name = "perInfPhoneRichTextbox";
+            this.perInfPhoneRichTextbox.Size = new System.Drawing.Size(119, 20);
+            this.perInfPhoneRichTextbox.TabIndex = 23;
+            this.perInfPhoneRichTextbox.Text = "";
+            // 
+            // perInfEmailRichTextbox
+            // 
+            this.perInfEmailRichTextbox.Location = new System.Drawing.Point(77, 225);
+            this.perInfEmailRichTextbox.Name = "perInfEmailRichTextbox";
+            this.perInfEmailRichTextbox.Size = new System.Drawing.Size(119, 20);
+            this.perInfEmailRichTextbox.TabIndex = 22;
+            this.perInfEmailRichTextbox.Text = "";
+            // 
+            // perInfSurnameRichTextbox
+            // 
+            this.perInfSurnameRichTextbox.Location = new System.Drawing.Point(77, 185);
+            this.perInfSurnameRichTextbox.Name = "perInfSurnameRichTextbox";
+            this.perInfSurnameRichTextbox.Size = new System.Drawing.Size(119, 20);
+            this.perInfSurnameRichTextbox.TabIndex = 21;
+            this.perInfSurnameRichTextbox.Text = "";
+            // 
+            // perInfNameRichTextbox
+            // 
+            this.perInfNameRichTextbox.Location = new System.Drawing.Point(77, 147);
+            this.perInfNameRichTextbox.Name = "perInfNameRichTextbox";
+            this.perInfNameRichTextbox.Size = new System.Drawing.Size(119, 20);
+            this.perInfNameRichTextbox.TabIndex = 20;
+            this.perInfNameRichTextbox.Text = "";
+            // 
             // makePassUnvisibleButton
             // 
             this.makePassUnvisibleButton.AutoSize = true;
@@ -672,45 +728,199 @@
             this.PInfButton.UseVisualStyleBackColor = true;
             this.PInfButton.Click += new System.EventHandler(this.PInfButton_Click);
             // 
-            // perInfNameRichTextbox
+            // salaryInfButton
             // 
-            this.perInfNameRichTextbox.Location = new System.Drawing.Point(77, 147);
-            this.perInfNameRichTextbox.Name = "perInfNameRichTextbox";
-            this.perInfNameRichTextbox.Size = new System.Drawing.Size(119, 20);
-            this.perInfNameRichTextbox.TabIndex = 20;
-            this.perInfNameRichTextbox.Text = "";
+            this.salaryInfButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salaryInfButton.Location = new System.Drawing.Point(36, 268);
+            this.salaryInfButton.Name = "salaryInfButton";
+            this.salaryInfButton.Size = new System.Drawing.Size(132, 40);
+            this.salaryInfButton.TabIndex = 19;
+            this.salaryInfButton.Text = "Salary Information";
+            this.salaryInfButton.UseVisualStyleBackColor = true;
+            this.salaryInfButton.Click += new System.EventHandler(this.salaryInfButton_Click);
             // 
-            // perInfSurnameRichTextbox
+            // deneyimCumboBox
             // 
-            this.perInfSurnameRichTextbox.Location = new System.Drawing.Point(77, 185);
-            this.perInfSurnameRichTextbox.Name = "perInfSurnameRichTextbox";
-            this.perInfSurnameRichTextbox.Size = new System.Drawing.Size(119, 20);
-            this.perInfSurnameRichTextbox.TabIndex = 21;
-            this.perInfSurnameRichTextbox.Text = "";
+            this.deneyimCumboBox.FormattingEnabled = true;
+            this.deneyimCumboBox.Items.AddRange(new object[] {
+            "2-4",
+            "5-9",
+            "10-14",
+            "15-20",
+            "20 years and upper"});
+            this.deneyimCumboBox.Location = new System.Drawing.Point(37, 67);
+            this.deneyimCumboBox.Name = "deneyimCumboBox";
+            this.deneyimCumboBox.Size = new System.Drawing.Size(221, 21);
+            this.deneyimCumboBox.TabIndex = 8;
             // 
-            // perInfEmailRichTextbox
+            // deneyimLabel
             // 
-            this.perInfEmailRichTextbox.Location = new System.Drawing.Point(77, 225);
-            this.perInfEmailRichTextbox.Name = "perInfEmailRichTextbox";
-            this.perInfEmailRichTextbox.Size = new System.Drawing.Size(119, 20);
-            this.perInfEmailRichTextbox.TabIndex = 22;
-            this.perInfEmailRichTextbox.Text = "";
+            this.deneyimLabel.AutoSize = true;
+            this.deneyimLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.deneyimLabel.Location = new System.Drawing.Point(34, 43);
+            this.deneyimLabel.Name = "deneyimLabel";
+            this.deneyimLabel.Size = new System.Drawing.Size(103, 16);
+            this.deneyimLabel.TabIndex = 9;
+            this.deneyimLabel.Text = "Deneyim Suresi";
             // 
-            // perInfPhoneRichTextbox
+            // salaryInfPanel
             // 
-            this.perInfPhoneRichTextbox.Location = new System.Drawing.Point(77, 264);
-            this.perInfPhoneRichTextbox.Name = "perInfPhoneRichTextbox";
-            this.perInfPhoneRichTextbox.Size = new System.Drawing.Size(119, 20);
-            this.perInfPhoneRichTextbox.TabIndex = 23;
-            this.perInfPhoneRichTextbox.Text = "";
+            this.salaryInfPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.salaryInfPanel.Controls.Add(this.aileComboBox);
+            this.salaryInfPanel.Controls.Add(this.aileLabel);
+            this.salaryInfPanel.Controls.Add(this.gorevComboBox);
+            this.salaryInfPanel.Controls.Add(this.yoneticilikLabel);
+            this.salaryInfPanel.Controls.Add(this.dilComboBox);
+            this.salaryInfPanel.Controls.Add(this.dilLabel);
+            this.salaryInfPanel.Controls.Add(this.dereceCumboBox);
+            this.salaryInfPanel.Controls.Add(this.dereceLabel);
+            this.salaryInfPanel.Controls.Add(this.ilComboBox);
+            this.salaryInfPanel.Controls.Add(this.ilLabel);
+            this.salaryInfPanel.Controls.Add(this.deneyimLabel);
+            this.salaryInfPanel.Controls.Add(this.deneyimCumboBox);
+            this.salaryInfPanel.Controls.Add(this.saveSalaryInfButton);
+            this.salaryInfPanel.Location = new System.Drawing.Point(227, 103);
+            this.salaryInfPanel.Name = "salaryInfPanel";
+            this.salaryInfPanel.Size = new System.Drawing.Size(823, 489);
+            this.salaryInfPanel.TabIndex = 20;
+            this.salaryInfPanel.Visible = false;
             // 
-            // perInfAddressRichTextbox
+            // saveSalaryInfButton
             // 
-            this.perInfAddressRichTextbox.Location = new System.Drawing.Point(77, 303);
-            this.perInfAddressRichTextbox.Name = "perInfAddressRichTextbox";
-            this.perInfAddressRichTextbox.Size = new System.Drawing.Size(181, 74);
-            this.perInfAddressRichTextbox.TabIndex = 24;
-            this.perInfAddressRichTextbox.Text = "";
+            this.saveSalaryInfButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveSalaryInfButton.Location = new System.Drawing.Point(674, 419);
+            this.saveSalaryInfButton.Name = "saveSalaryInfButton";
+            this.saveSalaryInfButton.Size = new System.Drawing.Size(116, 40);
+            this.saveSalaryInfButton.TabIndex = 21;
+            this.saveSalaryInfButton.Text = "Save";
+            this.saveSalaryInfButton.UseVisualStyleBackColor = true;
+            this.saveSalaryInfButton.Click += new System.EventHandler(this.saveSalaryInfButton_Click);
+            // 
+            // ilLabel
+            // 
+            this.ilLabel.AutoSize = true;
+            this.ilLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.ilLabel.Location = new System.Drawing.Point(34, 114);
+            this.ilLabel.Name = "ilLabel";
+            this.ilLabel.Size = new System.Drawing.Size(116, 16);
+            this.ilLabel.TabIndex = 22;
+            this.ilLabel.Text = "Yaşanılan İl Grubu";
+            // 
+            // ilComboBox
+            // 
+            this.ilComboBox.FormattingEnabled = true;
+            this.ilComboBox.Items.AddRange(new object[] {
+            "TR10: İstanbul",
+            "TR51: Ankara",
+            "TR31: İzmir",
+            "TR42: Kocaeli, Sakarya, Düzce, Bolu, Yalova",
+            "TR21: Edirne, Kırklareli, Tekirdağ",
+            "TR90: Trabzon, Ordu, Giresun, Rize, Artvin, Gümüşhane",
+            "TR41: Bursa, Eskişehir, Bilecik",
+            "TR32: Aydın, Denizli, Muğla",
+            "TR62: Adana, Mersin",
+            "TR22: Balıkesir, Çanakkale",
+            "TR61: Antalya, Isparta, Burdur"});
+            this.ilComboBox.Location = new System.Drawing.Point(37, 137);
+            this.ilComboBox.Name = "ilComboBox";
+            this.ilComboBox.Size = new System.Drawing.Size(221, 21);
+            this.ilComboBox.TabIndex = 23;
+            // 
+            // dereceLabel
+            // 
+            this.dereceLabel.AutoSize = true;
+            this.dereceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.dereceLabel.Location = new System.Drawing.Point(34, 185);
+            this.dereceLabel.Name = "dereceLabel";
+            this.dereceLabel.Size = new System.Drawing.Size(157, 16);
+            this.dereceLabel.TabIndex = 24;
+            this.dereceLabel.Text = "Alınan Akademik Derece";
+            // 
+            // dereceCumboBox
+            // 
+            this.dereceCumboBox.FormattingEnabled = true;
+            this.dereceCumboBox.Items.AddRange(new object[] {
+            "Meslek alanı ile ilgili yüksek lisans",
+            "Meslek alanı ile ilgili doktora",
+            "Meslek alanı ile ilgili doçentlik",
+            "Meslek alanı ile ilgili olmayan yüksek lisans",
+            "Meslek alanı ile ilgili olmayan doktora/doçentlik"});
+            this.dereceCumboBox.Location = new System.Drawing.Point(37, 207);
+            this.dereceCumboBox.Name = "dereceCumboBox";
+            this.dereceCumboBox.Size = new System.Drawing.Size(221, 21);
+            this.dereceCumboBox.TabIndex = 25;
+            // 
+            // dilLabel
+            // 
+            this.dilLabel.AutoSize = true;
+            this.dilLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.dilLabel.Location = new System.Drawing.Point(34, 256);
+            this.dilLabel.Name = "dilLabel";
+            this.dilLabel.Size = new System.Drawing.Size(188, 16);
+            this.dilLabel.TabIndex = 26;
+            this.dilLabel.Text = "Belgelenen Yabancı Dil Bilgisi";
+            // 
+            // dilComboBox
+            // 
+            this.dilComboBox.FormattingEnabled = true;
+            this.dilComboBox.Items.AddRange(new object[] {
+            "Belgelendirilmiş İngilizce bilgisi",
+            "İngilizce eğitim veren okul mezuniyeti",
+            "Belgelendirilmiş diğer yabancı dil bilgisi (her dil için)"});
+            this.dilComboBox.Location = new System.Drawing.Point(37, 277);
+            this.dilComboBox.Name = "dilComboBox";
+            this.dilComboBox.Size = new System.Drawing.Size(221, 21);
+            this.dilComboBox.TabIndex = 27;
+            // 
+            // yoneticilikLabel
+            // 
+            this.yoneticilikLabel.AutoSize = true;
+            this.yoneticilikLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.yoneticilikLabel.Location = new System.Drawing.Point(34, 327);
+            this.yoneticilikLabel.Name = "yoneticilikLabel";
+            this.yoneticilikLabel.Size = new System.Drawing.Size(112, 16);
+            this.yoneticilikLabel.TabIndex = 28;
+            this.yoneticilikLabel.Text = "Yöneticilik Görevi";
+            // 
+            // gorevComboBox
+            // 
+            this.gorevComboBox.FormattingEnabled = true;
+            this.gorevComboBox.Items.AddRange(new object[] {
+            "Takım Lideri/Grup Yöneticisi/Teknik Yönetici/Yazılım Mimarı",
+            "Proje Yöneticisi",
+            "Direktör/Projeler Yöneticisi",
+            "CTO/Genel Müdür",
+            "Bilgi İşlem Sorumlusu/Müdürü (Bilgi İşlem biriminde en çok 5 bilişim personeli va" +
+                "rsa)",
+            "Bilgi İşlem Sorumlusu/Müdürü (Bilgi İşlem biriminde 5\'ten çok bilişim personeli v" +
+                "arsa)"});
+            this.gorevComboBox.Location = new System.Drawing.Point(37, 347);
+            this.gorevComboBox.Name = "gorevComboBox";
+            this.gorevComboBox.Size = new System.Drawing.Size(221, 21);
+            this.gorevComboBox.TabIndex = 29;
+            // 
+            // aileLabel
+            // 
+            this.aileLabel.AutoSize = true;
+            this.aileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.aileLabel.Location = new System.Drawing.Point(34, 398);
+            this.aileLabel.Name = "aileLabel";
+            this.aileLabel.Size = new System.Drawing.Size(80, 16);
+            this.aileLabel.TabIndex = 30;
+            this.aileLabel.Text = "Aile Durumu";
+            // 
+            // aileComboBox
+            // 
+            this.aileComboBox.FormattingEnabled = true;
+            this.aileComboBox.Items.AddRange(new object[] {
+            "Evli ve eşi çalışmıyor",
+            "0-6 yaş arası çocuk",
+            "7-18 yaş arası çocuk",
+            "18 yaş üstü çocuk (Üniversite lisans/ön lisans öğrencisi olmak koşuluyla)"});
+            this.aileComboBox.Location = new System.Drawing.Point(37, 417);
+            this.aileComboBox.Name = "aileComboBox";
+            this.aileComboBox.Size = new System.Drawing.Size(221, 21);
+            this.aileComboBox.TabIndex = 31;
             // 
             // UserForm
             // 
@@ -718,7 +928,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1100, 700);
-            this.Controls.Add(this.PInfPanel);
+            this.Controls.Add(this.salaryInfButton);
             this.Controls.Add(this.PInfButton);
             this.Controls.Add(this.notesButton);
             this.Controls.Add(this.phonebookButton);
@@ -726,6 +936,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.logOutButton);
             this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.salaryInfPanel);
+            this.Controls.Add(this.PInfPanel);
             this.Controls.Add(this.notesPanel);
             this.Controls.Add(this.phonebookPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -741,6 +953,8 @@
             this.PInfPanel.ResumeLayout(false);
             this.PInfPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).EndInit();
+            this.salaryInfPanel.ResumeLayout(false);
+            this.salaryInfPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -808,5 +1022,20 @@
         private System.Windows.Forms.RichTextBox perInfEmailRichTextbox;
         private System.Windows.Forms.RichTextBox perInfPhoneRichTextbox;
         private System.Windows.Forms.RichTextBox perInfAddressRichTextbox;
+        private System.Windows.Forms.Button salaryInfButton;
+        private System.Windows.Forms.Label deneyimLabel;
+        private System.Windows.Forms.ComboBox deneyimCumboBox;
+        private System.Windows.Forms.Panel salaryInfPanel;
+        private System.Windows.Forms.Button saveSalaryInfButton;
+        private System.Windows.Forms.Label ilLabel;
+        private System.Windows.Forms.ComboBox dilComboBox;
+        private System.Windows.Forms.Label dilLabel;
+        private System.Windows.Forms.ComboBox dereceCumboBox;
+        private System.Windows.Forms.Label dereceLabel;
+        private System.Windows.Forms.ComboBox ilComboBox;
+        private System.Windows.Forms.ComboBox aileComboBox;
+        private System.Windows.Forms.Label aileLabel;
+        private System.Windows.Forms.ComboBox gorevComboBox;
+        private System.Windows.Forms.Label yoneticilikLabel;
     }
 }

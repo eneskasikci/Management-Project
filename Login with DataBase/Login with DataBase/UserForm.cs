@@ -45,6 +45,7 @@ namespace Login_with_DataBase
             notesButton.Visible = false;
             PInfPanel.Visible = false;
             PInfButton.Visible = false;
+            salaryInfPanel.Visible = false;
             timer1.Start();
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -66,6 +67,7 @@ namespace Login_with_DataBase
         {
             notesPanel.Visible = false;
             PInfPanel.Visible = false;
+            salaryInfPanel.Visible = false;
             phonebookPanel.Visible = true;
         }
         private void createButton_Click(object sender, EventArgs e)
@@ -166,6 +168,7 @@ namespace Login_with_DataBase
         {
             phonebookPanel.Visible = false;
             PInfPanel.Visible = false;
+            salaryInfPanel.Visible = false;
             notesPanel.Visible = true;       
         }
         private void createNoteButton_Click(object sender, EventArgs e)
@@ -281,6 +284,7 @@ namespace Login_with_DataBase
         {
             phonebookPanel.Visible = false;
             notesPanel.Visible = false;
+            salaryInfPanel.Visible = false;
             Util.LoadPersonalInformation(LoginForm.userList, "PersonalInformation.csv");
             perInfPasswordTextbox.Text = LoginForm.password;
             perInfNameRichTextbox.Text = LoginForm.userList[userindex].Personinf.Name;
@@ -429,6 +433,64 @@ namespace Login_with_DataBase
             {
                 perInfPhoneRichTextbox.Redo();
             }
+        }
+
+        private void salaryInfButton_Click(object sender, EventArgs e)
+        {
+            phonebookPanel.Visible = false;
+            notesPanel.Visible = false;
+            PInfPanel.Visible = false;
+
+            deneyimCumboBox.SelectedIndex = LoginForm.userList[userindex].Personinf.Deneyim;
+            ilComboBox.SelectedIndex = LoginForm.userList[userindex].Personinf.Il;
+            dereceCumboBox.SelectedIndex = LoginForm.userList[userindex].Personinf.Derece;
+            dilComboBox.SelectedIndex = LoginForm.userList[userindex].Personinf.Dil;
+            gorevComboBox.SelectedIndex = LoginForm.userList[userindex].Personinf.Gorev;
+            aileComboBox.SelectedIndex = LoginForm.userList[userindex].Personinf.Aile;
+
+            salaryInfPanel.Visible = true;
+        }
+
+        private void saveSalaryInfButton_Click(object sender, EventArgs e)
+        {
+            if (deneyimCumboBox.SelectedIndex<0)
+            {
+                MessageBox.Show("Please select Deneyim Suresi", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (ilComboBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select Il grubu", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (dereceCumboBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select Akademik Derece", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (dilComboBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select Yabanci Dil Belgesi", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (gorevComboBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select Yonetici Gorevi", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (aileComboBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select Aile Durumu", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            LoginForm.userList[userindex].Personinf.Deneyim = deneyimCumboBox.SelectedIndex;
+            LoginForm.userList[userindex].Personinf.Il = ilComboBox.SelectedIndex;
+            LoginForm.userList[userindex].Personinf.Derece = dereceCumboBox.SelectedIndex;
+            LoginForm.userList[userindex].Personinf.Dil = dilComboBox.SelectedIndex;
+            LoginForm.userList[userindex].Personinf.Gorev = gorevComboBox.SelectedIndex;
+            LoginForm.userList[userindex].Personinf.Aile = aileComboBox.SelectedIndex;
+            MessageBox.Show("Data saved succesfully");
         }
     }
 }
