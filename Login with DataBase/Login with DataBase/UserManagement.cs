@@ -34,11 +34,20 @@ namespace Login_with_DataBase
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                listView1.Items.Remove(listView1.SelectedItems[0]);
-            }   
-
-            usernameTextBox.Text = "";
-            passwordTextBox.Text = "";
+                LoginForm.userList.RemoveAt(listView1.SelectedItems[0].Index);
+                listView1.Items.Clear();
+                foreach (User user in LoginForm.userList)
+                {
+                    ListViewItem item = new ListViewItem(user.Username, 0);
+                    item.SubItems.Add(user.Password);
+                    item.SubItems.Add(user.Usertype);
+                    listView1.Items.Add(item);
+                }
+                usernameTextBox.Text = "";
+                passwordTextBox.Text = "";
+            }
+            else
+                MessageBox.Show("Please select from List");
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,21 +89,32 @@ namespace Login_with_DataBase
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                listView1.SelectedItems[0].SubItems[0].Text = usernameTextBox.Text;
-                listView1.SelectedItems[0].SubItems[1].Text = passwordTextBox.Text;
-                listView1.SelectedItems[0].SubItems[2].Text = usertypeComboBox.SelectedItem.ToString();
+                int count=0;
+                foreach (User user in LoginForm.userList)
+                {
+                    if (user.Username == usernameTextBox.Text)
+                        count++;
+                }
+                if (count<=1)
+                {
+                    LoginForm.userList[listView1.SelectedItems[0].Index].Username = usernameTextBox.Text;
+                    if (passwordTextBox.Text != LoginForm.userList[listView1.SelectedItems[0].Index].Password)
+                        LoginForm.userList[listView1.SelectedItems[0].Index].Password = Util.ComputeSha256Hash(passwordTextBox.Text);
+                    LoginForm.userList[listView1.SelectedItems[0].Index].Usertype = usertypeComboBox.SelectedItem.ToString();
+                    listView1.Items.Clear();
+                    foreach (User user in LoginForm.userList)
+                    {
+                        ListViewItem item = new ListViewItem(user.Username, 0);
+                        item.SubItems.Add(user.Password);
+                        item.SubItems.Add(user.Usertype);
+                        listView1.Items.Add(item);
+                    }
+                }
+                else
+                    MessageBox.Show("Such user already exists");
             }
-        }
-
-        private void saveListButton_Click(object sender, EventArgs e)
-        {
-            LoginForm.userList.Clear();
-            foreach (ListViewItem item in listView1.Items)
-            {
-                User user = new User(item.SubItems[0].Text, item.SubItems[1].Text, item.SubItems[2].Text);
-                LoginForm.userList.Add(user);
-            }
-            MessageBox.Show("List saved successfully");
+            else
+                MessageBox.Show("Please select from List");
         }
 
         private void userSalaryInfoButton_Click(object sender, EventArgs e)
