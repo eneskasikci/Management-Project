@@ -42,7 +42,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.removeButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
-            this.saveListButton = new System.Windows.Forms.Button();
             this.salaryLabel = new System.Windows.Forms.Label();
             this.userSalaryInfoButton = new System.Windows.Forms.Button();
             this.salaryTextBox = new System.Windows.Forms.TextBox();
@@ -197,19 +196,6 @@
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
-            // 
-            // saveListButton
-            // 
-            this.saveListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveListButton.AutoSize = true;
-            this.saveListButton.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.saveListButton.Location = new System.Drawing.Point(989, 647);
-            this.saveListButton.Name = "saveListButton";
-            this.saveListButton.Size = new System.Drawing.Size(90, 30);
-            this.saveListButton.TabIndex = 20;
-            this.saveListButton.Text = "Save List";
-            this.saveListButton.UseVisualStyleBackColor = true;
-            this.saveListButton.Click += new System.EventHandler(this.saveListButton_Click);
             // 
             // salaryLabel
             // 
@@ -441,7 +427,6 @@
             this.ClientSize = new System.Drawing.Size(1100, 700);
             this.Controls.Add(this.salaryInfPanel);
             this.Controls.Add(this.salaryGroupBox);
-            this.Controls.Add(this.saveListButton);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.label4);
@@ -484,7 +469,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Button updateButton;
-        private System.Windows.Forms.Button saveListButton;
         private System.Windows.Forms.Label salaryLabel;
         private System.Windows.Forms.Button userSalaryInfoButton;
         private System.Windows.Forms.TextBox salaryTextBox;
