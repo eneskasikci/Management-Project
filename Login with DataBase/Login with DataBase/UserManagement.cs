@@ -27,6 +27,10 @@ namespace Login_with_DataBase
 
         private void exitButton_Click(object sender, EventArgs e)
         {
+            Util.SavePhonebookCsv(LoginForm.userList, @"phonebook.csv");
+            Util.SaveNotesCsv(LoginForm.userList, @"notes.csv");
+            Util.savePersonalInformation(LoginForm.userList, @"PersonalInformation.csv");
+            Util.SaveReminder(LoginForm.userList, @"reminder.csv");
             this.Close();
         }
 
