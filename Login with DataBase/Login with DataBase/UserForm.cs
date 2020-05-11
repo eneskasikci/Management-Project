@@ -20,8 +20,7 @@ namespace Login_with_DataBase
         private Queue<Reminder> ReminderQueue = new Queue<Reminder>();
 
         public UserForm(int loginuserindex)
-        {
-            
+        {            
             InitializeComponent();
             userindex = loginuserindex;
             label1.Text = "Welcome " + LoginForm.userList[loginuserindex].Username;
@@ -33,6 +32,7 @@ namespace Login_with_DataBase
             perInfAddressRichTextbox.KeyDown += perInfAddressRichTextbox_KeyDown;
             perInfPhoneRichTextbox.KeyDown += perInfPhoneRichTextbox_KeyDown;
         }
+
         private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -646,10 +646,10 @@ namespace Login_with_DataBase
         private void currenttimeTimer_Tick(object sender, EventArgs e)
         {
             timeLabel.Text = DateTime.Now.ToString("HH:mm:ss");
-
             if (ReminderQueue.Count != 0)
             {
                 Reminder rem = ReminderQueue.Peek();
+                ReminderAlert RA = new ReminderAlert(rem);
                 if (DateTime.Now.Year == rem.Datetime.Year && DateTime.Now.Month == rem.Datetime.Month &&
                     DateTime.Now.Day == rem.Datetime.Day && DateTime.Now.Hour == rem.Datetime.Hour &&
                     DateTime.Now.Minute == rem.Datetime.Minute && DateTime.Now.Second == rem.Datetime.Second)
@@ -657,7 +657,12 @@ namespace Login_with_DataBase
                     if (ReminderQueue.Count != 0)
                     {
                         ReminderQueue.Dequeue();
-                        MessageBox.Show("Description: " + rem.Description, "Your " + rem.Remindertype + " at " + rem.Datetime);
+                        RA.Show();
+                        for (int i = 0; i < 700; i++)
+                        {
+                            RA.Left += 2;
+                            RA.Left -= 2;
+                        }
                     }
                 }
                 if (DateTime.Now > rem.Datetime)

@@ -55,7 +55,9 @@ namespace Login_with_DataBase
         private void exitButton_Click(object sender, EventArgs e)
         {
             Util.SaveUserCsv(userList, @"user.csv");
-            this.Close();
+            DialogResult result = MessageBox.Show("Do you realy want to exit?", "Exit", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)            
+                this.Close();            
         }
 
         private void signupButton_Click(object sender, EventArgs e)
