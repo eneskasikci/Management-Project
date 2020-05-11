@@ -17,7 +17,7 @@ namespace Login_with_DataBase
     public partial class UserForm : Form
     {
         public int userindex;
-
+    
         public UserForm(int loginuserindex)
         {
             
@@ -516,6 +516,46 @@ namespace Login_with_DataBase
                 e.Cancel = true;
             }
         }
+        private void addReminderBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (summaryReminderBox.Text == "" && descriptionReminderBox.Text == "")
+                {
+                    MessageBox.Show("Fields can't be empty.");
+                    return;
+                }
+                if (Date.Value <= DateTime.Now && Time.Value <= DateTime.Now)
+                {
+                    MessageBox.Show("Alarm time cannot be earlier.", "Error");
+                    return;
+                }
+                if (reminderComboBox.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Please select Reminder Type", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                else
+                {
+                    ListViewItem item = new ListViewItem(Date.Text, 0);
+                    item.SubItems.Add(Time.Text);
+                    item.SubItems.Add(descriptionReminderBox.Text);
+                    item.SubItems.Add(summaryReminderBox.Text);
+                    item.SubItems.Add(reminderComboBox.SelectedItem.ToString());
+                    reminderList.Items.Add(item);
+                    DateTime date = new DateTime(Date.Value.Year, Date.Value.Month, Date.Value.Day, 
+                        Time.Value.Hour, Time.Value.Minute, Time.Value.Second);
+                    LoginForm.userList[userindex].Remind.Add(new Reminder(date, summaryReminderBox.Text, 
+                        descriptionReminderBox.Text, reminderComboBox.SelectedItem.ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void selectedTimePickerReminder_MouseDown(object sender, MouseEventArgs e)
         {
             Time.CustomFormat = "HH:mm:ss";
@@ -534,6 +574,59 @@ namespace Login_with_DataBase
                     reminderComboBox.SelectedIndex = 0;
                 else
                     reminderComboBox.SelectedIndex = 1;
+            }
+        }
+
+        private void deleteReminderBtn_Click(object sender, EventArgs e)
+        {
+            if (reminderList.SelectedItems.Count > 0)
+            {
+                LoginForm.userList[userindex].Remind.RemoveAt(reminderList.SelectedItems[0].Index);
+                reminderList.Items.Remove(reminderList.SelectedItems[0]);
+            }
+        }
+
+        private void updateReminderBtn_Click(object sender, EventArgs e)
+        {
+            DateTime date = new DateTime(Date.Value.Year, Date.Value.Month, Date.Value.Day, Time.Value.Hour, Time.Value.Minute, Time.Value.Second);
+            LoginForm.userList[userindex].Remind[reminderList.SelectedItems[0].Index].Datetime = date;
+            LoginForm.userList[userindex].Remind[reminderList.SelectedItems[0].Index].Description = descriptionReminderBox.Text;
+            LoginForm.userList[userindex].Remind[reminderList.SelectedItems[0].Index].Summary = summaryReminderBox.Text;
+            if (reminderComboBox.SelectedIndex ==0)
+                LoginForm.userList[userindex].Remind[reminderList.SelectedItems[0].Index].Remindertype = "meeting";
+            else
+                LoginForm.userList[userindex].Remind[reminderList.SelectedItems[0].Index].Remindertype = "task";
+            reminderList.Items.Clear();
+            for (int i = 0; i < LoginForm.userList[userindex].Remind.Count; i++)
+            {
+                ListViewItem item = new ListViewItem(LoginForm.userList[userindex].Remind[i].Datetime.ToString("yyyy/MM//dd"), 0);
+                item.SubItems.Add(LoginForm.userList[userindex].Remind[i].Datetime.ToString("HH:mm:ss"));
+                item.SubItems.Add(LoginForm.userList[userindex].Remind[i].Description);
+                item.SubItems.Add(LoginForm.userList[userindex].Remind[i].Summary);
+                item.SubItems.Add(LoginForm.userList[userindex].Remind[i].Remindertype);
+                reminderList.Items.Add(item);
+            }
+        }
+
+        private void saveRemainderButton_Click(object sender, EventArgs e)
+        {
+            Util.SaveReminder(LoginForm.userList, "reminder.csv");
+            MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void listReminderBtn_Click(object sender, EventArgs e)
+        {
+            reminderList.Items.Clear();
+            Util.LoadReminder(LoginForm.userList, "reminder.csv");
+
+            for (int i = 0; i < LoginForm.userList[userindex].Remind.Count; i++)
+            {
+                ListViewItem item = new ListViewItem(LoginForm.userList[userindex].Remind[i].Datetime.ToString("yyyy/MM/dd"), 0);
+                item.SubItems.Add(LoginForm.userList[userindex].Remind[i].Datetime.ToString("HH:mm:ss"));
+                item.SubItems.Add(LoginForm.userList[userindex].Remind[i].Description);
+                item.SubItems.Add(LoginForm.userList[userindex].Remind[i].Summary);
+                item.SubItems.Add(LoginForm.userList[userindex].Remind[i].Remindertype);
+                reminderList.Items.Add(item);
             }
         }
     }
