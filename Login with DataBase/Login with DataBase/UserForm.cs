@@ -17,8 +17,10 @@ namespace Login_with_DataBase
     public partial class UserForm : Form
     {
         public int userindex;
+
         public UserForm(int loginuserindex)
         {
+            
             InitializeComponent();
             userindex = loginuserindex;
             label1.Text = "Welcome " + LoginForm.userList[loginuserindex].Username;
@@ -29,7 +31,6 @@ namespace Login_with_DataBase
             perInfEmailRichTextbox.KeyDown += perInfEmailRichTextbox_KeyDown;
             perInfAddressRichTextbox.KeyDown += perInfAddressRichTextbox_KeyDown;
             perInfPhoneRichTextbox.KeyDown += perInfPhoneRichTextbox_KeyDown;
-
         }
         private void exitButton_Click(object sender, EventArgs e)
         {
@@ -46,6 +47,9 @@ namespace Login_with_DataBase
             PInfPanel.Visible = false;
             PInfButton.Visible = false;
             salaryInfPanel.Visible = false;
+            reminderPanel.Visible = false;
+            reminderButton.Visible = false;
+            salaryInfButton.Visible = false;
             timer1.Start();
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -68,6 +72,7 @@ namespace Login_with_DataBase
             notesPanel.Visible = false;
             PInfPanel.Visible = false;
             salaryInfPanel.Visible = false;
+            reminderPanel.Visible = false;
             phonebookPanel.Visible = true;
         }
         private void createButton_Click(object sender, EventArgs e)
@@ -169,6 +174,7 @@ namespace Login_with_DataBase
             phonebookPanel.Visible = false;
             PInfPanel.Visible = false;
             salaryInfPanel.Visible = false;
+            reminderPanel.Visible = false;
             notesPanel.Visible = true;       
         }
         private void createNoteButton_Click(object sender, EventArgs e)
@@ -285,6 +291,7 @@ namespace Login_with_DataBase
             phonebookPanel.Visible = false;
             notesPanel.Visible = false;
             salaryInfPanel.Visible = false;
+            reminderPanel.Visible = false;
             Util.LoadPersonalInformation(LoginForm.userList, "PersonalInformation.csv");
             perInfPasswordTextbox.Text = LoginForm.password;
             perInfNameRichTextbox.Text = LoginForm.userList[userindex].Personinf.Name;
@@ -355,7 +362,6 @@ namespace Login_with_DataBase
             else
                 MessageBox.Show("Fields can not be empty", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
         private void makePassUnvisibleButton_Click(object sender, EventArgs e)
         {
             if (perInfPasswordTextbox.UseSystemPasswordChar)
@@ -440,7 +446,7 @@ namespace Login_with_DataBase
             phonebookPanel.Visible = false;
             notesPanel.Visible = false;
             PInfPanel.Visible = false;
-
+            reminderPanel.Visible = false;
             deneyimCumboBox.SelectedIndex = LoginForm.userList[userindex].Personinf.Deneyim;
             ilComboBox.SelectedIndex = LoginForm.userList[userindex].Personinf.Il;
             dereceCumboBox.SelectedIndex = LoginForm.userList[userindex].Personinf.Derece;
@@ -491,6 +497,44 @@ namespace Login_with_DataBase
             LoginForm.userList[userindex].Personinf.Gorev = gorevComboBox.SelectedIndex;
             LoginForm.userList[userindex].Personinf.Aile = aileComboBox.SelectedIndex;
             MessageBox.Show("Data saved succesfully");
+        }
+
+        private void reminderButton_Click(object sender, EventArgs e)
+        {
+            phonebookPanel.Visible = false;
+            PInfPanel.Visible = false;
+            salaryInfPanel.Visible = false;
+            notesPanel.Visible = false;
+            reminderPanel.Visible = true;
+        }
+
+        private void currentdateTimePickerReminder_Validating(object sender, CancelEventArgs e)
+        {
+            if (Date.Value < DateTime.Today)
+            {
+                MessageBox.Show("You can't choose this date!");
+                e.Cancel = true;
+            }
+        }
+        private void selectedTimePickerReminder_MouseDown(object sender, MouseEventArgs e)
+        {
+            Time.CustomFormat = "HH:mm:ss";
+        }
+
+        private void reminderList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (reminderList.SelectedItems.Count > 0)
+            {
+                Date.Value = LoginForm.userList[userindex].Remind[reminderList.SelectedItems[0].Index].Datetime;
+                Time.Value = LoginForm.userList[userindex].Remind[reminderList.SelectedItems[0].Index].Datetime;
+                descriptionReminderBox.Text = LoginForm.userList[userindex].Remind[reminderList.SelectedItems[0].Index].Description;
+                summaryReminderBox.Text = LoginForm.userList[userindex].Remind[reminderList.SelectedItems[0].Index].Summary;
+                string type = reminderList.SelectedItems[0].SubItems[4].Text;
+                if (type == "meeting")
+                    reminderComboBox.SelectedIndex = 0;
+                else
+                    reminderComboBox.SelectedIndex = 1;
+            }
         }
     }
 }

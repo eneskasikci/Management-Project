@@ -14,6 +14,7 @@ namespace Login_with_DataBase
         private List<Phonebook> phonebook = new List<Phonebook>();
         private List<string> notes = new List<string>();
         private Personalnformation personinf = new Personalnformation();
+        private List<Reminder> remind = new List<Reminder>();
 
         public User(string username, string password, string usertype)
         {
@@ -27,6 +28,7 @@ namespace Login_with_DataBase
         public List<string> Notes { get { return notes; } set { notes = value; } }
         public List<Phonebook> Phonebook { get { return phonebook; } set { phonebook = value; } }
         public Personalnformation Personinf{ get { return personinf; } set { personinf = value; } }
+        public List<Reminder> Remind { get { return remind; } set { remind = value; } }
 
         public bool IsValid(string username, string password)
         {
