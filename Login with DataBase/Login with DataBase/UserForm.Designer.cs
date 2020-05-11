@@ -107,7 +107,6 @@
             this.saveSalaryInfButton = new System.Windows.Forms.Button();
             this.reminderButton = new System.Windows.Forms.Button();
             this.reminderPanel = new System.Windows.Forms.Panel();
-            this.saveRemainderButton = new System.Windows.Forms.Button();
             this.remindertypeLabel = new System.Windows.Forms.Label();
             this.reminderComboBox = new System.Windows.Forms.ComboBox();
             this.timeLabel = new System.Windows.Forms.Label();
@@ -130,6 +129,8 @@
             this.addReminderBtn = new System.Windows.Forms.Button();
             this.listReminderBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.currenttimeTimer = new System.Windows.Forms.Timer(this.components);
+            this.saveRemainderButton = new System.Windows.Forms.Button();
             this.phonebookPanel.SuspendLayout();
             this.notesPanel.SuspendLayout();
             this.yourNotePanel.SuspendLayout();
@@ -986,16 +987,6 @@
             this.reminderPanel.TabIndex = 32;
             this.reminderPanel.Visible = false;
             // 
-            // saveRemainderButton
-            // 
-            this.saveRemainderButton.Location = new System.Drawing.Point(659, 415);
-            this.saveRemainderButton.Name = "saveRemainderButton";
-            this.saveRemainderButton.Size = new System.Drawing.Size(75, 23);
-            this.saveRemainderButton.TabIndex = 23;
-            this.saveRemainderButton.Text = "Save";
-            this.saveRemainderButton.UseVisualStyleBackColor = true;
-            this.saveRemainderButton.Click += new System.EventHandler(this.saveRemainderButton_Click);
-            // 
             // remindertypeLabel
             // 
             this.remindertypeLabel.AutoSize = true;
@@ -1187,6 +1178,21 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Set Reminder";
             // 
+            // currenttimeTimer
+            // 
+            this.currenttimeTimer.Enabled = true;
+            this.currenttimeTimer.Tick += new System.EventHandler(this.currenttimeTimer_Tick);
+            // 
+            // saveRemainderButton
+            // 
+            this.saveRemainderButton.Location = new System.Drawing.Point(659, 415);
+            this.saveRemainderButton.Name = "saveRemainderButton";
+            this.saveRemainderButton.Size = new System.Drawing.Size(75, 23);
+            this.saveRemainderButton.TabIndex = 23;
+            this.saveRemainderButton.Text = "Save";
+            this.saveRemainderButton.UseVisualStyleBackColor = true;
+            this.saveRemainderButton.Click += new System.EventHandler(this.saveRemainderButton_Click);
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1212,6 +1218,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.UserForm_Load);
             this.phonebookPanel.ResumeLayout(false);
             this.phonebookPanel.PerformLayout();
             this.notesPanel.ResumeLayout(false);
@@ -1313,6 +1320,7 @@
         private System.Windows.Forms.Button addReminderBtn;
         private System.Windows.Forms.Button listReminderBtn;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer currenttimeTimer;
         private System.Windows.Forms.DateTimePicker Date;
         private System.Windows.Forms.DateTimePicker Time;
         private System.Windows.Forms.Label selectTimeReminderLbl;

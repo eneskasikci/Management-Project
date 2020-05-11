@@ -17,7 +17,8 @@ namespace Login_with_DataBase
     public partial class UserForm : Form
     {
         public int userindex;
-    
+        private Queue<Reminder> ReminderQueue = new Queue<Reminder>();
+
         public UserForm(int loginuserindex)
         {
             
@@ -612,6 +613,11 @@ namespace Login_with_DataBase
         {
             Util.SaveReminder(LoginForm.userList, "reminder.csv");
             MessageBox.Show("Data saved successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            foreach (Reminder rem in LoginForm.userList[userindex].Remind)
+            {
+                if (DateTime.Now <= rem.Datetime)
+                    ReminderQueue.Enqueue(rem);
+            }
         }
 
         private void listReminderBtn_Click(object sender, EventArgs e)
@@ -627,6 +633,41 @@ namespace Login_with_DataBase
                 item.SubItems.Add(LoginForm.userList[userindex].Remind[i].Summary);
                 item.SubItems.Add(LoginForm.userList[userindex].Remind[i].Remindertype);
                 reminderList.Items.Add(item);
+            }
+        }
+
+        private void UserForm_Load(object sender, EventArgs e)
+        {
+            Util.LoadReminder(LoginForm.userList, "reminder.csv");
+            foreach (Reminder rem in LoginForm.userList[userindex].Remind)
+                ReminderQueue.Enqueue(rem);
+        }
+
+        private void currenttimeTimer_Tick(object sender, EventArgs e)
+        {
+            timeLabel.Text = DateTime.Now.ToString("HH:mm:ss");
+
+            if (ReminderQueue.Count != 0)
+            {
+                Reminder rem = ReminderQueue.Peek();
+                if (DateTime.Now.Year == rem.Datetime.Year && DateTime.Now.Month == rem.Datetime.Month &&
+                    DateTime.Now.Day == rem.Datetime.Day && DateTime.Now.Hour == rem.Datetime.Hour &&
+                    DateTime.Now.Minute == rem.Datetime.Minute && DateTime.Now.Second == rem.Datetime.Second)
+                {
+                    if (ReminderQueue.Count != 0)
+                    {
+                        ReminderQueue.Dequeue();
+                        MessageBox.Show("Description: " + rem.Description, "Your " + rem.Remindertype + " at " + rem.Datetime);
+                    }
+                }
+                if (DateTime.Now > rem.Datetime)
+                {
+                    if (ReminderQueue.Count != 0)
+                    {
+                        ReminderQueue.Dequeue();
+                        MessageBox.Show("Description: " + rem.Description, "Your are late for your " + rem.Remindertype + " that was at " + rem.Datetime);
+                    }     
+                }
             }
         }
     }
