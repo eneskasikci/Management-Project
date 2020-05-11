@@ -193,5 +193,51 @@ namespace Login_with_DataBase
             string base64ImageRepresentation = Convert.ToBase64String(imageArray);
             return base64ImageRepresentation;
         }
+
+        public static void LoadReminder(List<User> userlist, string csvname)
+        {
+            if (!File.Exists(@csvname))
+            {
+                StreamWriter create = File.CreateText(@csvname);
+                create.Close();
+            }
+            foreach (User user in userlist)
+                user.Remind.Clear();
+
+            StreamReader reader = new StreamReader(csvname);
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                if (line != "")
+                {
+                    var values = line.Split(',');
+                    DateTime date = new DateTime(int.Parse(values[1]), int.Parse(values[2]), int.Parse(values[3]),
+                    int.Parse(values[4]), int.Parse(values[5]), int.Parse(values[6]));
+                    userlist[int.Parse(values[0])].Remind.Add(new Reminder(date, values[7], values[8], values[9]));
+                }
+            }
+            reader.Close();
+        }
+
+        public static void SaveReminder(List<User> userlist, string csvname)
+        {
+            StreamWriter reminderWrite = File.CreateText(@csvname);
+            for (int i = 0; i < userlist.Count; i++)
+            {
+                User user = userlist[i];
+                if (user.Remind.Count != 0)
+                {
+                    for (int j = 0; j < user.Remind.Count; j++)
+                    {
+                        reminderWrite.WriteLine(i + "," + user.Remind[j].Datetime.Year + "," +
+                        user.Remind[j].Datetime.Month + "," + user.Remind[j].Datetime.Day + "," +
+                        user.Remind[j].Datetime.Hour + "," + user.Remind[j].Datetime.Minute + "," +
+                        user.Remind[j].Datetime.Second + "," + user.Remind[j].Summary + "," +
+                        user.Remind[j].Description + "," + user.Remind[j].Remindertype);
+                    }
+                }
+            }
+            reminderWrite.Close();
+        }
     }
 }

@@ -94,23 +94,50 @@
             this.deneyimCumboBox = new System.Windows.Forms.ComboBox();
             this.deneyimLabel = new System.Windows.Forms.Label();
             this.salaryInfPanel = new System.Windows.Forms.Panel();
-            this.saveSalaryInfButton = new System.Windows.Forms.Button();
-            this.ilLabel = new System.Windows.Forms.Label();
-            this.ilComboBox = new System.Windows.Forms.ComboBox();
-            this.dereceLabel = new System.Windows.Forms.Label();
-            this.dereceCumboBox = new System.Windows.Forms.ComboBox();
-            this.dilLabel = new System.Windows.Forms.Label();
-            this.dilComboBox = new System.Windows.Forms.ComboBox();
-            this.yoneticilikLabel = new System.Windows.Forms.Label();
-            this.gorevComboBox = new System.Windows.Forms.ComboBox();
-            this.aileLabel = new System.Windows.Forms.Label();
             this.aileComboBox = new System.Windows.Forms.ComboBox();
+            this.aileLabel = new System.Windows.Forms.Label();
+            this.gorevComboBox = new System.Windows.Forms.ComboBox();
+            this.yoneticilikLabel = new System.Windows.Forms.Label();
+            this.dilComboBox = new System.Windows.Forms.ComboBox();
+            this.dilLabel = new System.Windows.Forms.Label();
+            this.dereceCumboBox = new System.Windows.Forms.ComboBox();
+            this.dereceLabel = new System.Windows.Forms.Label();
+            this.ilComboBox = new System.Windows.Forms.ComboBox();
+            this.ilLabel = new System.Windows.Forms.Label();
+            this.saveSalaryInfButton = new System.Windows.Forms.Button();
+            this.reminderButton = new System.Windows.Forms.Button();
+            this.reminderPanel = new System.Windows.Forms.Panel();
+            this.remindertypeLabel = new System.Windows.Forms.Label();
+            this.reminderComboBox = new System.Windows.Forms.ComboBox();
+            this.timeLabel = new System.Windows.Forms.Label();
+            this.reminderList = new System.Windows.Forms.ListView();
+            this.dateColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.timeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.descriptionColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.summaryColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.typeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.summarReminderLbl = new System.Windows.Forms.Label();
+            this.descriptionReminderLbl = new System.Windows.Forms.Label();
+            this.summaryReminderBox = new System.Windows.Forms.TextBox();
+            this.descriptionReminderBox = new System.Windows.Forms.TextBox();
+            this.selectTimeReminderLbl = new System.Windows.Forms.Label();
+            this.selectDateReminderLbl = new System.Windows.Forms.Label();
+            this.Time = new System.Windows.Forms.DateTimePicker();
+            this.Date = new System.Windows.Forms.DateTimePicker();
+            this.deleteReminderBtn = new System.Windows.Forms.Button();
+            this.updateReminderBtn = new System.Windows.Forms.Button();
+            this.addReminderBtn = new System.Windows.Forms.Button();
+            this.listReminderBtn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.currenttimeTimer = new System.Windows.Forms.Timer(this.components);
+            this.saveRemainderButton = new System.Windows.Forms.Button();
             this.phonebookPanel.SuspendLayout();
             this.notesPanel.SuspendLayout();
             this.yourNotePanel.SuspendLayout();
             this.PInfPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).BeginInit();
             this.salaryInfPanel.SuspendLayout();
+            this.reminderPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // exitButton
@@ -785,26 +812,101 @@
             this.salaryInfPanel.TabIndex = 20;
             this.salaryInfPanel.Visible = false;
             // 
-            // saveSalaryInfButton
+            // aileComboBox
             // 
-            this.saveSalaryInfButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveSalaryInfButton.Location = new System.Drawing.Point(674, 419);
-            this.saveSalaryInfButton.Name = "saveSalaryInfButton";
-            this.saveSalaryInfButton.Size = new System.Drawing.Size(116, 40);
-            this.saveSalaryInfButton.TabIndex = 21;
-            this.saveSalaryInfButton.Text = "Save";
-            this.saveSalaryInfButton.UseVisualStyleBackColor = true;
-            this.saveSalaryInfButton.Click += new System.EventHandler(this.saveSalaryInfButton_Click);
+            this.aileComboBox.FormattingEnabled = true;
+            this.aileComboBox.Items.AddRange(new object[] {
+            "Evli ve eşi çalışmıyor",
+            "0-6 yaş arası çocuk",
+            "7-18 yaş arası çocuk",
+            "18 yaş üstü çocuk (Üniversite lisans/ön lisans öğrencisi olmak koşuluyla)"});
+            this.aileComboBox.Location = new System.Drawing.Point(37, 417);
+            this.aileComboBox.Name = "aileComboBox";
+            this.aileComboBox.Size = new System.Drawing.Size(221, 21);
+            this.aileComboBox.TabIndex = 31;
             // 
-            // ilLabel
+            // aileLabel
             // 
-            this.ilLabel.AutoSize = true;
-            this.ilLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.ilLabel.Location = new System.Drawing.Point(34, 114);
-            this.ilLabel.Name = "ilLabel";
-            this.ilLabel.Size = new System.Drawing.Size(116, 16);
-            this.ilLabel.TabIndex = 22;
-            this.ilLabel.Text = "Yaşanılan İl Grubu";
+            this.aileLabel.AutoSize = true;
+            this.aileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.aileLabel.Location = new System.Drawing.Point(34, 398);
+            this.aileLabel.Name = "aileLabel";
+            this.aileLabel.Size = new System.Drawing.Size(80, 16);
+            this.aileLabel.TabIndex = 30;
+            this.aileLabel.Text = "Aile Durumu";
+            // 
+            // gorevComboBox
+            // 
+            this.gorevComboBox.FormattingEnabled = true;
+            this.gorevComboBox.Items.AddRange(new object[] {
+            "Takım Lideri/Grup Yöneticisi/Teknik Yönetici/Yazılım Mimarı",
+            "Proje Yöneticisi",
+            "Direktör/Projeler Yöneticisi",
+            "CTO/Genel Müdür",
+            "Bilgi İşlem Sorumlusu/Müdürü (Bilgi İşlem biriminde en çok 5 bilişim personeli va" +
+                "rsa)",
+            "Bilgi İşlem Sorumlusu/Müdürü (Bilgi İşlem biriminde 5\'ten çok bilişim personeli v" +
+                "arsa)"});
+            this.gorevComboBox.Location = new System.Drawing.Point(37, 347);
+            this.gorevComboBox.Name = "gorevComboBox";
+            this.gorevComboBox.Size = new System.Drawing.Size(221, 21);
+            this.gorevComboBox.TabIndex = 29;
+            // 
+            // yoneticilikLabel
+            // 
+            this.yoneticilikLabel.AutoSize = true;
+            this.yoneticilikLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.yoneticilikLabel.Location = new System.Drawing.Point(34, 327);
+            this.yoneticilikLabel.Name = "yoneticilikLabel";
+            this.yoneticilikLabel.Size = new System.Drawing.Size(112, 16);
+            this.yoneticilikLabel.TabIndex = 28;
+            this.yoneticilikLabel.Text = "Yöneticilik Görevi";
+            // 
+            // dilComboBox
+            // 
+            this.dilComboBox.FormattingEnabled = true;
+            this.dilComboBox.Items.AddRange(new object[] {
+            "Belgelendirilmiş İngilizce bilgisi",
+            "İngilizce eğitim veren okul mezuniyeti",
+            "Belgelendirilmiş diğer yabancı dil bilgisi (her dil için)"});
+            this.dilComboBox.Location = new System.Drawing.Point(37, 277);
+            this.dilComboBox.Name = "dilComboBox";
+            this.dilComboBox.Size = new System.Drawing.Size(221, 21);
+            this.dilComboBox.TabIndex = 27;
+            // 
+            // dilLabel
+            // 
+            this.dilLabel.AutoSize = true;
+            this.dilLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.dilLabel.Location = new System.Drawing.Point(34, 256);
+            this.dilLabel.Name = "dilLabel";
+            this.dilLabel.Size = new System.Drawing.Size(188, 16);
+            this.dilLabel.TabIndex = 26;
+            this.dilLabel.Text = "Belgelenen Yabancı Dil Bilgisi";
+            // 
+            // dereceCumboBox
+            // 
+            this.dereceCumboBox.FormattingEnabled = true;
+            this.dereceCumboBox.Items.AddRange(new object[] {
+            "Meslek alanı ile ilgili yüksek lisans",
+            "Meslek alanı ile ilgili doktora",
+            "Meslek alanı ile ilgili doçentlik",
+            "Meslek alanı ile ilgili olmayan yüksek lisans",
+            "Meslek alanı ile ilgili olmayan doktora/doçentlik"});
+            this.dereceCumboBox.Location = new System.Drawing.Point(37, 207);
+            this.dereceCumboBox.Name = "dereceCumboBox";
+            this.dereceCumboBox.Size = new System.Drawing.Size(221, 21);
+            this.dereceCumboBox.TabIndex = 25;
+            // 
+            // dereceLabel
+            // 
+            this.dereceLabel.AutoSize = true;
+            this.dereceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.dereceLabel.Location = new System.Drawing.Point(34, 185);
+            this.dereceLabel.Name = "dereceLabel";
+            this.dereceLabel.Size = new System.Drawing.Size(157, 16);
+            this.dereceLabel.TabIndex = 24;
+            this.dereceLabel.Text = "Alınan Akademik Derece";
             // 
             // ilComboBox
             // 
@@ -826,101 +928,270 @@
             this.ilComboBox.Size = new System.Drawing.Size(221, 21);
             this.ilComboBox.TabIndex = 23;
             // 
-            // dereceLabel
+            // ilLabel
             // 
-            this.dereceLabel.AutoSize = true;
-            this.dereceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.dereceLabel.Location = new System.Drawing.Point(34, 185);
-            this.dereceLabel.Name = "dereceLabel";
-            this.dereceLabel.Size = new System.Drawing.Size(157, 16);
-            this.dereceLabel.TabIndex = 24;
-            this.dereceLabel.Text = "Alınan Akademik Derece";
+            this.ilLabel.AutoSize = true;
+            this.ilLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.ilLabel.Location = new System.Drawing.Point(34, 114);
+            this.ilLabel.Name = "ilLabel";
+            this.ilLabel.Size = new System.Drawing.Size(116, 16);
+            this.ilLabel.TabIndex = 22;
+            this.ilLabel.Text = "Yaşanılan İl Grubu";
             // 
-            // dereceCumboBox
+            // saveSalaryInfButton
             // 
-            this.dereceCumboBox.FormattingEnabled = true;
-            this.dereceCumboBox.Items.AddRange(new object[] {
-            "Meslek alanı ile ilgili yüksek lisans",
-            "Meslek alanı ile ilgili doktora",
-            "Meslek alanı ile ilgili doçentlik",
-            "Meslek alanı ile ilgili olmayan yüksek lisans",
-            "Meslek alanı ile ilgili olmayan doktora/doçentlik"});
-            this.dereceCumboBox.Location = new System.Drawing.Point(37, 207);
-            this.dereceCumboBox.Name = "dereceCumboBox";
-            this.dereceCumboBox.Size = new System.Drawing.Size(221, 21);
-            this.dereceCumboBox.TabIndex = 25;
+            this.saveSalaryInfButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveSalaryInfButton.Location = new System.Drawing.Point(674, 419);
+            this.saveSalaryInfButton.Name = "saveSalaryInfButton";
+            this.saveSalaryInfButton.Size = new System.Drawing.Size(116, 40);
+            this.saveSalaryInfButton.TabIndex = 21;
+            this.saveSalaryInfButton.Text = "Save";
+            this.saveSalaryInfButton.UseVisualStyleBackColor = true;
+            this.saveSalaryInfButton.Click += new System.EventHandler(this.saveSalaryInfButton_Click);
             // 
-            // dilLabel
+            // reminderButton
             // 
-            this.dilLabel.AutoSize = true;
-            this.dilLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.dilLabel.Location = new System.Drawing.Point(34, 256);
-            this.dilLabel.Name = "dilLabel";
-            this.dilLabel.Size = new System.Drawing.Size(188, 16);
-            this.dilLabel.TabIndex = 26;
-            this.dilLabel.Text = "Belgelenen Yabancı Dil Bilgisi";
+            this.reminderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reminderButton.Location = new System.Drawing.Point(36, 328);
+            this.reminderButton.Name = "reminderButton";
+            this.reminderButton.Size = new System.Drawing.Size(132, 40);
+            this.reminderButton.TabIndex = 21;
+            this.reminderButton.Text = "Reminder";
+            this.reminderButton.UseVisualStyleBackColor = true;
+            this.reminderButton.Click += new System.EventHandler(this.reminderButton_Click);
             // 
-            // dilComboBox
+            // reminderPanel
             // 
-            this.dilComboBox.FormattingEnabled = true;
-            this.dilComboBox.Items.AddRange(new object[] {
-            "Belgelendirilmiş İngilizce bilgisi",
-            "İngilizce eğitim veren okul mezuniyeti",
-            "Belgelendirilmiş diğer yabancı dil bilgisi (her dil için)"});
-            this.dilComboBox.Location = new System.Drawing.Point(37, 277);
-            this.dilComboBox.Name = "dilComboBox";
-            this.dilComboBox.Size = new System.Drawing.Size(221, 21);
-            this.dilComboBox.TabIndex = 27;
+            this.reminderPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.reminderPanel.Controls.Add(this.saveRemainderButton);
+            this.reminderPanel.Controls.Add(this.remindertypeLabel);
+            this.reminderPanel.Controls.Add(this.reminderComboBox);
+            this.reminderPanel.Controls.Add(this.timeLabel);
+            this.reminderPanel.Controls.Add(this.reminderList);
+            this.reminderPanel.Controls.Add(this.summarReminderLbl);
+            this.reminderPanel.Controls.Add(this.descriptionReminderLbl);
+            this.reminderPanel.Controls.Add(this.summaryReminderBox);
+            this.reminderPanel.Controls.Add(this.descriptionReminderBox);
+            this.reminderPanel.Controls.Add(this.selectTimeReminderLbl);
+            this.reminderPanel.Controls.Add(this.selectDateReminderLbl);
+            this.reminderPanel.Controls.Add(this.Time);
+            this.reminderPanel.Controls.Add(this.Date);
+            this.reminderPanel.Controls.Add(this.deleteReminderBtn);
+            this.reminderPanel.Controls.Add(this.updateReminderBtn);
+            this.reminderPanel.Controls.Add(this.addReminderBtn);
+            this.reminderPanel.Controls.Add(this.listReminderBtn);
+            this.reminderPanel.Controls.Add(this.label2);
+            this.reminderPanel.Location = new System.Drawing.Point(227, 103);
+            this.reminderPanel.Name = "reminderPanel";
+            this.reminderPanel.Size = new System.Drawing.Size(823, 489);
+            this.reminderPanel.TabIndex = 32;
+            this.reminderPanel.Visible = false;
             // 
-            // yoneticilikLabel
+            // remindertypeLabel
             // 
-            this.yoneticilikLabel.AutoSize = true;
-            this.yoneticilikLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.yoneticilikLabel.Location = new System.Drawing.Point(34, 327);
-            this.yoneticilikLabel.Name = "yoneticilikLabel";
-            this.yoneticilikLabel.Size = new System.Drawing.Size(112, 16);
-            this.yoneticilikLabel.TabIndex = 28;
-            this.yoneticilikLabel.Text = "Yöneticilik Görevi";
+            this.remindertypeLabel.AutoSize = true;
+            this.remindertypeLabel.Location = new System.Drawing.Point(497, 255);
+            this.remindertypeLabel.Name = "remindertypeLabel";
+            this.remindertypeLabel.Size = new System.Drawing.Size(79, 13);
+            this.remindertypeLabel.TabIndex = 22;
+            this.remindertypeLabel.Text = "Reminder Type";
             // 
-            // gorevComboBox
+            // reminderComboBox
             // 
-            this.gorevComboBox.FormattingEnabled = true;
-            this.gorevComboBox.Items.AddRange(new object[] {
-            "Takım Lideri/Grup Yöneticisi/Teknik Yönetici/Yazılım Mimarı",
-            "Proje Yöneticisi",
-            "Direktör/Projeler Yöneticisi",
-            "CTO/Genel Müdür",
-            "Bilgi İşlem Sorumlusu/Müdürü (Bilgi İşlem biriminde en çok 5 bilişim personeli va" +
-                "rsa)",
-            "Bilgi İşlem Sorumlusu/Müdürü (Bilgi İşlem biriminde 5\'ten çok bilişim personeli v" +
-                "arsa)"});
-            this.gorevComboBox.Location = new System.Drawing.Point(37, 347);
-            this.gorevComboBox.Name = "gorevComboBox";
-            this.gorevComboBox.Size = new System.Drawing.Size(221, 21);
-            this.gorevComboBox.TabIndex = 29;
+            this.reminderComboBox.FormattingEnabled = true;
+            this.reminderComboBox.Items.AddRange(new object[] {
+            "meeting",
+            "task"});
+            this.reminderComboBox.Location = new System.Drawing.Point(500, 277);
+            this.reminderComboBox.Name = "reminderComboBox";
+            this.reminderComboBox.Size = new System.Drawing.Size(200, 21);
+            this.reminderComboBox.TabIndex = 21;
             // 
-            // aileLabel
+            // timeLabel
             // 
-            this.aileLabel.AutoSize = true;
-            this.aileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.aileLabel.Location = new System.Drawing.Point(34, 398);
-            this.aileLabel.Name = "aileLabel";
-            this.aileLabel.Size = new System.Drawing.Size(80, 16);
-            this.aileLabel.TabIndex = 30;
-            this.aileLabel.Text = "Aile Durumu";
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.timeLabel.Location = new System.Drawing.Point(496, 327);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(46, 19);
+            this.timeLabel.TabIndex = 20;
+            this.timeLabel.Text = "Time";
             // 
-            // aileComboBox
+            // reminderList
             // 
-            this.aileComboBox.FormattingEnabled = true;
-            this.aileComboBox.Items.AddRange(new object[] {
-            "Evli ve eşi çalışmıyor",
-            "0-6 yaş arası çocuk",
-            "7-18 yaş arası çocuk",
-            "18 yaş üstü çocuk (Üniversite lisans/ön lisans öğrencisi olmak koşuluyla)"});
-            this.aileComboBox.Location = new System.Drawing.Point(37, 417);
-            this.aileComboBox.Name = "aileComboBox";
-            this.aileComboBox.Size = new System.Drawing.Size(221, 21);
-            this.aileComboBox.TabIndex = 31;
+            this.reminderList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.dateColumn,
+            this.timeColumn,
+            this.descriptionColumn,
+            this.summaryColumn,
+            this.typeColumn});
+            this.reminderList.FullRowSelect = true;
+            this.reminderList.HideSelection = false;
+            this.reminderList.Location = new System.Drawing.Point(25, 39);
+            this.reminderList.MultiSelect = false;
+            this.reminderList.Name = "reminderList";
+            this.reminderList.Size = new System.Drawing.Size(463, 403);
+            this.reminderList.TabIndex = 19;
+            this.reminderList.UseCompatibleStateImageBehavior = false;
+            this.reminderList.View = System.Windows.Forms.View.Details;
+            this.reminderList.SelectedIndexChanged += new System.EventHandler(this.reminderList_SelectedIndexChanged);
+            // 
+            // dateColumn
+            // 
+            this.dateColumn.Text = "Date";
+            this.dateColumn.Width = 100;
+            // 
+            // timeColumn
+            // 
+            this.timeColumn.Text = "Time";
+            // 
+            // descriptionColumn
+            // 
+            this.descriptionColumn.Text = "Description";
+            this.descriptionColumn.Width = 100;
+            // 
+            // summaryColumn
+            // 
+            this.summaryColumn.Text = "Summary";
+            this.summaryColumn.Width = 100;
+            // 
+            // typeColumn
+            // 
+            this.typeColumn.Text = "Reminder Type";
+            this.typeColumn.Width = 100;
+            // 
+            // summarReminderLbl
+            // 
+            this.summarReminderLbl.AutoSize = true;
+            this.summarReminderLbl.Location = new System.Drawing.Point(497, 192);
+            this.summarReminderLbl.Name = "summarReminderLbl";
+            this.summarReminderLbl.Size = new System.Drawing.Size(50, 13);
+            this.summarReminderLbl.TabIndex = 18;
+            this.summarReminderLbl.Text = "Summary";
+            // 
+            // descriptionReminderLbl
+            // 
+            this.descriptionReminderLbl.AutoSize = true;
+            this.descriptionReminderLbl.Location = new System.Drawing.Point(497, 141);
+            this.descriptionReminderLbl.Name = "descriptionReminderLbl";
+            this.descriptionReminderLbl.Size = new System.Drawing.Size(60, 13);
+            this.descriptionReminderLbl.TabIndex = 17;
+            this.descriptionReminderLbl.Text = "Description";
+            // 
+            // summaryReminderBox
+            // 
+            this.summaryReminderBox.Location = new System.Drawing.Point(500, 211);
+            this.summaryReminderBox.Name = "summaryReminderBox";
+            this.summaryReminderBox.Size = new System.Drawing.Size(200, 20);
+            this.summaryReminderBox.TabIndex = 16;
+            // 
+            // descriptionReminderBox
+            // 
+            this.descriptionReminderBox.Location = new System.Drawing.Point(500, 157);
+            this.descriptionReminderBox.Name = "descriptionReminderBox";
+            this.descriptionReminderBox.Size = new System.Drawing.Size(200, 20);
+            this.descriptionReminderBox.TabIndex = 16;
+            // 
+            // selectTimeReminderLbl
+            // 
+            this.selectTimeReminderLbl.AutoSize = true;
+            this.selectTimeReminderLbl.Location = new System.Drawing.Point(497, 92);
+            this.selectTimeReminderLbl.Name = "selectTimeReminderLbl";
+            this.selectTimeReminderLbl.Size = new System.Drawing.Size(63, 13);
+            this.selectTimeReminderLbl.TabIndex = 14;
+            this.selectTimeReminderLbl.Text = "Select Time";
+            // 
+            // selectDateReminderLbl
+            // 
+            this.selectDateReminderLbl.AutoSize = true;
+            this.selectDateReminderLbl.Location = new System.Drawing.Point(497, 42);
+            this.selectDateReminderLbl.Name = "selectDateReminderLbl";
+            this.selectDateReminderLbl.Size = new System.Drawing.Size(63, 13);
+            this.selectDateReminderLbl.TabIndex = 13;
+            this.selectDateReminderLbl.Text = "Select Date";
+            // 
+            // Time
+            // 
+            this.Time.CustomFormat = "   ";
+            this.Time.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.Time.Location = new System.Drawing.Point(500, 110);
+            this.Time.Name = "Time";
+            this.Time.ShowUpDown = true;
+            this.Time.Size = new System.Drawing.Size(200, 20);
+            this.Time.TabIndex = 12;
+            this.Time.MouseDown += new System.Windows.Forms.MouseEventHandler(this.selectedTimePickerReminder_MouseDown);
+            // 
+            // Date
+            // 
+            this.Date.Location = new System.Drawing.Point(500, 62);
+            this.Date.Name = "Date";
+            this.Date.Size = new System.Drawing.Size(200, 20);
+            this.Date.TabIndex = 11;
+            this.Date.Validating += new System.ComponentModel.CancelEventHandler(this.currentdateTimePickerReminder_Validating);
+            // 
+            // deleteReminderBtn
+            // 
+            this.deleteReminderBtn.Location = new System.Drawing.Point(659, 371);
+            this.deleteReminderBtn.Name = "deleteReminderBtn";
+            this.deleteReminderBtn.Size = new System.Drawing.Size(75, 23);
+            this.deleteReminderBtn.TabIndex = 10;
+            this.deleteReminderBtn.Text = "Delete";
+            this.deleteReminderBtn.UseVisualStyleBackColor = true;
+            this.deleteReminderBtn.Click += new System.EventHandler(this.deleteReminderBtn_Click);
+            // 
+            // updateReminderBtn
+            // 
+            this.updateReminderBtn.Location = new System.Drawing.Point(578, 371);
+            this.updateReminderBtn.Name = "updateReminderBtn";
+            this.updateReminderBtn.Size = new System.Drawing.Size(75, 23);
+            this.updateReminderBtn.TabIndex = 9;
+            this.updateReminderBtn.Text = "Update";
+            this.updateReminderBtn.UseVisualStyleBackColor = true;
+            this.updateReminderBtn.Click += new System.EventHandler(this.updateReminderBtn_Click);
+            // 
+            // addReminderBtn
+            // 
+            this.addReminderBtn.Location = new System.Drawing.Point(497, 371);
+            this.addReminderBtn.Name = "addReminderBtn";
+            this.addReminderBtn.Size = new System.Drawing.Size(75, 23);
+            this.addReminderBtn.TabIndex = 8;
+            this.addReminderBtn.Text = "Add";
+            this.addReminderBtn.UseVisualStyleBackColor = true;
+            this.addReminderBtn.Click += new System.EventHandler(this.addReminderBtn_Click);
+            // 
+            // listReminderBtn
+            // 
+            this.listReminderBtn.Location = new System.Drawing.Point(13, 448);
+            this.listReminderBtn.Name = "listReminderBtn";
+            this.listReminderBtn.Size = new System.Drawing.Size(75, 23);
+            this.listReminderBtn.TabIndex = 7;
+            this.listReminderBtn.Text = "List";
+            this.listReminderBtn.UseVisualStyleBackColor = true;
+            this.listReminderBtn.Click += new System.EventHandler(this.listReminderBtn_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(568, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Set Reminder";
+            // 
+            // currenttimeTimer
+            // 
+            this.currenttimeTimer.Enabled = true;
+            this.currenttimeTimer.Tick += new System.EventHandler(this.currenttimeTimer_Tick);
+            // 
+            // saveRemainderButton
+            // 
+            this.saveRemainderButton.Location = new System.Drawing.Point(659, 415);
+            this.saveRemainderButton.Name = "saveRemainderButton";
+            this.saveRemainderButton.Size = new System.Drawing.Size(75, 23);
+            this.saveRemainderButton.TabIndex = 23;
+            this.saveRemainderButton.Text = "Save";
+            this.saveRemainderButton.UseVisualStyleBackColor = true;
+            this.saveRemainderButton.Click += new System.EventHandler(this.saveRemainderButton_Click);
             // 
             // UserForm
             // 
@@ -928,6 +1199,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1100, 700);
+            this.Controls.Add(this.reminderButton);
             this.Controls.Add(this.salaryInfButton);
             this.Controls.Add(this.PInfButton);
             this.Controls.Add(this.notesButton);
@@ -936,6 +1208,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.logOutButton);
             this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.reminderPanel);
             this.Controls.Add(this.salaryInfPanel);
             this.Controls.Add(this.PInfPanel);
             this.Controls.Add(this.notesPanel);
@@ -945,6 +1218,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.UserForm_Load);
             this.phonebookPanel.ResumeLayout(false);
             this.phonebookPanel.PerformLayout();
             this.notesPanel.ResumeLayout(false);
@@ -955,6 +1229,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).EndInit();
             this.salaryInfPanel.ResumeLayout(false);
             this.salaryInfPanel.PerformLayout();
+            this.reminderPanel.ResumeLayout(false);
+            this.reminderPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1037,5 +1313,31 @@
         private System.Windows.Forms.Label aileLabel;
         private System.Windows.Forms.ComboBox gorevComboBox;
         private System.Windows.Forms.Label yoneticilikLabel;
+        private System.Windows.Forms.Button reminderButton;
+        private System.Windows.Forms.Panel reminderPanel;
+        private System.Windows.Forms.Button deleteReminderBtn;
+        private System.Windows.Forms.Button updateReminderBtn;
+        private System.Windows.Forms.Button addReminderBtn;
+        private System.Windows.Forms.Button listReminderBtn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer currenttimeTimer;
+        private System.Windows.Forms.DateTimePicker Date;
+        private System.Windows.Forms.DateTimePicker Time;
+        private System.Windows.Forms.Label selectTimeReminderLbl;
+        private System.Windows.Forms.Label selectDateReminderLbl;
+        private System.Windows.Forms.Label summarReminderLbl;
+        private System.Windows.Forms.Label descriptionReminderLbl;
+        private System.Windows.Forms.TextBox summaryReminderBox;
+        private System.Windows.Forms.TextBox descriptionReminderBox;
+        private System.Windows.Forms.ListView reminderList;
+        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.ColumnHeader dateColumn;
+        private System.Windows.Forms.ColumnHeader timeColumn;
+        private System.Windows.Forms.ColumnHeader descriptionColumn;
+        private System.Windows.Forms.ColumnHeader summaryColumn;
+        private System.Windows.Forms.ComboBox reminderComboBox;
+        private System.Windows.Forms.Label remindertypeLabel;
+        private System.Windows.Forms.ColumnHeader typeColumn;
+        private System.Windows.Forms.Button saveRemainderButton;
     }
 }

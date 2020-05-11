@@ -60,6 +60,13 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reminder.cs" />
+    <Compile Include="ReminderAlert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReminderAlert.Designer.cs">
+      <DependentUpon>ReminderAlert.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <Compile Include="UserForm.cs">
       <SubType>Form</SubType>
@@ -81,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReminderAlert.resx">
+      <DependentUpon>ReminderAlert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
