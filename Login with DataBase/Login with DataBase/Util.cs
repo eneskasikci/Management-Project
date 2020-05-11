@@ -172,12 +172,9 @@ namespace Login_with_DataBase
             for (int i = 0; i < userlist.Count; i++)
             {
                 User user = userlist[i];
-                if (user.Personinf.Name != "")
-                {
-                    personalInformationWrite.WriteLine(i + "," + user.Personinf.Name + "," +
+                personalInformationWrite.WriteLine(i + "," + user.Personinf.Name + "," +
                                          user.Personinf.Surname + "," + user.Personinf.Phonenumber + "," +
                                          user.Personinf.Email + "," + user.Personinf.Address + ',' + user.Personinf.Image);
-                }
             }
             personalInformationWrite.Close();
         }

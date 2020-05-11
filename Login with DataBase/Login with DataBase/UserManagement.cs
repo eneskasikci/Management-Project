@@ -208,12 +208,13 @@ namespace Login_with_DataBase
                         }
                     }
                 }
+                reader.Close();
                 if (LoginForm.userList[listView1.SelectedItems[0].Index].Personinf.Email == "")
                 {
                     MessageBox.Show("There is no saved email for this user.") ;
                     return;
                 }
-                reader.Close();
+                
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp-mail.outlook.com";
                 smtp.Port = 587;
