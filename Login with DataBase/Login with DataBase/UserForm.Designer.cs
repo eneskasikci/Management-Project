@@ -107,6 +107,7 @@
             this.saveSalaryInfButton = new System.Windows.Forms.Button();
             this.reminderButton = new System.Windows.Forms.Button();
             this.reminderPanel = new System.Windows.Forms.Panel();
+            this.saveRemainderButton = new System.Windows.Forms.Button();
             this.remindertypeLabel = new System.Windows.Forms.Label();
             this.reminderComboBox = new System.Windows.Forms.ComboBox();
             this.timeLabel = new System.Windows.Forms.Label();
@@ -124,6 +125,10 @@
             this.selectDateReminderLbl = new System.Windows.Forms.Label();
             this.Time = new System.Windows.Forms.DateTimePicker();
             this.Date = new System.Windows.Forms.DateTimePicker();
+            this.deleteReminderBtn = new System.Windows.Forms.Button();
+            this.updateReminderBtn = new System.Windows.Forms.Button();
+            this.addReminderBtn = new System.Windows.Forms.Button();
+            this.listReminderBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.phonebookPanel.SuspendLayout();
             this.notesPanel.SuspendLayout();
@@ -957,6 +962,7 @@
             // reminderPanel
             // 
             this.reminderPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.reminderPanel.Controls.Add(this.saveRemainderButton);
             this.reminderPanel.Controls.Add(this.remindertypeLabel);
             this.reminderPanel.Controls.Add(this.reminderComboBox);
             this.reminderPanel.Controls.Add(this.timeLabel);
@@ -969,12 +975,26 @@
             this.reminderPanel.Controls.Add(this.selectDateReminderLbl);
             this.reminderPanel.Controls.Add(this.Time);
             this.reminderPanel.Controls.Add(this.Date);
+            this.reminderPanel.Controls.Add(this.deleteReminderBtn);
+            this.reminderPanel.Controls.Add(this.updateReminderBtn);
+            this.reminderPanel.Controls.Add(this.addReminderBtn);
+            this.reminderPanel.Controls.Add(this.listReminderBtn);
             this.reminderPanel.Controls.Add(this.label2);
             this.reminderPanel.Location = new System.Drawing.Point(227, 103);
             this.reminderPanel.Name = "reminderPanel";
             this.reminderPanel.Size = new System.Drawing.Size(823, 489);
             this.reminderPanel.TabIndex = 32;
             this.reminderPanel.Visible = false;
+            // 
+            // saveRemainderButton
+            // 
+            this.saveRemainderButton.Location = new System.Drawing.Point(659, 415);
+            this.saveRemainderButton.Name = "saveRemainderButton";
+            this.saveRemainderButton.Size = new System.Drawing.Size(75, 23);
+            this.saveRemainderButton.TabIndex = 23;
+            this.saveRemainderButton.Text = "Save";
+            this.saveRemainderButton.UseVisualStyleBackColor = true;
+            this.saveRemainderButton.Click += new System.EventHandler(this.saveRemainderButton_Click);
             // 
             // remindertypeLabel
             // 
@@ -1118,6 +1138,46 @@
             this.Date.TabIndex = 11;
             this.Date.Validating += new System.ComponentModel.CancelEventHandler(this.currentdateTimePickerReminder_Validating);
             // 
+            // deleteReminderBtn
+            // 
+            this.deleteReminderBtn.Location = new System.Drawing.Point(659, 371);
+            this.deleteReminderBtn.Name = "deleteReminderBtn";
+            this.deleteReminderBtn.Size = new System.Drawing.Size(75, 23);
+            this.deleteReminderBtn.TabIndex = 10;
+            this.deleteReminderBtn.Text = "Delete";
+            this.deleteReminderBtn.UseVisualStyleBackColor = true;
+            this.deleteReminderBtn.Click += new System.EventHandler(this.deleteReminderBtn_Click);
+            // 
+            // updateReminderBtn
+            // 
+            this.updateReminderBtn.Location = new System.Drawing.Point(578, 371);
+            this.updateReminderBtn.Name = "updateReminderBtn";
+            this.updateReminderBtn.Size = new System.Drawing.Size(75, 23);
+            this.updateReminderBtn.TabIndex = 9;
+            this.updateReminderBtn.Text = "Update";
+            this.updateReminderBtn.UseVisualStyleBackColor = true;
+            this.updateReminderBtn.Click += new System.EventHandler(this.updateReminderBtn_Click);
+            // 
+            // addReminderBtn
+            // 
+            this.addReminderBtn.Location = new System.Drawing.Point(497, 371);
+            this.addReminderBtn.Name = "addReminderBtn";
+            this.addReminderBtn.Size = new System.Drawing.Size(75, 23);
+            this.addReminderBtn.TabIndex = 8;
+            this.addReminderBtn.Text = "Add";
+            this.addReminderBtn.UseVisualStyleBackColor = true;
+            this.addReminderBtn.Click += new System.EventHandler(this.addReminderBtn_Click);
+            // 
+            // listReminderBtn
+            // 
+            this.listReminderBtn.Location = new System.Drawing.Point(13, 448);
+            this.listReminderBtn.Name = "listReminderBtn";
+            this.listReminderBtn.Size = new System.Drawing.Size(75, 23);
+            this.listReminderBtn.TabIndex = 7;
+            this.listReminderBtn.Text = "List";
+            this.listReminderBtn.UseVisualStyleBackColor = true;
+            this.listReminderBtn.Click += new System.EventHandler(this.listReminderBtn_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -1248,6 +1308,10 @@
         private System.Windows.Forms.Label yoneticilikLabel;
         private System.Windows.Forms.Button reminderButton;
         private System.Windows.Forms.Panel reminderPanel;
+        private System.Windows.Forms.Button deleteReminderBtn;
+        private System.Windows.Forms.Button updateReminderBtn;
+        private System.Windows.Forms.Button addReminderBtn;
+        private System.Windows.Forms.Button listReminderBtn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker Date;
         private System.Windows.Forms.DateTimePicker Time;
@@ -1266,5 +1330,6 @@
         private System.Windows.Forms.ComboBox reminderComboBox;
         private System.Windows.Forms.Label remindertypeLabel;
         private System.Windows.Forms.ColumnHeader typeColumn;
+        private System.Windows.Forms.Button saveRemainderButton;
     }
 }
