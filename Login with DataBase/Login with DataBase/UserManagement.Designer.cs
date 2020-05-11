@@ -60,6 +60,10 @@
             this.deneyimLabel = new System.Windows.Forms.Label();
             this.deneyimCumboBox = new System.Windows.Forms.ComboBox();
             this.saveSalaryInfButton = new System.Windows.Forms.Button();
+            this.EmailProgressBar = new System.Windows.Forms.ProgressBar();
+            this.SendPassTxt = new System.Windows.Forms.TextBox();
+            this.SendPassw2Email = new System.Windows.Forms.Button();
+            this.usrMngSendEmail = new System.Windows.Forms.Label();
             this.salaryGroupBox.SuspendLayout();
             this.salaryInfPanel.SuspendLayout();
             this.SuspendLayout();
@@ -100,6 +104,7 @@
             this.passwordColumn,
             this.usertypeColumn});
             this.listView1.FullRowSelect = true;
+            this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(58, 96);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(367, 525);
@@ -403,7 +408,7 @@
             "10-14",
             "15-20",
             "20 years and upper"});
-            this.deneyimCumboBox.Location = new System.Drawing.Point(38, 55);
+            this.deneyimCumboBox.Location = new System.Drawing.Point(96, 55);
             this.deneyimCumboBox.Name = "deneyimCumboBox";
             this.deneyimCumboBox.Size = new System.Drawing.Size(221, 21);
             this.deneyimCumboBox.TabIndex = 8;
@@ -419,12 +424,50 @@
             this.saveSalaryInfButton.UseVisualStyleBackColor = true;
             this.saveSalaryInfButton.Click += new System.EventHandler(this.saveSalaryInfButton_Click);
             // 
+            // EmailProgressBar
+            // 
+            this.EmailProgressBar.Location = new System.Drawing.Point(868, 250);
+            this.EmailProgressBar.Name = "EmailProgressBar";
+            this.EmailProgressBar.Size = new System.Drawing.Size(128, 22);
+            this.EmailProgressBar.TabIndex = 33;
+            this.EmailProgressBar.Visible = false;
+            // 
+            // SendPassTxt
+            // 
+            this.SendPassTxt.Location = new System.Drawing.Point(620, 252);
+            this.SendPassTxt.Name = "SendPassTxt";
+            this.SendPassTxt.Size = new System.Drawing.Size(138, 20);
+            this.SendPassTxt.TabIndex = 32;
+            // 
+            // SendPassw2Email
+            // 
+            this.SendPassw2Email.Location = new System.Drawing.Point(776, 250);
+            this.SendPassw2Email.Name = "SendPassw2Email";
+            this.SendPassw2Email.Size = new System.Drawing.Size(75, 23);
+            this.SendPassw2Email.TabIndex = 31;
+            this.SendPassw2Email.Text = "Send";
+            this.SendPassw2Email.UseVisualStyleBackColor = true;
+            this.SendPassw2Email.Click += new System.EventHandler(this.SendPassw2Email_Click);
+            // 
+            // usrMngSendEmail
+            // 
+            this.usrMngSendEmail.AutoSize = true;
+            this.usrMngSendEmail.Location = new System.Drawing.Point(480, 255);
+            this.usrMngSendEmail.Name = "usrMngSendEmail";
+            this.usrMngSendEmail.Size = new System.Drawing.Size(125, 13);
+            this.usrMngSendEmail.TabIndex = 30;
+            this.usrMngSendEmail.Text = "Send Password To Email";
+            // 
             // userManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1100, 700);
+            this.Controls.Add(this.EmailProgressBar);
+            this.Controls.Add(this.SendPassTxt);
+            this.Controls.Add(this.SendPassw2Email);
+            this.Controls.Add(this.usrMngSendEmail);
             this.Controls.Add(this.salaryInfPanel);
             this.Controls.Add(this.salaryGroupBox);
             this.Controls.Add(this.updateButton);
@@ -487,5 +530,9 @@
         private System.Windows.Forms.Label deneyimLabel;
         private System.Windows.Forms.ComboBox deneyimCumboBox;
         private System.Windows.Forms.Button saveSalaryInfButton;
+        private System.Windows.Forms.ProgressBar EmailProgressBar;
+        private System.Windows.Forms.TextBox SendPassTxt;
+        private System.Windows.Forms.Button SendPassw2Email;
+        private System.Windows.Forms.Label usrMngSendEmail;
     }
 }

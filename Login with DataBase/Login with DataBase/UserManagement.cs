@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Net.Mail;
 
 namespace Login_with_DataBase
 {
@@ -176,6 +178,77 @@ namespace Login_with_DataBase
             if (LoginForm.userList[listView1.SelectedItems[0].Index].Usertype == "part-time-user")
                 salary /= 2;
             salaryTextBox.Text = salary.ToString();
+        }
+
+        private void SendPassw2Email_Click(object sender, EventArgs e)
+        {
+            if (SendPassTxt.Text == "")
+            {
+                MessageBox.Show("Please Enter a Password");
+                return;
+            }
+            if (listView1.SelectedItems.Count>0)
+            {
+                if (!File.Exists(@"PersonalInformation.csv"))
+                {
+                    StreamWriter create = File.CreateText(@"PersonalInformation.csv");
+                    create.Close();
+                }
+                StreamReader reader = new StreamReader("PersonalInformation.csv");
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    if (line != "")
+                    {
+                        var values = line.Split(',');
+                        if (int.Parse(values[0]) == listView1.SelectedItems[0].Index)
+                        {
+                            LoginForm.userList[listView1.SelectedItems[0].Index].Personinf.Name = values[1];
+                            LoginForm.userList[listView1.SelectedItems[0].Index].Personinf.Email = values[4];
+                        }
+                    }
+                }
+                if (LoginForm.userList[listView1.SelectedItems[0].Index].Personinf.Email == "")
+                {
+                    MessageBox.Show("There is no saved email for this user.") ;
+                    return;
+                }
+                reader.Close();
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp-mail.outlook.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                smtp.Credentials = new System.Net.NetworkCredential("ooplab2_23@outlook.com", "BoburshohEnesMurat");
+                MailMessage eposta = new MailMessage();
+                eposta.From = new MailAddress("ooplab2_23@outlook.com");
+                eposta.To.Add(LoginForm.userList[listView1.SelectedItems[0].Index].Personinf.Email);
+                eposta.Subject = "New Password";
+                eposta.Body = "Hello " + LoginForm.userList[listView1.SelectedItems[0].Index].Personinf.Name + ", Your new password is; " + SendPassTxt.Text;
+                int changedornot = 0;
+                EmailProgressBar.Maximum = 100;
+                EmailProgressBar.Step = 100;
+                try
+                {
+                    EmailProgressBar.Visible = true;
+                    smtp.Send(eposta);
+                    EmailProgressBar.PerformStep();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occured while sending email." + ex.Message);
+                    changedornot = 1;
+                }
+                if (changedornot == 0)
+                {
+                    LoginForm.userList[listView1.SelectedItems[0].Index].Password = Util.ComputeSha256Hash(SendPassTxt.Text);
+                    MessageBox.Show("Password Changed and Mail sent.");
+                    passwordTextBox.Text = LoginForm.userList[listView1.SelectedItems[0].Index].Password;
+                    listView1.SelectedItems[0].SubItems[1].Text = LoginForm.userList[listView1.SelectedItems[0].Index].Password;
+                }
+            }
+            else
+                MessageBox.Show("Please select from List");
+            EmailProgressBar.Visible = false;
         }
     }
 }
