@@ -1,3 +1,1 @@
-152120171073
-152120181108
-152120181109
+Management program where it lets users to use some of the functions of the program based on their title. Admin can calculate the salaries of the workers using their education background, city they live and experience.
